@@ -1,13 +1,13 @@
 //
 //  Constants.h
-//  GameboyEmulator2
+//  MacBoy
 //
 //  Created by Tom Schroeder on 3/20/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012. All rights reserved.
 //
 
-#ifndef GameboyEmulator2_Constants_h
-#define GameboyEmulator2_Constants_h
+#ifndef MacBoy_Constants_h
+#define MacBoy_Constants_h
 
 enum Keys
 {

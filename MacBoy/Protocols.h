@@ -1,13 +1,13 @@
 //
 //  Protocols.h
-//  GameboyEmulator2
+//  MacBoy
 //
 //  Created by Tom Schroeder on 3/20/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012. All rights reserved.
 //
 
-#ifndef GameboyEmulator2_Protocols_h
-#define GameboyEmulator2_Protocols_h
+#ifndef MacBoy_Protocols_h
+#define MacBoy_Protocols_h
 
 @protocol Cartridge <NSObject>
 

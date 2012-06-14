@@ -1,9 +1,9 @@
 //
 //  GameboyOpenGLView.m
-//  GameboyEmulator2
+//  MacBoy
 //
 //  Created by Tom Schroeder on 3/22/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012. All rights reserved.
 //
 
 #import "GameboyOpenGLView.h"
