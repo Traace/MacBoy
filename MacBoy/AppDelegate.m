@@ -12,20 +12,26 @@
 
 @synthesize window = _window;
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+- (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
    for (int i = 0; i < 160 * 144; i++)
       pixels[i] = 0xFF000000;
    
    [self InitFrame];
-   [self loadFile:nil];
+//   [self loadFile:nil];
    
    [NSThread detachNewThreadSelector:@selector(run) toTarget:self withObject:nil];  
 }
 
-- (IBAction)loadFile:(id)sender
+- (void)applicationWillTerminate:(NSNotification *)notification
 {
-   NSString * romPath = @"/Users/tomschroeder/Stuff/Roms/Gameboy/SuperMarioLand2.gb";
+   
+}
+
+- (void)loadFile:(NSString *)romPath
+{
+//   NSString * romPath = @"/Users/tomschroeder/Stuff/Roms/Gameboy/SuperMarioLand2.gb";
+//   romPath = @"/Users/tomschroeder/Stuff/Roms/Gameboy/SuperMarioLand2.gb";
    NSFileHandle * file = [NSFileHandle fileHandleForReadingAtPath: romPath];
    
    if (file == nil)
@@ -35,8 +41,8 @@
    
    game = [[Game alloc] initWithData:romData];
    
-   //   [cpu setCartridge:game->cartridge];
-   //   id<Cartridge> cartridge = [[MBC1 alloc] initWithData:romData :game->romType :game->romSize :game->romBanks];
+//   [cpu setCartridge:game->cartridge];
+//   id<Cartridge> cartridge = [[MBC1 alloc] initWithData:romData :game->romType :game->romSize :game->romBanks];
    [cpu setCartridge:game->cartridge];
    [cpu PowerUp];
 }
@@ -47,27 +53,28 @@
    {
       if (cpu != nil && cpu->running)
       {
-         //         NSLog(@"run true");
-         [self UpdateModel:true];
-         //         [self UpdateModel:false];
+//         NSLog(@"run true");
+//         [self UpdateModel:true];
+//         [self UpdateModel:false];
+         [self UpdateModel];
          [self RenderFrame];
          [NSThread sleepForTimeInterval:0.016667];
       }
    }
 }
 
-- (void) UpdateModel:(bool)updateBitmap
+- (void) UpdateModel//:(bool)updateBitmap
 {
-   //   NSLog(@"%@", NSStringFromSelector(_cmd));
+//   NSLog(@"%@", NSStringFromSelector(_cmd));
    
-   if (updateBitmap)
-   {
-      //      uint[] backgroundPalette = cpu->backgroundPalette;
-      //      uint[] objectPalette0 = cpu->objectPalette0;
-      //      uint[] objectPalette1 = cpu->objectPalette1;
-      //      uint[,] backgroundBuffer = cpu->backgroundBuffer;
-      //      uint[,] windowBuffer = cpu->windowBuffer;
-      //      byte[] oam = cpu->oam;
+//   if (updateBitmap)
+//   {
+//      uint[] backgroundPalette = cpu->backgroundPalette;
+//      uint[] objectPalette0 = cpu->objectPalette0;
+//      uint[] objectPalette1 = cpu->objectPalette1;
+//      uint[,] backgroundBuffer = cpu->backgroundBuffer;
+//      uint[,] windowBuffer = cpu->windowBuffer;
+//      byte[] oam = cpu->oam;
       
       for (int y = 0, pixelIndex = 0; y < 144; y++) {
          
@@ -78,43 +85,42 @@
                  || (cpu->lcdcLycLyCoincidenceInterruptEnabled && cpu->lyCompare == y))) {
                 cpu->lcdcInterruptRequested = true;
              }
-         //         ExecuteProcessor(800);
+
          [self ExecuteProcessor:800];
          cpu->lcdcMode = TransferingData;
-         //         ExecuteProcessor(1720);
          [self ExecuteProcessor:1720];
-         
-         //         cpu->UpdateWindow();
-         //         cpu->UpdateBackground();
-         //         cpu->UpdateSpriteTiles();
          
          [cpu UpdateWindow];
          [cpu UpdateBackground];
          [cpu UpdateSpriteTiles];
          
-         bool backgroundDisplayed = cpu->backgroundDisplayed;
-         //         bool backgroundAndWindowTileDataSelect = cpu->backgroundAndWindowTileDataSelect;
-         //         bool backgroundTileMapDisplaySelect = cpu->backgroundTileMapDisplaySelect;
-         int scrollX = cpu->scrollX;
-         int scrollY = cpu->scrollY;
-         bool windowDisplayed = cpu->windowDisplayed;
-         //         bool windowTileMapDisplaySelect = cpu->windowTileMapDisplaySelect;
+//         bool backgroundDisplayed = cpu->backgroundDisplayed;
+         
+//         bool backgroundAndWindowTileDataSelect = cpu->backgroundAndWindowTileDataSelect;
+//         bool backgroundTileMapDisplaySelect = cpu->backgroundTileMapDisplaySelect;
+         
+//         int scrollX = cpu->scrollX;
+//         int scrollY = cpu->scrollY;
+//         bool windowDisplayed = cpu->windowDisplayed;
+         
+//         bool windowTileMapDisplaySelect = cpu->windowTileMapDisplaySelect;
+         
          int windowX = cpu->windowX - 7;
          int windowY = cpu->windowY;
          
-         //         int windowPointY = windowY + y;
+//         int windowPointY = windowY + y;
          
          for (int x = 0; x < 160; x++, pixelIndex++)
          {
             
             uint intensity = 0;
             
-            if (backgroundDisplayed)
+            if (cpu->backgroundDisplayed)
             {
-               intensity = cpu->backgroundBuffer[0xFF & (scrollY + y)][0xFF & (scrollX + x)];
+               intensity = cpu->backgroundBuffer[0xFF & (cpu->scrollY + y)][0xFF & (cpu->scrollX + x)];
             }
             
-            if (windowDisplayed && y >= windowY && y < windowY + 144 && x >= windowX && x < windowX + 160
+            if (cpu->windowDisplayed && y >= windowY && y < windowY + 144 && x >= windowX && x < windowX + 160
                 && windowX >= -7 && windowX <= 159 && windowY >= 0 && windowY <= 143) {
                intensity = cpu->windowBuffer[y - windowY][x - windowX];
             }
@@ -124,16 +130,19 @@
          
          if (cpu->spritesDisplayed)
          {
-            //            uint[, , ,] spriteTile = cpu->spriteTile;
-            if (cpu->largeSprites) {
-               for (int address = 0; address < 160; address += 4) {
+            if (cpu->largeSprites)
+            {
+               for (int address = 0; address < 160; address += 4)
+               {
                   int spriteY = cpu->oam[address];
                   int spriteX = cpu->oam[address + 1];
-                  if (spriteY == 0 || spriteX == 0 || spriteY >= 160 || spriteX >= 168) {
+                  if (spriteY == 0 || spriteX == 0 || spriteY >= 160 || spriteX >= 168)
+                  {
                      continue;
                   }
                   spriteY -= 16;
-                  if (spriteY > y || spriteY + 15 < y) {
+                  if (spriteY > y || spriteY + 15 < y)
+                  {
                      continue;
                   }
                   spriteX -= 8;
@@ -163,9 +172,9 @@
                         if (screenX >= 0 && screenX < 160)
                         {
                            uint color = cpu->spriteTile[spriteTileIndex0]
-                           [spriteYFlipped ? 7 - spriteRow : spriteRow]
-                           [spriteXFlipped ? 7 - x : x]
-                           [spritePalette];
+                                                       [spriteYFlipped ? 7 - spriteRow : spriteRow]
+                                                       [spriteXFlipped ? 7 - x : x]
+                                                       [spritePalette];
                            if (color > 0)
                            {
                               if (spritePriority)
@@ -197,9 +206,9 @@
                         if (screenX >= 0 && screenX < 160)
                         {
                            uint color = cpu->spriteTile[spriteTileIndex1]
-                           [spriteYFlipped ? 7 - spriteRow : spriteRow]
-                           [spriteXFlipped ? 7 - x : x]
-                           [spritePalette];
+                                                       [spriteYFlipped ? 7 - spriteRow : spriteRow]
+                                                       [spriteXFlipped ? 7 - x : x]
+                                                       [spritePalette];
                            if (color > 0)
                            {
                               if (spritePriority)
@@ -251,9 +260,9 @@
                      if (screenX >= 0 && screenX < 160)
                      {
                         uint color = cpu->spriteTile[spriteTileIndex]
-                        [spriteYFlipped ? 7 - spriteRow : spriteRow] 
-                        [spriteXFlipped ? 7 - x : x]
-                        [spritePalette];
+                                                    [spriteYFlipped ? 7 - spriteRow : spriteRow] 
+                                                    [spriteXFlipped ? 7 - x : x]
+                                                    [spritePalette];
                         if (color > 0)
                         {
                            if (spritePriority)
@@ -279,41 +288,41 @@
          {
             cpu->lcdcInterruptRequested = true;
          }
-         //         ExecuteProcessor(2040);
+
          [self ExecuteProcessor:2040];
-         //         AddTicksPerScanLine();
          [self AddTicksPerScanLine];
       }
-   }
-   else
-   {
-      for (int y = 0; y < 144; y++)
-      {
-         cpu->ly = y;
-         cpu->lcdcMode = SearchingOamRam;
-         if (cpu->lcdcInterruptEnabled
-             && (cpu->lcdcOamInterruptEnabled
-                 || (cpu->lcdcLycLyCoincidenceInterruptEnabled && cpu->lyCompare == y)))
-         {
-            cpu->lcdcInterruptRequested = true;
-         }
-         
-         //         ExecuteProcessor(800);
-         [self ExecuteProcessor:800];
-         cpu->lcdcMode = TransferingData;
-         //         ExecuteProcessor(1720);
-         [self ExecuteProcessor:1720];
-         cpu->lcdcMode = HBlank;
-         if (cpu->lcdcInterruptEnabled && cpu->lcdcHBlankInterruptEnabled)
-         {
-            cpu->lcdcInterruptRequested = true;
-         }
-         //         ExecuteProcessor(2040);
-         [self ExecuteProcessor:2040];
-         //         AddTicksPerScanLine();
-         [self AddTicksPerScanLine];
-      }
-   }
+//   }
+   
+//   else
+//   {
+//      for (int y = 0; y < 144; y++)
+//      {
+//         cpu->ly = y;
+//         cpu->lcdcMode = SearchingOamRam;
+//         if (cpu->lcdcInterruptEnabled
+//             && (cpu->lcdcOamInterruptEnabled
+//                 || (cpu->lcdcLycLyCoincidenceInterruptEnabled && cpu->lyCompare == y)))
+//         {
+//                cpu->lcdcInterruptRequested = true;
+//         }
+//         
+////         ExecuteProcessor(800);
+//         [self ExecuteProcessor:800];
+//         cpu->lcdcMode = TransferingData;
+////         ExecuteProcessor(1720);
+//         [self ExecuteProcessor:1720];
+//         cpu->lcdcMode = HBlank;
+//         if (cpu->lcdcInterruptEnabled && cpu->lcdcHBlankInterruptEnabled)
+//         {
+//            cpu->lcdcInterruptRequested = true;
+//         }
+////         ExecuteProcessor(2040);
+//         [self ExecuteProcessor:2040];
+////         AddTicksPerScanLine();
+//         [self AddTicksPerScanLine];
+//      }
+//   }
    
    cpu->lcdcMode = VBlank;
    if (cpu->vBlankInterruptEnabled)
@@ -332,9 +341,7 @@
       {
          cpu->lcdcInterruptRequested = true;
       }
-      //      ExecuteProcessor(4560);
       [self ExecuteProcessor:4560];
-      //      AddTicksPerScanLine();
       [self AddTicksPerScanLine];
    }
 }
@@ -378,7 +385,6 @@
 {   
    do
    {
-      //      cpu->Step();
       [cpu Step];
       if (cpu->halted)
       {
@@ -407,20 +413,20 @@
    NSOpenPanel * openPanel = [NSOpenPanel openPanel];
    if ([openPanel runModal] == NSOKButton)
    {
-      //      NSString *filename = [op filename];
       NSArray * urls = [openPanel URLs];
       NSURL * romFile = [urls objectAtIndex:0];
       
-      NSLog(@"%@", [[romFile filePathURL] absoluteString]);
+//      NSLog(@"%@", [[romFile filePathURL] absoluteString]);
+
+      NSString * romPath = [[[romFile filePathURL] absoluteString] 
+                            stringByReplacingOccurrencesOfString:@"file://localhost" withString:@""];
+
+      // Replace escape characters from URL
+      romPath = [romPath stringByReplacingOccurrencesOfString:@"%20" withString:@" "];
+      romPath = [romPath stringByReplacingOccurrencesOfString:@"%5B" withString:@"["];
+      romPath = [romPath stringByReplacingOccurrencesOfString:@"%5D" withString:@"]"];
       
-      //      ROMLoader * romLoader = [[ROMLoader alloc] init];
-      //      game = [romLoader Load:romFile];
-      //      cpu = [[CPU alloc] init];
-      //      cpu->cartridge = game->cartridge;
-      //      [cpu PowerUp];
-      
-      // TODO
-      //[self loadFile:nil];
+      [self loadFile:romPath];
    }
 }
 

@@ -1,14 +1,14 @@
 //
-//  ROM.m
-//  MacBoy
+//  MBC0.m
+//  GameboyEmulator2
 //
-//  Created by Tom Schroeder on 3/20/12.
+//  Created by Tom Schroeder on 3/23/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "ROM.h"
+#import "MBC0.h"
 
-@implementation ROM
+@implementation MBC0
 
 - (id) initWithData:(NSData *)data
 {
@@ -19,6 +19,11 @@
       [data getBytes:fileData];
    }
    return self;
+}
+
+- (void) dealloc
+{
+   free(fileData);
 }
 
 - (int) ReadByte:(int)address

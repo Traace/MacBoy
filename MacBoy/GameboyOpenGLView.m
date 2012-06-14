@@ -70,7 +70,9 @@
                glColor3f(1., 1., 1.);
             }
             
-            glVertex2i(x, y);
+//            glVertex2i(x, y);
+            glVertex2i(x * 2, y * 2);     glVertex2i(x * 2 + 1, y * 2);
+            glVertex2i(x * 2, y * 2 + 1); glVertex2i(x * 2 + 1, y * 2 + 1);
          }
       }
    }

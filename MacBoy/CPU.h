@@ -1,6 +1,6 @@
 //
 //  CPU.h
-//  MacBoy
+//  GameboyEmulator2
 //
 //  Created by Tom Schroeder on 3/20/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
@@ -18,19 +18,13 @@ extern const uint BLACK;
 @interface CPU : NSObject
 {
 @public
-//   const uint WHITE;
-//   const uint LIGHT_GRAY;
-//   const uint DARK_GRAY;
-//   const uint BLACK;
    
-//   Cartridge cartridge;
    id<Cartridge> cartridge;
    
    bool running;
    
    bool halted;
    bool stopped;
-//   bool interruptsEnabled = true;
    bool interruptsEnabled;
    bool leftKeyPressed;
    bool rightKeyPressed;
@@ -62,10 +56,7 @@ extern const uint BLACK;
    int scrollX, scrollY;
    int windowX, windowY;
    int lyCompare, ly;
-   
-//   uint[] backgroundPalette = { WHITE, LIGHT_GRAY, DARK_GRAY, BLACK };
-//   uint[] objectPalette0 = { WHITE, LIGHT_GRAY, DARK_GRAY, BLACK };
-//   uint[] objectPalette1 = { WHITE, LIGHT_GRAY, DARK_GRAY, BLACK };
+
    uint backgroundPalette[4];
    uint objectPalette0[4];
    uint objectPalette1[4];
@@ -95,7 +86,6 @@ extern const uint BLACK;
    Byte highRam[256];
    Byte videoRam[8 * 1024];
    Byte workRam[8 * 1024];
-//   Byte oam[256];
    
    bool backgroundTileInvalidated[32][32];
    bool invalidateAllBackgroundTilesRequest;

@@ -14,9 +14,9 @@
 {
    enum RomType romType;
    int selectedRomBank;// = 1;
-   //   private byte[] ram = new byte[512];
+//   private byte[] ram = new byte[512];
    Byte ram[512];
-   //   private byte[,] rom;
+//   private byte[,] rom;
    Byte ** rom;
    
    uint romBanks;

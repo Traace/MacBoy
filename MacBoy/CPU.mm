@@ -54,31 +54,31 @@ const uint BLACK = 0xFF000000;
       if (vBlankInterruptEnabled && vBlankInterruptRequested)
       {
          vBlankInterruptRequested = false;
-         //         interrupt(0x0040];
+//         interrupt(0x0040];
          [self Interrupt:0x0040];
       }
       else if (lcdcInterruptEnabled && lcdcInterruptRequested)
       {
          lcdcInterruptRequested = false;
-         //         interrupt(0x0048];
+//         interrupt(0x0048];
          [self Interrupt:0x0048];
       }
       else if (timerOverflowInterruptEnabled && timerOverflowInterruptRequested)
       {
          timerOverflowInterruptRequested = false;
-         //         interrupt(0x0050];
+//         interrupt(0x0050];
          [self Interrupt:0x0050];
       }
       else if (serialIOTransferCompleteInterruptEnabled && serialIOTransferCompleteInterruptRequested)
       {
          serialIOTransferCompleteInterruptRequested = false;
-         //         interrupt(0x0058];
+//         interrupt(0x0058];
          [self Interrupt:0x0058];
       }
       else if (keyPressedInterruptEnabled && keyPressedInterruptRequested)
       {
          keyPressedInterruptRequested = false;
-         //         interrupt(0x0060];
+//         interrupt(0x0060];
          [self Interrupt:0x0060];
       }
    }
@@ -164,10 +164,10 @@ const uint BLACK = 0xFF000000;
          ticks += 4;
          break;
       case 0x11: // LD DE,NN
-         [self LoadImmediate:D :E];
+          [self LoadImmediate:D :E];
          break;
       case 0x12: // LD (DE),A
-         [self WriteByte:D :E :A];
+          [self WriteByte:D :E :A];
          break;
       case 0x13: // INC DE
          [self Increment:D :E];
@@ -215,7 +215,7 @@ const uint BLACK = 0xFF000000;
          [self LoadImmediate:H :L];
          break;
       case 0x22: // LD (HLI),A
-         [self WriteByte:H :L :A];
+          [self WriteByte:H :L :A];
          [self Increment:H :L];
          break;
       case 0x23: // INC HL
@@ -231,7 +231,7 @@ const uint BLACK = 0xFF000000;
          [self LoadImmediate:H];
          break;
       case 0x27: // DAA
-         [self DecimallyAdjustA];
+          [self DecimallyAdjustA];
          break;
       case 0x28: // JR Z,N
          [self JumpRelativeIfZero];
@@ -256,7 +256,7 @@ const uint BLACK = 0xFF000000;
          [self LoadImmediate:L];
          break;
       case 0x2F: // CPL
-         [self ComplementA];
+          [self ComplementA];
          break;
       case 0x30: // JR NC,N
          [self JumpRelativeIfNotCarry];
@@ -265,20 +265,20 @@ const uint BLACK = 0xFF000000;
          [self LoadImmediateWord:SP];
          break;
       case 0x32: // LD (HLD),A
-         [self WriteByte:H :L :A];
+          [self WriteByte:H :L :A];
          [self Decrement:H :L];
          break;
       case 0x33: // INC SP
          [self IncrementWord:SP];
          break;
       case 0x34: // INC (HL)
-         [self IncrementMemory:H :L];
+          [self IncrementMemory:H :L];
          break;
       case 0x35: // DEC (HL)
-         [self DecrementMemory:H :L];
+          [self DecrementMemory:H :L];
          break;
       case 0x36: // LD (HL),N
-         [self LoadImmediateIntoMemory:H :L];
+          [self LoadImmediateIntoMemory:H :L];
          break;
       case 0x37: // SCF
          [self SetCarryFlag];
@@ -708,13 +708,13 @@ const uint BLACK = 0xFF000000;
          [self CallIfNotZero];
          break;
       case 0xC5: // PUSH BC
-         [self Push:B :C];
+          [self Push:B :C];
          break;
       case 0xC6: // ADD A,N
          [self AddImmediate];
          break;
       case 0xC7: // RST 00H
-         [self Restart:0];
+          [self Restart:0];
          break;
       case 0xC8: // RET Z
          [self ReturnIfZero];
@@ -727,776 +727,776 @@ const uint BLACK = 0xFF000000;
          break;
       case 0xCB:
          switch ([self ReadByte:PC++])
-      {
-         case 0x00: // RLC B
-            [self RotateLeft:B];
-            break;
-         case 0x01: // RLC C
-            [self RotateLeft:C];
-            break;
-         case 0x02: // RLC D
-            [self RotateLeft:D];
-            break;
-         case 0x03: // RLC E
-            [self RotateLeft:E];
-            break;
-         case 0x04: // RLC H
-            [self RotateLeft:H];
-            break;
-         case 0x05: // RLC L
-            [self RotateLeft:L];
-            break;
-         case 0x06: // RLC (HL)
-            [self RotateLeft:H :L];
-            break;
-         case 0x07: // RLC A
-            [self RotateLeft:A];
-            break;
-         case 0x08: // RRC B
-            [self RotateRight:B];
-            break;
-         case 0x09: // RRC C
-            [self RotateRight:C];
-            break;
-         case 0x0A: // RRC D
-            [self RotateRight:D];
-            break;
-         case 0x0B: // RRC E
-            [self RotateRight:E];
-            break;
-         case 0x0C: // RRC H
-            [self RotateRight:H];
-            break;
-         case 0x0D: // RRC L
-            [self RotateRight:L];
-            break;
-         case 0x0E: // RRC (HL)
-            [self RotateRight:H :L];
-            break;
-         case 0x0F: // RRC A
-            [self RotateRight:A];
-            break;
-         case 0x10: // RL  B
-            [self RotateLeftThroughCarry:B];
-            break;
-         case 0x11: // RL  C
-            [self RotateLeftThroughCarry:C];
-            break;
-         case 0x12: // RL  D
-            [self RotateLeftThroughCarry:D];
-            break;
-         case 0x13: // RL  E
-            [self RotateLeftThroughCarry:E];
-            break;
-         case 0x14: // RL  H
-            [self RotateLeftThroughCarry:H];
-            break;
-         case 0x15: // RL  L
-            [self RotateLeftThroughCarry:L];
-            break;
-         case 0x16: // RL  (HL)
-            [self RotateLeftThroughCarry:H :L];
-            break;
-         case 0x17: // RL  A
-            [self RotateLeftThroughCarry:A];
-            break;
-         case 0x18: // RR  B
-            [self RotateRightThroughCarry:B];
-            break;
-         case 0x19: // RR  C
-            [self RotateRightThroughCarry:C];
-            break;
-         case 0x1A: // RR  D
-            [self RotateRightThroughCarry:D];
-            break;
-         case 0x1B: // RR  E
-            [self RotateRightThroughCarry:E];
-            break;
-         case 0x1C: // RR  H
-            [self RotateRightThroughCarry:H];
-            break;
-         case 0x1D: // RR  L
-            [self RotateRightThroughCarry:L];
-            break;
-         case 0x1E: // RR  (HL)
-            [self RotateRightThroughCarry:H :L];
-            break;
-         case 0x1F: // RR  A
-            [self RotateRightThroughCarry:A];
-            break;
-         case 0x20: // SLA B
-            [self ShiftLeft:B];
-            break;
-         case 0x21: // SLA C
-            [self ShiftLeft:C];
-            break;
-         case 0x22: // SLA D
-            [self ShiftLeft:D];
-            break;
-         case 0x23: // SLA E
-            [self ShiftLeft:E];
-            break;
-         case 0x24: // SLA H
-            [self ShiftLeft:H];
-            break;
-         case 0x25: // SLA L
-            [self ShiftLeft:L];
-            break;
-         case 0x26: // SLA (HL)
-            [self ShiftLeft:H :L];
-            break;
-         case 0x27: // SLA A
-            [self ShiftLeft:A];
-            break;
-         case 0x28: // SRA B
-            [self SignedShiftRight:B];
-            break;
-         case 0x29: // SRA C
-            [self SignedShiftRight:C];
-            break;
-         case 0x2A: // SRA D
-            [self SignedShiftRight:D];
-            break;
-         case 0x2B: // SRA E
-            [self SignedShiftRight:E];
-            break;
-         case 0x2C: // SRA H
-            [self SignedShiftRight:H];
-            break;
-         case 0x2D: // SRA L
-            [self SignedShiftRight:L];
-            break;
-         case 0x2E: // SRA (HL)
-            [self SignedShiftRight:H :L];
-            break;
-         case 0x2F: // SRA A
-            [self SignedShiftRight:A];
-            break;
-         case 0x30: // SWAP B
-            [self Swap:B];
-            break;
-         case 0x31: // SWAP C
-            [self Swap:C];
-            break;
-         case 0x32: // SWAP D
-            [self Swap:D];
-            break;
-         case 0x33: // SWAP E
-            [self Swap:E];
-            break;
-         case 0x34: // SWAP H
-            [self Swap:H];
-            break;
-         case 0x35: // SWAP L
-            [self Swap:L];
-            break;
-         case 0x36: // SWAP (HL)
-            [self Swap:H :L];
-            break;
-         case 0x37: // SWAP A
-            [self Swap:A];
-            break;
-         case 0x38: // SRL B
-            [self UnsignedShiftRight:B];
-            break;
-         case 0x39: // SRL C
-            [self UnsignedShiftRight:C];
-            break;
-         case 0x3A: // SRL D
-            [self UnsignedShiftRight:D];
-            break;
-         case 0x3B: // SRL E
-            [self UnsignedShiftRight:E];
-            break;
-         case 0x3C: // SRL H
-            [self UnsignedShiftRight:H];
-            break;
-         case 0x3D: // SRL L
-            [self UnsignedShiftRight:L];
-            break;
-         case 0x3E: // SRL (HL)
-            [self UnsignedShiftRight:H :L];
-            break;
-         case 0x3F: // SRL A
-            [self UnsignedShiftRight:A];
-            break;
-         case 0x40: // BIT 0,B
-            [self TestBit:0 : B];
-            break;
-         case 0x41: // BIT 0,C
-            [self TestBit:0 : C];
-            break;
-         case 0x42: // BIT 0,D
-            [self TestBit:0 : D];
-            break;
-         case 0x43: // BIT 0,E
-            [self TestBit:0 : E];
-            break;
-         case 0x44: // BIT 0,H
-            [self TestBit:0 : H];
-            break;
-         case 0x45: // BIT 0,L
-            [self TestBit:0 : L];
-            break;
-         case 0x46: // BIT 0,(HL)
-            [self TestBit:0 :H :L];
-            break;
-         case 0x47: // BIT 0,A
-            [self TestBit:0 : A];
-            break;
-         case 0x48: // BIT 1,B
-            [self TestBit:1 : B];
-            break;
-         case 0x49: // BIT 1,C
-            [self TestBit:1 : C];
-            break;
-         case 0x4A: // BIT 1,D
-            [self TestBit:1 : D];
-            break;
-         case 0x4B: // BIT 1,E
-            [self TestBit:1 : E];
-            break;
-         case 0x4C: // BIT 1,H
-            [self TestBit:1 : H];
-            break;
-         case 0x4D: // BIT 1,L
-            [self TestBit:1 : L];
-            break;
-         case 0x4E: // BIT 1,(HL)
-            [self TestBit:1 :H :L];
-            break;
-         case 0x4F: // BIT 1,A
-            [self TestBit:1 : A];
-            break;
-         case 0x50: // BIT 2,B
-            [self TestBit:2 : B];
-            break;
-         case 0x51: // BIT 2,C
-            [self TestBit:2 : C];
-            break;
-         case 0x52: // BIT 2,D
-            [self TestBit:2 : D];
-            break;
-         case 0x53: // BIT 2,E
-            [self TestBit:2 : E];
-            break;
-         case 0x54: // BIT 2,H
-            [self TestBit:2 : H];
-            break;
-         case 0x55: // BIT 2,L
-            [self TestBit:2 : L];
-            break;
-         case 0x56: // BIT 2,(HL)
-            [self TestBit:2 :H :L];
-            break;
-         case 0x57: // BIT 2,A
-            [self TestBit:2 : A];
-            break;
-         case 0x58: // BIT 3,B
-            [self TestBit:3 : B];
-            break;
-         case 0x59: // BIT 3,C
-            [self TestBit:3 : C];
-            break;
-         case 0x5A: // BIT 3,D
-            [self TestBit:3 : D];
-            break;
-         case 0x5B: // BIT 3,E
-            [self TestBit:3 : E];
-            break;
-         case 0x5C: // BIT 3,H
-            [self TestBit:3 : H];
-            break;
-         case 0x5D: // BIT 3,L
-            [self TestBit:3 : L];
-            break;
-         case 0x5E: // BIT 3,(HL)
-            [self TestBit:3 :H :L];
-            break;
-         case 0x5F: // BIT 3,A
-            [self TestBit:3 : A];
-            break;
-         case 0x60: // BIT 4,B
-            [self TestBit:4 : B];
-            break;
-         case 0x61: // BIT 4,C
-            [self TestBit:4 : C];
-            break;
-         case 0x62: // BIT 4,D
-            [self TestBit:4 : D];
-            break;
-         case 0x63: // BIT 4,E
-            [self TestBit:4 : E];
-            break;
-         case 0x64: // BIT 4,H
-            [self TestBit:4 : H];
-            break;
-         case 0x65: // BIT 4,L
-            [self TestBit:4 : L];
-            break;
-         case 0x66: // BIT 4,(HL)
-            [self TestBit:4 :H :L];
-            break;
-         case 0x67: // BIT 4,A
-            [self TestBit:4 : A];
-            break;
-         case 0x68: // BIT 5,B
-            [self TestBit:5 : B];
-            break;
-         case 0x69: // BIT 5,C
-            [self TestBit:5 : C];
-            break;
-         case 0x6A: // BIT 5,D
-            [self TestBit:5 : D];
-            break;
-         case 0x6B: // BIT 5,E
-            [self TestBit:5 : E];
-            break;
-         case 0x6C: // BIT 5,H
-            [self TestBit:5 : H];
-            break;
-         case 0x6D: // BIT 5,L
-            [self TestBit:5 : L];
-            break;
-         case 0x6E: // BIT 5,(HL)
-            [self TestBit:5 :H :L];
-            break;
-         case 0x6F: // BIT 5,A
-            [self TestBit:5 : A];
-            break;
-         case 0x70: // BIT 6,B
-            [self TestBit:6 : B];
-            break;
-         case 0x71: // BIT 6,C
-            [self TestBit:6 : C];
-            break;
-         case 0x72: // BIT 6,D
-            [self TestBit:6 : D];
-            break;
-         case 0x73: // BIT 6,E
-            [self TestBit:6 : E];
-            break;
-         case 0x74: // BIT 6,H
-            [self TestBit:6 : H];
-            break;
-         case 0x75: // BIT 6,L
-            [self TestBit:6 : L];
-            break;
-         case 0x76: // BIT 6,(HL)
-            [self TestBit:6 :H :L];
-            break;
-         case 0x77: // BIT 6,A
-            [self TestBit:6 : A];
-            break;
-         case 0x78: // BIT 7,B
-            [self TestBit:7 : B];
-            break;
-         case 0x79: // BIT 7,C
-            [self TestBit:7 : C];
-            break;
-         case 0x7A: // BIT 7,D
-            [self TestBit:7 : D];
-            break;
-         case 0x7B: // BIT 7,E
-            [self TestBit:7 : E];
-            break;
-         case 0x7C: // BIT 7,H
-            [self TestBit:7 : H];
-            break;
-         case 0x7D: // BIT 7,L
-            [self TestBit:7 : L];
-            break;
-         case 0x7E: // BIT 7,(HL)
-            [self TestBit:7 :H :L];
-            break;
-         case 0x7F: // BIT 7,A
-            [self TestBit:7 : A];
-            break;
-         case 0x80: // RES 0,B
-            [self ResetBit:0 :B];
-            break;
-         case 0x81: // RES 0,C
-            [self ResetBit:0 :C];
-            break;
-         case 0x82: // RES 0,D
-            [self ResetBit:0 :D];
-            break;
-         case 0x83: // RES 0,E
-            [self ResetBit:0 :E];
-            break;
-         case 0x84: // RES 0,H
-            [self ResetBit:0 :H];
-            break;
-         case 0x85: // RES 0,L
-            [self ResetBit:0 :L];
-            break;
-         case 0x86: // RES 0,(HL)
-            [self ResetBit:0 :H :L];
-            break;
-         case 0x87: // RES 0,A
-            [self ResetBit:0 :A];
-            break;
-         case 0x88: // RES 1,B
-            [self ResetBit:1 :B];
-            break;
-         case 0x89: // RES 1,C
-            [self ResetBit:1 :C];
-            break;
-         case 0x8A: // RES 1,D
-            [self ResetBit:1 :D];
-            break;
-         case 0x8B: // RES 1,E
-            [self ResetBit:1 :E];
-            break;
-         case 0x8C: // RES 1,H
-            [self ResetBit:1 :H];
-            break;
-         case 0x8D: // RES 1,L
-            [self ResetBit:1 :L];
-            break;
-         case 0x8E: // RES 1,(HL)
-            [self ResetBit:1 :H :L];
-            break;
-         case 0x8F: // RES 1,A
-            [self ResetBit:1 :A];
-            break;
-         case 0x90: // RES 2,B
-            [self ResetBit:2 :B];
-            break;
-         case 0x91: // RES 2,C
-            [self ResetBit:2 :C];
-            break;
-         case 0x92: // RES 2,D
-            [self ResetBit:2 :D];
-            break;
-         case 0x93: // RES 2,E
-            [self ResetBit:2 :E];
-            break;
-         case 0x94: // RES 2,H
-            [self ResetBit:2 :H];
-            break;
-         case 0x95: // RES 2,L
-            [self ResetBit:2 :L];
-            break;
-         case 0x96: // RES 2,(HL)
-            [self ResetBit:2 :H :L];
-            break;
-         case 0x97: // RES 2,A
-            [self ResetBit:2 :A];
-            break;
-         case 0x98: // RES 3,B
-            [self ResetBit:3 :B];
-            break;
-         case 0x99: // RES 3,C
-            [self ResetBit:3 :C];
-            break;
-         case 0x9A: // RES 3,D
-            [self ResetBit:3 :D];
-            break;
-         case 0x9B: // RES 3,E
-            [self ResetBit:3 :E];
-            break;
-         case 0x9C: // RES 3,H
-            [self ResetBit:3 :H];
-            break;
-         case 0x9D: // RES 3,L
-            [self ResetBit:3 :L];
-            break;
-         case 0x9E: // RES 3,(HL)
-            [self ResetBit:3 :H :L];
-            break;
-         case 0x9F: // RES 3,A
-            [self ResetBit:3 :A];
-            break;
-         case 0xA0: // RES 4,B
-            [self ResetBit:4 :B];
-            break;
-         case 0xA1: // RES 4,C
-            [self ResetBit:4 :C];
-            break;
-         case 0xA2: // RES 4,D
-            [self ResetBit:4 :D];
-            break;
-         case 0xA3: // RES 4,E
-            [self ResetBit:4 :E];
-            break;
-         case 0xA4: // RES 4,H
-            [self ResetBit:4 :H];
-            break;
-         case 0xA5: // RES 4,L
-            [self ResetBit:4 :L];
-            break;
-         case 0xA6: // RES 4,(HL)
-            [self ResetBit:4 :H :L];
-            break;
-         case 0xA7: // RES 4,A
-            [self ResetBit:4 :A];
-            break;
-         case 0xA8: // RES 5,B
-            [self ResetBit:5 :B];
-            break;
-         case 0xA9: // RES 5,C
-            [self ResetBit:5 :C];
-            break;
-         case 0xAA: // RES 5,D
-            [self ResetBit:5 :D];
-            break;
-         case 0xAB: // RES 5,E
-            [self ResetBit:5 :E];
-            break;
-         case 0xAC: // RES 5,H
-            [self ResetBit:5 :H];
-            break;
-         case 0xAD: // RES 5,L
-            [self ResetBit:5 :L];
-            break;
-         case 0xAE: // RES 5,(HL)
-            [self ResetBit:5 :H :L];
-            break;
-         case 0xAF: // RES 5,A
-            [self ResetBit:5 :A];
-            break;
-         case 0xB0: // RES 6,B
-            [self ResetBit:6 :B];
-            break;
-         case 0xB1: // RES 6,C
-            [self ResetBit:6 :C];
-            break;
-         case 0xB2: // RES 6,D
-            [self ResetBit:6 :D];
-            break;
-         case 0xB3: // RES 6,E
-            [self ResetBit:6 :E];
-            break;
-         case 0xB4: // RES 6,H
-            [self ResetBit:6 :H];
-            break;
-         case 0xB5: // RES 6,L
-            [self ResetBit:6 :L];
-            break;
-         case 0xB6: // RES 6,(HL)
-            [self ResetBit:6 :H :L];
-            break;
-         case 0xB7: // RES 6,A
-            [self ResetBit:6 :A];
-            break;
-         case 0xB8: // RES 7,B
-            [self ResetBit:7 :B];
-            break;
-         case 0xB9: // RES 7,C
-            [self ResetBit:7 :C];
-            break;
-         case 0xBA: // RES 7,D
-            [self ResetBit:7 :D];
-            break;
-         case 0xBB: // RES 7,E
-            [self ResetBit:7 :E];
-            break;
-         case 0xBC: // RES 7,H
-            [self ResetBit:7 :H];
-            break;
-         case 0xBD: // RES 7,L
-            [self ResetBit:7 :L];
-            break;
-         case 0xBE: // RES 7,(HL)
-            [self ResetBit:7 :H :L];
-            break;
-         case 0xBF: // RES 7,A
-            [self ResetBit:7 :A];
-            break;
-         case 0xC0: // SET 0,B
-            [self SetBit:0 :B];
-            break;
-         case 0xC1: // SET 0,C
-            [self SetBit:0 :C];
-            break;
-         case 0xC2: // SET 0,D
-            [self SetBit:0 :D];
-            break;
-         case 0xC3: // SET 0,E
-            [self SetBit:0 :E];
-            break;
-         case 0xC4: // SET 0,H
-            [self SetBit:0 :H];
-            break;
-         case 0xC5: // SET 0,L
-            [self SetBit:0 :L];
-            break;
-         case 0xC6: // SET 0,(HL)
-            [self SetBit:0 :H :L];
-            break;
-         case 0xC7: // SET 0,A
-            [self SetBit:0 :A];
-            break;
-         case 0xC8: // SET 1,B
-            [self SetBit:1 :B];
-            break;
-         case 0xC9: // SET 1,C
-            [self SetBit:1 :C];
-            break;
-         case 0xCA: // SET 1,D
-            [self SetBit:1 :D];
-            break;
-         case 0xCB: // SET 1,E
-            [self SetBit:1 :E];
-            break;
-         case 0xCC: // SET 1,H
-            [self SetBit:1 :H];
-            break;
-         case 0xCD: // SET 1,L
-            [self SetBit:1 :L];
-            break;
-         case 0xCE: // SET 1,(HL)
-            [self SetBit:1 :H :L];
-            break;
-         case 0xCF: // SET 1,A
-            [self SetBit:1 :A];
-            break;
-         case 0xD0: // SET 2,B
-            [self SetBit:2 :B];
-            break;
-         case 0xD1: // SET 2,C
-            [self SetBit:2 :C];
-            break;
-         case 0xD2: // SET 2,D
-            [self SetBit:2 :D];
-            break;
-         case 0xD3: // SET 2,E
-            [self SetBit:2 :E];
-            break;
-         case 0xD4: // SET 2,H
-            [self SetBit:2 :H];
-            break;
-         case 0xD5: // SET 2,L
-            [self SetBit:2 :L];
-            break;
-         case 0xD6: // SET 2,(HL)
-            [self SetBit:2 :H :L];
-            break;
-         case 0xD7: // SET 2,A
-            [self SetBit:2 :A];
-            break;
-         case 0xD8: // SET 3,B
-            [self SetBit:3 :B];
-            break;
-         case 0xD9: // SET 3,C
-            [self SetBit:3 :C];
-            break;
-         case 0xDA: // SET 3,D
-            [self SetBit:3 :D];
-            break;
-         case 0xDB: // SET 3,E
-            [self SetBit:3 :E];
-            break;
-         case 0xDC: // SET 3,H
-            [self SetBit:3 :H];
-            break;
-         case 0xDD: // SET 3,L
-            [self SetBit:3 :L];
-            break;
-         case 0xDE: // SET 3,(HL)
-            [self SetBit:3 :H :L];
-            break;
-         case 0xDF: // SET 3,A
-            [self SetBit:3 :A];
-            break;
-         case 0xE0: // SET 4,B
-            [self SetBit:4 :B];
-            break;
-         case 0xE1: // SET 4,C
-            [self SetBit:4 :C];
-            break;
-         case 0xE2: // SET 4,D
-            [self SetBit:4 :D];
-            break;
-         case 0xE3: // SET 4,E
-            [self SetBit:4 :E];
-            break;
-         case 0xE4: // SET 4,H
-            [self SetBit:4 :H];
-            break;
-         case 0xE5: // SET 4,L
-            [self SetBit:4 :L];
-            break;
-         case 0xE6: // SET 4,(HL)
-            [self SetBit:4 :H :L];
-            break;
-         case 0xE7: // SET 4,A
-            [self SetBit:4 :A];
-            break;
-         case 0xE8: // SET 5,B
-            [self SetBit:5 :B];
-            break;
-         case 0xE9: // SET 5,C
-            [self SetBit:5 :C];
-            break;
-         case 0xEA: // SET 5,D
-            [self SetBit:5 :D];
-            break;
-         case 0xEB: // SET 5,E
-            [self SetBit:5 :E];
-            break;
-         case 0xEC: // SET 5,H
-            [self SetBit:5 :H];
-            break;
-         case 0xED: // SET 5,L
-            [self SetBit:5 :L];
-            break;
-         case 0xEE: // SET 5,(HL)
-            [self SetBit:5 :H :L];
-            break;
-         case 0xEF: // SET 5,A
-            [self SetBit:5 :A];
-            break;
-         case 0xF0: // SET 6,B
-            [self SetBit:6 :B];
-            break;
-         case 0xF1: // SET 6,C
-            [self SetBit:6 :C];
-            break;
-         case 0xF2: // SET 6,D
-            [self SetBit:6 :D];
-            break;
-         case 0xF3: // SET 6,E
-            [self SetBit:6 :E];
-            break;
-         case 0xF4: // SET 6,H
-            [self SetBit:6 :H];
-            break;
-         case 0xF5: // SET 6,L
-            [self SetBit:6 :L];
-            break;
-         case 0xF6: // SET 6,(HL)
-            [self SetBit:6 :H :L];
-            break;
-         case 0xF7: // SET 6,A
-            [self SetBit:6 :A];
-            break;
-         case 0xF8: // SET 7,B
-            [self SetBit:7 :B];
-            break;
-         case 0xF9: // SET 7,C
-            [self SetBit:7 :C];
-            break;
-         case 0xFA: // SET 7,D
-            [self SetBit:7 :D];
-            break;
-         case 0xFB: // SET 7,E
-            [self SetBit:7 :E];
-            break;
-         case 0xFC: // SET 7,H
-            [self SetBit:7 :H];
-            break;
-         case 0xFD: // SET 7,L
-            [self SetBit:7 :L];
-            break;
-         case 0xFE: // SET 7,(HL)
-            [self SetBit:7 :H :L];
-            break;
-         case 0xFF: // SET 7,A
-            [self SetBit:7 :A];
-            break;
-      }
+         {
+            case 0x00: // RLC B
+               [self RotateLeft:B];
+               break;
+            case 0x01: // RLC C
+               [self RotateLeft:C];
+               break;
+            case 0x02: // RLC D
+               [self RotateLeft:D];
+               break;
+            case 0x03: // RLC E
+               [self RotateLeft:E];
+               break;
+            case 0x04: // RLC H
+               [self RotateLeft:H];
+               break;
+            case 0x05: // RLC L
+               [self RotateLeft:L];
+               break;
+            case 0x06: // RLC (HL)
+               [self RotateLeft:H :L];
+               break;
+            case 0x07: // RLC A
+               [self RotateLeft:A];
+               break;
+            case 0x08: // RRC B
+               [self RotateRight:B];
+               break;
+            case 0x09: // RRC C
+               [self RotateRight:C];
+               break;
+            case 0x0A: // RRC D
+               [self RotateRight:D];
+               break;
+            case 0x0B: // RRC E
+               [self RotateRight:E];
+               break;
+            case 0x0C: // RRC H
+               [self RotateRight:H];
+               break;
+            case 0x0D: // RRC L
+               [self RotateRight:L];
+               break;
+            case 0x0E: // RRC (HL)
+               [self RotateRight:H :L];
+               break;
+            case 0x0F: // RRC A
+               [self RotateRight:A];
+               break;
+            case 0x10: // RL  B
+               [self RotateLeftThroughCarry:B];
+               break;
+            case 0x11: // RL  C
+               [self RotateLeftThroughCarry:C];
+               break;
+            case 0x12: // RL  D
+               [self RotateLeftThroughCarry:D];
+               break;
+            case 0x13: // RL  E
+               [self RotateLeftThroughCarry:E];
+               break;
+            case 0x14: // RL  H
+               [self RotateLeftThroughCarry:H];
+               break;
+            case 0x15: // RL  L
+               [self RotateLeftThroughCarry:L];
+               break;
+            case 0x16: // RL  (HL)
+               [self RotateLeftThroughCarry:H :L];
+               break;
+            case 0x17: // RL  A
+               [self RotateLeftThroughCarry:A];
+               break;
+            case 0x18: // RR  B
+               [self RotateRightThroughCarry:B];
+               break;
+            case 0x19: // RR  C
+               [self RotateRightThroughCarry:C];
+               break;
+            case 0x1A: // RR  D
+               [self RotateRightThroughCarry:D];
+               break;
+            case 0x1B: // RR  E
+               [self RotateRightThroughCarry:E];
+               break;
+            case 0x1C: // RR  H
+               [self RotateRightThroughCarry:H];
+               break;
+            case 0x1D: // RR  L
+               [self RotateRightThroughCarry:L];
+               break;
+            case 0x1E: // RR  (HL)
+               [self RotateRightThroughCarry:H :L];
+               break;
+            case 0x1F: // RR  A
+               [self RotateRightThroughCarry:A];
+               break;
+            case 0x20: // SLA B
+               [self ShiftLeft:B];
+               break;
+            case 0x21: // SLA C
+               [self ShiftLeft:C];
+               break;
+            case 0x22: // SLA D
+               [self ShiftLeft:D];
+               break;
+            case 0x23: // SLA E
+               [self ShiftLeft:E];
+               break;
+            case 0x24: // SLA H
+               [self ShiftLeft:H];
+               break;
+            case 0x25: // SLA L
+               [self ShiftLeft:L];
+               break;
+            case 0x26: // SLA (HL)
+               [self ShiftLeft:H :L];
+               break;
+            case 0x27: // SLA A
+               [self ShiftLeft:A];
+               break;
+            case 0x28: // SRA B
+               [self SignedShiftRight:B];
+               break;
+            case 0x29: // SRA C
+               [self SignedShiftRight:C];
+               break;
+            case 0x2A: // SRA D
+               [self SignedShiftRight:D];
+               break;
+            case 0x2B: // SRA E
+               [self SignedShiftRight:E];
+               break;
+            case 0x2C: // SRA H
+               [self SignedShiftRight:H];
+               break;
+            case 0x2D: // SRA L
+               [self SignedShiftRight:L];
+               break;
+            case 0x2E: // SRA (HL)
+               [self SignedShiftRight:H :L];
+               break;
+            case 0x2F: // SRA A
+               [self SignedShiftRight:A];
+               break;
+            case 0x30: // SWAP B
+               [self Swap:B];
+               break;
+            case 0x31: // SWAP C
+               [self Swap:C];
+               break;
+            case 0x32: // SWAP D
+               [self Swap:D];
+               break;
+            case 0x33: // SWAP E
+               [self Swap:E];
+               break;
+            case 0x34: // SWAP H
+               [self Swap:H];
+               break;
+            case 0x35: // SWAP L
+               [self Swap:L];
+               break;
+            case 0x36: // SWAP (HL)
+               [self Swap:H :L];
+               break;
+            case 0x37: // SWAP A
+               [self Swap:A];
+               break;
+            case 0x38: // SRL B
+               [self UnsignedShiftRight:B];
+               break;
+            case 0x39: // SRL C
+               [self UnsignedShiftRight:C];
+               break;
+            case 0x3A: // SRL D
+               [self UnsignedShiftRight:D];
+               break;
+            case 0x3B: // SRL E
+               [self UnsignedShiftRight:E];
+               break;
+            case 0x3C: // SRL H
+               [self UnsignedShiftRight:H];
+               break;
+            case 0x3D: // SRL L
+               [self UnsignedShiftRight:L];
+               break;
+            case 0x3E: // SRL (HL)
+               [self UnsignedShiftRight:H :L];
+               break;
+            case 0x3F: // SRL A
+               [self UnsignedShiftRight:A];
+               break;
+            case 0x40: // BIT 0,B
+               [self TestBit:0 : B];
+               break;
+            case 0x41: // BIT 0,C
+               [self TestBit:0 : C];
+               break;
+            case 0x42: // BIT 0,D
+               [self TestBit:0 : D];
+               break;
+            case 0x43: // BIT 0,E
+               [self TestBit:0 : E];
+               break;
+            case 0x44: // BIT 0,H
+               [self TestBit:0 : H];
+               break;
+            case 0x45: // BIT 0,L
+               [self TestBit:0 : L];
+               break;
+            case 0x46: // BIT 0,(HL)
+               [self TestBit:0 :H :L];
+               break;
+            case 0x47: // BIT 0,A
+               [self TestBit:0 : A];
+               break;
+            case 0x48: // BIT 1,B
+               [self TestBit:1 : B];
+               break;
+            case 0x49: // BIT 1,C
+               [self TestBit:1 : C];
+               break;
+            case 0x4A: // BIT 1,D
+               [self TestBit:1 : D];
+               break;
+            case 0x4B: // BIT 1,E
+               [self TestBit:1 : E];
+               break;
+            case 0x4C: // BIT 1,H
+               [self TestBit:1 : H];
+               break;
+            case 0x4D: // BIT 1,L
+               [self TestBit:1 : L];
+               break;
+            case 0x4E: // BIT 1,(HL)
+               [self TestBit:1 :H :L];
+               break;
+            case 0x4F: // BIT 1,A
+               [self TestBit:1 : A];
+               break;
+            case 0x50: // BIT 2,B
+               [self TestBit:2 : B];
+               break;
+            case 0x51: // BIT 2,C
+               [self TestBit:2 : C];
+               break;
+            case 0x52: // BIT 2,D
+               [self TestBit:2 : D];
+               break;
+            case 0x53: // BIT 2,E
+               [self TestBit:2 : E];
+               break;
+            case 0x54: // BIT 2,H
+               [self TestBit:2 : H];
+               break;
+            case 0x55: // BIT 2,L
+               [self TestBit:2 : L];
+               break;
+            case 0x56: // BIT 2,(HL)
+               [self TestBit:2 :H :L];
+               break;
+            case 0x57: // BIT 2,A
+               [self TestBit:2 : A];
+               break;
+            case 0x58: // BIT 3,B
+               [self TestBit:3 : B];
+               break;
+            case 0x59: // BIT 3,C
+               [self TestBit:3 : C];
+               break;
+            case 0x5A: // BIT 3,D
+               [self TestBit:3 : D];
+               break;
+            case 0x5B: // BIT 3,E
+               [self TestBit:3 : E];
+               break;
+            case 0x5C: // BIT 3,H
+               [self TestBit:3 : H];
+               break;
+            case 0x5D: // BIT 3,L
+               [self TestBit:3 : L];
+               break;
+            case 0x5E: // BIT 3,(HL)
+               [self TestBit:3 :H :L];
+               break;
+            case 0x5F: // BIT 3,A
+               [self TestBit:3 : A];
+               break;
+            case 0x60: // BIT 4,B
+               [self TestBit:4 : B];
+               break;
+            case 0x61: // BIT 4,C
+               [self TestBit:4 : C];
+               break;
+            case 0x62: // BIT 4,D
+               [self TestBit:4 : D];
+               break;
+            case 0x63: // BIT 4,E
+               [self TestBit:4 : E];
+               break;
+            case 0x64: // BIT 4,H
+               [self TestBit:4 : H];
+               break;
+            case 0x65: // BIT 4,L
+               [self TestBit:4 : L];
+               break;
+            case 0x66: // BIT 4,(HL)
+               [self TestBit:4 :H :L];
+               break;
+            case 0x67: // BIT 4,A
+               [self TestBit:4 : A];
+               break;
+            case 0x68: // BIT 5,B
+               [self TestBit:5 : B];
+               break;
+            case 0x69: // BIT 5,C
+               [self TestBit:5 : C];
+               break;
+            case 0x6A: // BIT 5,D
+               [self TestBit:5 : D];
+               break;
+            case 0x6B: // BIT 5,E
+               [self TestBit:5 : E];
+               break;
+            case 0x6C: // BIT 5,H
+               [self TestBit:5 : H];
+               break;
+            case 0x6D: // BIT 5,L
+               [self TestBit:5 : L];
+               break;
+            case 0x6E: // BIT 5,(HL)
+               [self TestBit:5 :H :L];
+               break;
+            case 0x6F: // BIT 5,A
+               [self TestBit:5 : A];
+               break;
+            case 0x70: // BIT 6,B
+               [self TestBit:6 : B];
+               break;
+            case 0x71: // BIT 6,C
+               [self TestBit:6 : C];
+               break;
+            case 0x72: // BIT 6,D
+               [self TestBit:6 : D];
+               break;
+            case 0x73: // BIT 6,E
+               [self TestBit:6 : E];
+               break;
+            case 0x74: // BIT 6,H
+               [self TestBit:6 : H];
+               break;
+            case 0x75: // BIT 6,L
+               [self TestBit:6 : L];
+               break;
+            case 0x76: // BIT 6,(HL)
+               [self TestBit:6 :H :L];
+               break;
+            case 0x77: // BIT 6,A
+               [self TestBit:6 : A];
+               break;
+            case 0x78: // BIT 7,B
+               [self TestBit:7 : B];
+               break;
+            case 0x79: // BIT 7,C
+               [self TestBit:7 : C];
+               break;
+            case 0x7A: // BIT 7,D
+               [self TestBit:7 : D];
+               break;
+            case 0x7B: // BIT 7,E
+               [self TestBit:7 : E];
+               break;
+            case 0x7C: // BIT 7,H
+               [self TestBit:7 : H];
+               break;
+            case 0x7D: // BIT 7,L
+               [self TestBit:7 : L];
+               break;
+            case 0x7E: // BIT 7,(HL)
+               [self TestBit:7 :H :L];
+               break;
+            case 0x7F: // BIT 7,A
+               [self TestBit:7 : A];
+               break;
+            case 0x80: // RES 0,B
+               [self ResetBit:0 :B];
+               break;
+            case 0x81: // RES 0,C
+               [self ResetBit:0 :C];
+               break;
+            case 0x82: // RES 0,D
+               [self ResetBit:0 :D];
+               break;
+            case 0x83: // RES 0,E
+               [self ResetBit:0 :E];
+               break;
+            case 0x84: // RES 0,H
+               [self ResetBit:0 :H];
+               break;
+            case 0x85: // RES 0,L
+               [self ResetBit:0 :L];
+               break;
+            case 0x86: // RES 0,(HL)
+               [self ResetBit:0 :H :L];
+               break;
+            case 0x87: // RES 0,A
+               [self ResetBit:0 :A];
+               break;
+            case 0x88: // RES 1,B
+               [self ResetBit:1 :B];
+               break;
+            case 0x89: // RES 1,C
+               [self ResetBit:1 :C];
+               break;
+            case 0x8A: // RES 1,D
+               [self ResetBit:1 :D];
+               break;
+            case 0x8B: // RES 1,E
+               [self ResetBit:1 :E];
+               break;
+            case 0x8C: // RES 1,H
+               [self ResetBit:1 :H];
+               break;
+            case 0x8D: // RES 1,L
+               [self ResetBit:1 :L];
+               break;
+            case 0x8E: // RES 1,(HL)
+               [self ResetBit:1 :H :L];
+               break;
+            case 0x8F: // RES 1,A
+               [self ResetBit:1 :A];
+               break;
+            case 0x90: // RES 2,B
+               [self ResetBit:2 :B];
+               break;
+            case 0x91: // RES 2,C
+               [self ResetBit:2 :C];
+               break;
+            case 0x92: // RES 2,D
+               [self ResetBit:2 :D];
+               break;
+            case 0x93: // RES 2,E
+               [self ResetBit:2 :E];
+               break;
+            case 0x94: // RES 2,H
+               [self ResetBit:2 :H];
+               break;
+            case 0x95: // RES 2,L
+               [self ResetBit:2 :L];
+               break;
+            case 0x96: // RES 2,(HL)
+               [self ResetBit:2 :H :L];
+               break;
+            case 0x97: // RES 2,A
+               [self ResetBit:2 :A];
+               break;
+            case 0x98: // RES 3,B
+               [self ResetBit:3 :B];
+               break;
+            case 0x99: // RES 3,C
+               [self ResetBit:3 :C];
+               break;
+            case 0x9A: // RES 3,D
+               [self ResetBit:3 :D];
+               break;
+            case 0x9B: // RES 3,E
+               [self ResetBit:3 :E];
+               break;
+            case 0x9C: // RES 3,H
+               [self ResetBit:3 :H];
+               break;
+            case 0x9D: // RES 3,L
+               [self ResetBit:3 :L];
+               break;
+            case 0x9E: // RES 3,(HL)
+               [self ResetBit:3 :H :L];
+               break;
+            case 0x9F: // RES 3,A
+               [self ResetBit:3 :A];
+               break;
+            case 0xA0: // RES 4,B
+               [self ResetBit:4 :B];
+               break;
+            case 0xA1: // RES 4,C
+               [self ResetBit:4 :C];
+               break;
+            case 0xA2: // RES 4,D
+               [self ResetBit:4 :D];
+               break;
+            case 0xA3: // RES 4,E
+               [self ResetBit:4 :E];
+               break;
+            case 0xA4: // RES 4,H
+               [self ResetBit:4 :H];
+               break;
+            case 0xA5: // RES 4,L
+               [self ResetBit:4 :L];
+               break;
+            case 0xA6: // RES 4,(HL)
+               [self ResetBit:4 :H :L];
+               break;
+            case 0xA7: // RES 4,A
+               [self ResetBit:4 :A];
+               break;
+            case 0xA8: // RES 5,B
+               [self ResetBit:5 :B];
+               break;
+            case 0xA9: // RES 5,C
+               [self ResetBit:5 :C];
+               break;
+            case 0xAA: // RES 5,D
+               [self ResetBit:5 :D];
+               break;
+            case 0xAB: // RES 5,E
+               [self ResetBit:5 :E];
+               break;
+            case 0xAC: // RES 5,H
+               [self ResetBit:5 :H];
+               break;
+            case 0xAD: // RES 5,L
+               [self ResetBit:5 :L];
+               break;
+            case 0xAE: // RES 5,(HL)
+               [self ResetBit:5 :H :L];
+               break;
+            case 0xAF: // RES 5,A
+               [self ResetBit:5 :A];
+               break;
+            case 0xB0: // RES 6,B
+               [self ResetBit:6 :B];
+               break;
+            case 0xB1: // RES 6,C
+               [self ResetBit:6 :C];
+               break;
+            case 0xB2: // RES 6,D
+               [self ResetBit:6 :D];
+               break;
+            case 0xB3: // RES 6,E
+               [self ResetBit:6 :E];
+               break;
+            case 0xB4: // RES 6,H
+               [self ResetBit:6 :H];
+               break;
+            case 0xB5: // RES 6,L
+               [self ResetBit:6 :L];
+               break;
+            case 0xB6: // RES 6,(HL)
+               [self ResetBit:6 :H :L];
+               break;
+            case 0xB7: // RES 6,A
+               [self ResetBit:6 :A];
+               break;
+            case 0xB8: // RES 7,B
+               [self ResetBit:7 :B];
+               break;
+            case 0xB9: // RES 7,C
+               [self ResetBit:7 :C];
+               break;
+            case 0xBA: // RES 7,D
+               [self ResetBit:7 :D];
+               break;
+            case 0xBB: // RES 7,E
+               [self ResetBit:7 :E];
+               break;
+            case 0xBC: // RES 7,H
+               [self ResetBit:7 :H];
+               break;
+            case 0xBD: // RES 7,L
+               [self ResetBit:7 :L];
+               break;
+            case 0xBE: // RES 7,(HL)
+               [self ResetBit:7 :H :L];
+               break;
+            case 0xBF: // RES 7,A
+               [self ResetBit:7 :A];
+               break;
+            case 0xC0: // SET 0,B
+               [self SetBit:0 :B];
+               break;
+            case 0xC1: // SET 0,C
+               [self SetBit:0 :C];
+               break;
+            case 0xC2: // SET 0,D
+               [self SetBit:0 :D];
+               break;
+            case 0xC3: // SET 0,E
+               [self SetBit:0 :E];
+               break;
+            case 0xC4: // SET 0,H
+               [self SetBit:0 :H];
+               break;
+            case 0xC5: // SET 0,L
+               [self SetBit:0 :L];
+               break;
+            case 0xC6: // SET 0,(HL)
+               [self SetBit:0 :H :L];
+               break;
+            case 0xC7: // SET 0,A
+               [self SetBit:0 :A];
+               break;
+            case 0xC8: // SET 1,B
+               [self SetBit:1 :B];
+               break;
+            case 0xC9: // SET 1,C
+               [self SetBit:1 :C];
+               break;
+            case 0xCA: // SET 1,D
+               [self SetBit:1 :D];
+               break;
+            case 0xCB: // SET 1,E
+               [self SetBit:1 :E];
+               break;
+            case 0xCC: // SET 1,H
+               [self SetBit:1 :H];
+               break;
+            case 0xCD: // SET 1,L
+               [self SetBit:1 :L];
+               break;
+            case 0xCE: // SET 1,(HL)
+               [self SetBit:1 :H :L];
+               break;
+            case 0xCF: // SET 1,A
+               [self SetBit:1 :A];
+               break;
+            case 0xD0: // SET 2,B
+               [self SetBit:2 :B];
+               break;
+            case 0xD1: // SET 2,C
+               [self SetBit:2 :C];
+               break;
+            case 0xD2: // SET 2,D
+               [self SetBit:2 :D];
+               break;
+            case 0xD3: // SET 2,E
+               [self SetBit:2 :E];
+               break;
+            case 0xD4: // SET 2,H
+               [self SetBit:2 :H];
+               break;
+            case 0xD5: // SET 2,L
+               [self SetBit:2 :L];
+               break;
+            case 0xD6: // SET 2,(HL)
+               [self SetBit:2 :H :L];
+               break;
+            case 0xD7: // SET 2,A
+               [self SetBit:2 :A];
+               break;
+            case 0xD8: // SET 3,B
+               [self SetBit:3 :B];
+               break;
+            case 0xD9: // SET 3,C
+               [self SetBit:3 :C];
+               break;
+            case 0xDA: // SET 3,D
+               [self SetBit:3 :D];
+               break;
+            case 0xDB: // SET 3,E
+               [self SetBit:3 :E];
+               break;
+            case 0xDC: // SET 3,H
+               [self SetBit:3 :H];
+               break;
+            case 0xDD: // SET 3,L
+               [self SetBit:3 :L];
+               break;
+            case 0xDE: // SET 3,(HL)
+               [self SetBit:3 :H :L];
+               break;
+            case 0xDF: // SET 3,A
+               [self SetBit:3 :A];
+               break;
+            case 0xE0: // SET 4,B
+               [self SetBit:4 :B];
+               break;
+            case 0xE1: // SET 4,C
+               [self SetBit:4 :C];
+               break;
+            case 0xE2: // SET 4,D
+               [self SetBit:4 :D];
+               break;
+            case 0xE3: // SET 4,E
+               [self SetBit:4 :E];
+               break;
+            case 0xE4: // SET 4,H
+               [self SetBit:4 :H];
+               break;
+            case 0xE5: // SET 4,L
+               [self SetBit:4 :L];
+               break;
+            case 0xE6: // SET 4,(HL)
+               [self SetBit:4 :H :L];
+               break;
+            case 0xE7: // SET 4,A
+               [self SetBit:4 :A];
+               break;
+            case 0xE8: // SET 5,B
+               [self SetBit:5 :B];
+               break;
+            case 0xE9: // SET 5,C
+               [self SetBit:5 :C];
+               break;
+            case 0xEA: // SET 5,D
+               [self SetBit:5 :D];
+               break;
+            case 0xEB: // SET 5,E
+               [self SetBit:5 :E];
+               break;
+            case 0xEC: // SET 5,H
+               [self SetBit:5 :H];
+               break;
+            case 0xED: // SET 5,L
+               [self SetBit:5 :L];
+               break;
+            case 0xEE: // SET 5,(HL)
+               [self SetBit:5 :H :L];
+               break;
+            case 0xEF: // SET 5,A
+               [self SetBit:5 :A];
+               break;
+            case 0xF0: // SET 6,B
+               [self SetBit:6 :B];
+               break;
+            case 0xF1: // SET 6,C
+               [self SetBit:6 :C];
+               break;
+            case 0xF2: // SET 6,D
+               [self SetBit:6 :D];
+               break;
+            case 0xF3: // SET 6,E
+               [self SetBit:6 :E];
+               break;
+            case 0xF4: // SET 6,H
+               [self SetBit:6 :H];
+               break;
+            case 0xF5: // SET 6,L
+               [self SetBit:6 :L];
+               break;
+            case 0xF6: // SET 6,(HL)
+               [self SetBit:6 :H :L];
+               break;
+            case 0xF7: // SET 6,A
+               [self SetBit:6 :A];
+               break;
+            case 0xF8: // SET 7,B
+               [self SetBit:7 :B];
+               break;
+            case 0xF9: // SET 7,C
+               [self SetBit:7 :C];
+               break;
+            case 0xFA: // SET 7,D
+               [self SetBit:7 :D];
+               break;
+            case 0xFB: // SET 7,E
+               [self SetBit:7 :E];
+               break;
+            case 0xFC: // SET 7,H
+               [self SetBit:7 :H];
+               break;
+            case 0xFD: // SET 7,L
+               [self SetBit:7 :L];
+               break;
+            case 0xFE: // SET 7,(HL)
+               [self SetBit:7 :H :L];
+               break;
+            case 0xFF: // SET 7,A
+               [self SetBit:7 :A];
+               break;
+         }
          break;
       case 0xCC: // CALL Z,NN
          [self CallIfZero];
@@ -1622,8 +1622,9 @@ const uint BLACK = 0xFF000000;
          [self Restart:0x0038];
          break;
       default:
-         //         throw new Exception(string.Format("Unknown instruction: {0:X} at PC={1:X}" :opCode :PC)];
-         NSLog(@"Unknown Instruction");
+//         throw new Exception(string.Format("Unknown instruction: {0:X} at PC={1:X}" :opCode :PC)];
+//         NSLog(@"Unknown Instruction");
+         [NSException raise:@"CPU Error: Step" format:@"Unknown instruction: 0x%x at PC=0x%x", opCode, PC];
    }
 }
 
@@ -1793,7 +1794,9 @@ const uint BLACK = 0xFF000000;
    if (interruptsEnabled)
    {
       halted = true;
-   } else {
+   }
+   else
+   {
       stopCounting = true;
    }
    ticks += 4;
@@ -1821,7 +1824,9 @@ const uint BLACK = 0xFF000000;
    if (FC)
    {
       [self Call];
-   } else {
+   }
+   else
+   {
       PC += 2;
       ticks++;
    }
@@ -1833,7 +1838,9 @@ const uint BLACK = 0xFF000000;
    {
       PC += 2;
       ticks++;
-   } else {
+   }
+   else
+   {
       [self Call];
    }
 }
@@ -1843,7 +1850,9 @@ const uint BLACK = 0xFF000000;
    if (FZ)
    {
       [self Call];
-   } else {        
+   }
+   else
+   {        
       PC += 2;
       ticks++;
    }
@@ -1855,7 +1864,9 @@ const uint BLACK = 0xFF000000;
    {
       PC += 2;
       ticks++;
-   } else {
+   }
+   else
+   {
       [self Call];
    }
 }
@@ -1886,7 +1897,9 @@ const uint BLACK = 0xFF000000;
    if (FC)
    {
       [self Jump];
-   } else {
+   }
+   else
+   {
       PC += 2;
       ticks++;
    }
@@ -1898,7 +1911,9 @@ const uint BLACK = 0xFF000000;
    {
       PC += 2;
       ticks++;
-   } else {
+   }
+   else
+   {
       [self Jump];
    }
 }
@@ -1908,7 +1923,9 @@ const uint BLACK = 0xFF000000;
    if (FZ)
    {
       [self Jump];
-   } else {        
+   }
+   else
+   {        
       PC += 2;
       ticks++;
    }
@@ -1920,7 +1937,9 @@ const uint BLACK = 0xFF000000;
    {
       PC += 2;
       ticks++;
-   } else {
+   }
+   else
+   {
       [self Jump];
    }
 }
@@ -1943,7 +1962,9 @@ const uint BLACK = 0xFF000000;
    {
       [self Return];
       ticks++;
-   } else {
+   }
+   else
+   {
       ticks += 5;
    }
 }
@@ -1953,7 +1974,9 @@ const uint BLACK = 0xFF000000;
    if (FC)
    {
       ticks += 5;
-   } else {        
+   }
+   else
+   {        
       [self Return];
       ticks++;
    }
@@ -1962,10 +1985,12 @@ const uint BLACK = 0xFF000000;
 - (void) ReturnIfZero
 {
    if (FZ)
-   {
+{
       [self Return];
       ticks++;
-   } else {
+   }
+   else
+   {
       ticks += 5;
    }
 }
@@ -1973,9 +1998,11 @@ const uint BLACK = 0xFF000000;
 - (void) ReturnIfNotZero
 {
    if (FZ)
-   {
+{
       ticks += 5;
-   } else {
+   }
+   else
+   {
       [self Return];
       ticks++;
    }
@@ -2151,48 +2178,66 @@ const uint BLACK = 0xFF000000;
          if (FH)
          {
             A += 0x9A;
-         } else {
+         }
+         else
+         {
             A += 0xA0;
          }
-      } else {
+      }
+      else
+      {
          _FC = false;
          if (FH)
          {
             A += 0xFA;
-         } else {
+         }
+         else
+         {
             A += 0x00;
          }
       }
-   } else if (FC)
+   }
+   else if (FC)
    {
       if (FH || lowNibble > 9)
       {
          A += 0x66;
-      } else {
+      }
+      else
+      {
          A += 0x60;
       }
-   } else if (FH)
+   }
+   else if (FH)
    {
       if (highNibble > 9)
       {
          A += 0x66;
-      } else {
+      }
+      else
+      {
          A += 0x06;
          _FC = false;
       }
-   } else if (lowNibble > 9)
+   }
+   else if (lowNibble > 9)
    {
       if (highNibble < 9)
       {
          _FC = false;
          A += 0x06;
-      } else {
+      }
+      else
+      {
          A += 0x66;
       }
-   } else if (highNibble > 9)
+   }
+   else if (highNibble > 9)
    {
       A += 0x60;
-   } else {
+   }
+   else
+   {
       _FC = false;
    }
    
@@ -2208,7 +2253,9 @@ const uint BLACK = 0xFF000000;
    {
       PC++;
       ticks += 7;
-   } else {
+   }
+   else
+   {
       [self JumpRelative];
    }
 }
@@ -2218,7 +2265,9 @@ const uint BLACK = 0xFF000000;
    if (FC)
    {
       [self JumpRelative];
-   } else {
+   }
+   else
+   {
       PC++;
       ticks += 7;
    }
@@ -2230,7 +2279,9 @@ const uint BLACK = 0xFF000000;
    {
       PC++;
       ticks += 7;
-   } else {
+   }
+   else
+   {
       [self JumpRelative];
    }
 }
@@ -2304,9 +2355,11 @@ const uint BLACK = 0xFF000000;
 - (void) SubWithBorrow:(int)b
 {
    if (FC)
-   {
+{
       [self Sub:b + 1];
-   } else {
+   }
+   else
+   {
       [self Sub:b];
    }
 }
@@ -2619,7 +2672,9 @@ const uint BLACK = 0xFF000000;
    {
       rh = 0xFF & (rh - 1);
       rl = 0xFF;
-   } else {
+   }
+   else
+   {
       rl--;
    }
    ticks += 6;
@@ -2630,7 +2685,9 @@ const uint BLACK = 0xFF000000;
    if (r == 0xFFFF)
    {
       r = 0;
-   } else {
+   }
+   else
+   {
       r++;
    }
    ticks += 6;
@@ -2641,7 +2698,9 @@ const uint BLACK = 0xFF000000;
    if (r == 0)
    {
       r = 0xFFFF;
-   } else {
+   }
+   else
+   {
       r--;
    }
    ticks += 6;
@@ -2668,10 +2727,12 @@ const uint BLACK = 0xFF000000;
 - (void) Increment:(int &)rh :(int &)rl
 {
    if (rl == 255)
-   {
+{
       rh = 0xFF & (rh + 1);
       rl = 0;
-   } else {
+   }
+   else
+   {
       rl++;
    }
    ticks += 6;
@@ -2792,18 +2853,22 @@ const uint BLACK = 0xFF000000;
          int tileIndex = address - 0x9C00;
          backgroundTileInvalidated[tileIndex >> 5][tileIndex & 0x1F] = true;
       }
-      else {
+      else
+      {
          int tileIndex = address - 0x9800;
          backgroundTileInvalidated[tileIndex >> 5][tileIndex & 0x1F] = true;
       }
    }
    else if (address <= 0x7FFF || (address >= 0xA000 && address <= 0xBFFF))
-   {        
+   {
       [cartridge WriteByte:address :value];
-   } else if (address >= 0xE000 && address <= 0xFDFF)
+   }
+   else if (address >= 0xE000 && address <= 0xFDFF)
    {
       workRam[address - 0xE000] = (Byte)value;
-   } else { 
+   }
+   else
+   { 
       switch (address)
       {
          case 0xFF00: // key pad
@@ -2829,7 +2894,8 @@ const uint BLACK = 0xFF000000;
             lcdcInterruptRequested = (value & 0x02) == 0x02;
             vBlankInterruptRequested = (value & 0x01) == 0x01;
             break;
-         case 0xFF40: { // LCDC control
+         case 0xFF40: // LCDC control
+         {
             bool _backgroundAndWindowTileDataSelect = backgroundAndWindowTileDataSelect;
             bool _backgroundTileMapDisplaySelect = backgroundTileMapDisplaySelect;
             bool _windowTileMapDisplaySelect = windowTileMapDisplaySelect;
@@ -2879,8 +2945,8 @@ const uint BLACK = 0xFF000000;
             }
             break;
          case 0xFF47: // Background palette
-            //            Console.WriteLine("[0xFF47] = {0:X}" :value];
-            //                NSLog(@"[0xFF47] = %x", value);
+//            Console.WriteLine("[0xFF47] = {0:X}" :value];
+//                NSLog(@"[0xFF47] = %x", value);
             for(int i = 0; i < 4; i++)
             {
                switch(value & 0x03)
@@ -3043,8 +3109,8 @@ const uint BLACK = 0xFF000000;
             return timerCounter & 0xFF;
          case 0xFF06: // Timer modulo
             return timerModulo & 0xFF;
-         case 0xFF07:
-         { // Time Control
+         case 0xFF07: // Time Control
+         {
             int value = 0;
             if (timerRunning)
             {
@@ -3053,8 +3119,8 @@ const uint BLACK = 0xFF000000;
             value |= (int)timerFrequency;
             return value;
          }
-         case 0xFF0F:
-         { // Interrupt Flag (an interrupt request)
+         case 0xFF0F: // Interrupt Flag (an interrupt request)
+         {
             int value = 0;
             if (keyPressedInterruptRequested)
             {
@@ -3078,8 +3144,8 @@ const uint BLACK = 0xFF000000;
             }
             return value;
          }
-         case 0xFF40:
-         { // LCDC control
+         case 0xFF40: // LCDC control
+         {
             int value = 0;
             if (lcdControlOperationEnabled)
             {
@@ -3115,8 +3181,8 @@ const uint BLACK = 0xFF000000;
             }
             return value;
          }
-         case 0xFF41:
-         {// LCDC Status
+         case 0xFF41: // LCDC Status
+         {
             int value = 0;
             if (lcdcLycLyCoincidenceInterruptEnabled)
             {
@@ -3149,7 +3215,8 @@ const uint BLACK = 0xFF000000;
             return ly;
          case 0xFF45: // LY Compare
             return lyCompare;
-         case 0xFF47: { // Background palette
+         case 0xFF47: // Background palette
+         {
             invalidateAllBackgroundTilesRequest = true;
             int value = 0;
             for (int i = 3; i >= 0; i--)
@@ -3172,7 +3239,8 @@ const uint BLACK = 0xFF000000;
             }
             return value;
          }
-         case 0xFF48: { // Object palette 0
+         case 0xFF48: // Object palette 0
+         {
             invalidateAllSpriteTilesRequest = true;
             int value = 0;
             for (int i = 3; i >= 0; i--)
@@ -3195,7 +3263,8 @@ const uint BLACK = 0xFF000000;
             }
             return value;
          }
-         case 0xFF49: { // Object palette 1
+         case 0xFF49: // Object palette 1
+         {
             invalidateAllSpriteTilesRequest = true;
             int value = 0;
             for (int i = 3; i >= 0; i--)
@@ -3222,7 +3291,8 @@ const uint BLACK = 0xFF000000;
             return windowY;
          case 0xFF4B: // Window X
             return windowX;
-         case 0xFFFF: { // Interrupt Enable
+         case 0xFFFF: // Interrupt Enable
+         {
             int value = 0;
             if (keyPressedInterruptEnabled)
             {
@@ -3253,34 +3323,6 @@ const uint BLACK = 0xFF000000;
 
 - (void) KeyChanged:(Keys)keyCode :(bool)pressed
 {
-   //   switch (keyCode)
-   //{
-   //      case Keys.D:
-   //         bButtonPressed = pressed;
-   //         break;
-   //      case Keys.F:
-   //         aButtonPressed = pressed;
-   //         break;
-   //      case Keys.Enter:
-   //         startButtonPressed = pressed;
-   //         break;
-   //      case Keys.Shift:
-   //         selectButtonPressed = pressed;
-   //         break;
-   //      case Keys.Up:
-   //         upKeyPressed = pressed;
-   //         break;
-   //      case Keys.Down:
-   //         downKeyPressed = pressed;
-   //         break;
-   //      case Keys.Left:
-   //         leftKeyPressed = pressed;
-   //         break;
-   //      case Keys.Right:
-   //         rightKeyPressed = pressed;
-   //         break;
-   //   }
-   
    switch (keyCode)
    {
       case KeyB:
@@ -3320,20 +3362,20 @@ const uint BLACK = 0xFF000000;
 - (NSString *) description
 {
    return @"CPU Description";
-   //   return String.Format(
-   //                        "PC={8:X} A={0:X} B={1:X} C={2:X} D={3:X} E={4:X} H={5:X} L={6:X} halted={7} SP={9:X} FZ={10} FH={11} FC={12} FN={13} IV={14} IL={15} IK={16} IT={17} INT={18} scrollX={19} scrollY={20} ly={21} lyCompare={22} LHIE={23} LYIE={24} LOIE={25}" :
-   //                        A :B :C :D :E :H :L :halted :PC :SP :FZ :FH :FC :FN :vBlankInterruptEnabled :lcdcInterruptEnabled :keyPressedInterruptEnabled :
-   //                        timerOverflowInterruptEnabled :interruptsEnabled :scrollX :scrollY :ly :lyCompare,
-   //                        lcdcHBlankInterruptEnabled :lcdcLycLyCoincidenceInterruptEnabled :lcdcOamInterruptEnabled]; 
+//   return String.Format(
+//                        "PC={8:X} A={0:X} B={1:X} C={2:X} D={3:X} E={4:X} H={5:X} L={6:X} halted={7} SP={9:X} FZ={10} FH={11} FC={12} FN={13} IV={14} IL={15} IK={16} IT={17} INT={18} scrollX={19} scrollY={20} ly={21} lyCompare={22} LHIE={23} LYIE={24} LOIE={25}" :
+//                        A :B :C :D :E :H :L :halted :PC :SP :FZ :FH :FC :FN :vBlankInterruptEnabled :lcdcInterruptEnabled :keyPressedInterruptEnabled :
+//                        timerOverflowInterruptEnabled :interruptsEnabled :scrollX :scrollY :ly :lyCompare,
+//                        lcdcHBlankInterruptEnabled :lcdcLycLyCoincidenceInterruptEnabled :lcdcOamInterruptEnabled]; 
 }
 
 - (void) CheckForBadState
 {
-   //   if (A > 0xFF || A < 0 || B > 0xFF || B < 0 || C > 0xFF || C < 0 || D > 0xFF || D < 0 
-   //       || E > 0xFF || E < 0 || H > 0xFF || H < 0 || SP > 0xFFFF || SP < 0 || PC > 0xFFFF || PC < 0)
-   //   {
-   //      throw new Exception(ToString];
-   //   }
+//   if (A > 0xFF || A < 0 || B > 0xFF || B < 0 || C > 0xFF || C < 0 || D > 0xFF || D < 0 
+//       || E > 0xFF || E < 0 || H > 0xFF || H < 0 || SP > 0xFFFF || SP < 0 || PC > 0xFFFF || PC < 0)
+//   {
+//      throw new Exception(ToString);
+//   }
    
    NSLog(@"CPU: CheckForBadState");
 }
@@ -3361,7 +3403,9 @@ const uint BLACK = 0xFF000000;
                {
                   spriteTile[i][y][x][0] = objectPalette0[paletteIndex];
                   spriteTile[i][y][x][1] = objectPalette1[paletteIndex];
-               } else {
+               }
+               else
+               {
                   spriteTile[i][y][x][0] = 0;
                   spriteTile[i][y][x][1] = 0;
                }
@@ -3375,7 +3419,6 @@ const uint BLACK = 0xFF000000;
 
 - (void) UpdateWindow
 {
-   
    int tileMapAddress = windowTileMapDisplaySelect ? 0x1C00 : 0x1800;
    
    if (backgroundAndWindowTileDataSelect)

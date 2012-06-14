@@ -1,13 +1,13 @@
 //
 //  Constants.h
-//  MacBoy
+//  GameboyEmulator2
 //
 //  Created by Tom Schroeder on 3/20/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#ifndef MacBoy_Constants_h
-#define MacBoy_Constants_h
+#ifndef GameboyEmulator2_Constants_h
+#define GameboyEmulator2_Constants_h
 
 enum Keys
 {
@@ -39,7 +39,7 @@ enum TimerFrequencyType
 
 enum RomType 
 {
-   ROM_DEF = 0x00,
+   ROM_MBC0 = 0x00,
    ROM_MBC1 = 0x01,
    ROM_MBC1_RAM = 0x02,
    ROM_MBC1_RAM_BATT = 0x03,

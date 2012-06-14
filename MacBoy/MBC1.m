@@ -20,12 +20,12 @@
       [data getBytes:fileData];
       
       selectedRomBank = 1;
-      
+
       romBanks = _romBanks;
       
       romType = _romType;
       int bankSize = romSize / romBanks;
-      
+    
       rom = (Byte **)malloc( romBanks * sizeof(Byte *) );
       for (int i = 0; i < romBanks; i++)
       {
@@ -70,7 +70,7 @@
       return ram[selectedRamBank][address - 0xA000];
    }
    [NSException raise:@"ReadByte Error" format:@"Invalid cartridge read: %x", address];
-   //      throw new Exception(string.Format("Invalid cartridge read: {0:X}", address));
+//      throw new Exception(string.Format("Invalid cartridge read: {0:X}", address));
    return -1;
 }
 

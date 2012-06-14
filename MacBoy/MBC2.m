@@ -61,7 +61,7 @@
    {
       return ram[address - 0xA000];
    }
-   //   throw new Exception(string.Format("Invalid cartridge address: {0}", address));
+//   throw new Exception(string.Format("Invalid cartridge address: {0}", address));
    [NSException raise:@"ReadByte Error" format:@"Invalid cartridge read: %x", address];
    return -1;
 }
