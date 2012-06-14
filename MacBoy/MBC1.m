@@ -106,4 +106,37 @@
    } 
 }
 
+//- (void) loadRAM:(NSData *)ramData
+- (void) loadRAM:(NSString *)ramPath
+{
+   NSData * data = [NSData dataWithContentsOfFile:[ramPath stringByAppendingString:@".sav"]];
+   uint length = [data length];
+   if (length == 0)
+      return;
+   Byte * fileData = (Byte *)malloc( length * sizeof(Byte) );
+   [data getBytes:fileData];
+
+   memcpy(ram[0], fileData, 8 * 1024 * sizeof(Byte));
+   memcpy(ram[1], fileData + (8 * 1024 * sizeof(Byte)), 8 * 1024 * sizeof(Byte));
+   memcpy(ram[2], fileData + (2 * 8 * 1024 * sizeof(Byte)), 8 * 1024 * sizeof(Byte));
+   memcpy(ram[3], fileData + (3 * 8 * 1024 * sizeof(Byte)), 8 * 1024 * sizeof(Byte));
+
+   free(fileData);
+}
+
+- (void) saveRAM:(NSString *)savePath
+{
+   NSData * bank0 = [NSData dataWithBytes:ram[0] length:(8 * 1024)];
+   NSData * bank1 = [NSData dataWithBytes:ram[1] length:(8 * 1024)];
+   NSData * bank2 = [NSData dataWithBytes:ram[2] length:(8 * 1024)];
+   NSData * bank3 = [NSData dataWithBytes:ram[3] length:(8 * 1024)];
+
+   NSMutableData * saveData = [NSMutableData dataWithData:bank0];
+   [saveData appendData:bank1];
+   [saveData appendData:bank2];
+   [saveData appendData:bank3];
+
+   [saveData writeToFile:savePath atomically:true];
+}
+
 @end

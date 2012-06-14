@@ -39,12 +39,14 @@
    NSSize screenSize;
    
    IBOutlet GameboyOpenGLView * openGLView;
+
+//   GameboyOpenGLView * openGLView;
    
 //   @public
    //   private uint[] pixels = new uint[160 * 144];
    uint pixels[160 * 144];
    
-   
+   NSString * romFilePath;
 }
 
 @property (assign) IBOutlet NSWindow *window;

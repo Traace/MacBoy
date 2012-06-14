@@ -14,22 +14,28 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
+   [_window setAspectRatio:NSMakeSize(10, 9)];
+//   [_window setContentAspectRatio:NSMakeSize(10, 9)];
+   
    for (int i = 0; i < 160 * 144; i++)
       pixels[i] = 0xFF000000;
    
-   [self InitFrame];
+   [self initFrame];
 //   [self loadFile:nil];
    
-   [NSThread detachNewThreadSelector:@selector(run) toTarget:self withObject:nil];  
+   [NSThread detachNewThreadSelector:@selector(run) toTarget:self withObject:nil];
+   
 }
 
 - (void)applicationWillTerminate:(NSNotification *)notification
 {
-   
+   [cpu.cartridge saveRAM:[romFilePath stringByAppendingString:@".sav"]];
 }
 
 - (void)loadFile:(NSString *)romPath
 {
+   romFilePath = [NSString stringWithString:romPath];
+   
 //   NSString * romPath = @"/Users/tomschroeder/Stuff/Roms/Gameboy/SuperMarioLand2.gb";
 //   romPath = @"/Users/tomschroeder/Stuff/Roms/Gameboy/SuperMarioLand2.gb";
    NSFileHandle * file = [NSFileHandle fileHandleForReadingAtPath: romPath];
@@ -44,6 +50,9 @@
 //   [cpu setCartridge:game->cartridge];
 //   id<Cartridge> cartridge = [[MBC1 alloc] initWithData:romData :game->romType :game->romSize :game->romBanks];
    [cpu setCartridge:game->cartridge];
+   
+   [cpu.cartridge loadRAM:romPath];
+   
    [cpu PowerUp];
 }
 
@@ -51,19 +60,16 @@
 {
    for (;;)
    {
-      if (cpu != nil && cpu->running)
+      if (cpu != nil && cpu->running && [_window isMainWindow])
       {
-//         NSLog(@"run true");
-//         [self UpdateModel:true];
-//         [self UpdateModel:false];
-         [self UpdateModel];
-         [self RenderFrame];
+         [self updateModel];
+         [self renderFrame];
          [NSThread sleepForTimeInterval:0.016667];
       }
    }
 }
 
-- (void) UpdateModel//:(bool)updateBitmap
+- (void) updateModel//:(bool)updateBitmap
 {
 //   NSLog(@"%@", NSStringFromSelector(_cmd));
    
@@ -86,9 +92,9 @@
                 cpu->lcdcInterruptRequested = true;
              }
 
-         [self ExecuteProcessor:800];
+         [self executeProcessor:800];
          cpu->lcdcMode = TransferingData;
-         [self ExecuteProcessor:1720];
+         [self executeProcessor:1720];
          
          [cpu UpdateWindow];
          [cpu UpdateBackground];
@@ -289,8 +295,8 @@
             cpu->lcdcInterruptRequested = true;
          }
 
-         [self ExecuteProcessor:2040];
-         [self AddTicksPerScanLine];
+         [self executeProcessor:2040];
+         [self addTicksPerScanLine];
       }
 //   }
    
@@ -341,12 +347,12 @@
       {
          cpu->lcdcInterruptRequested = true;
       }
-      [self ExecuteProcessor:4560];
-      [self AddTicksPerScanLine];
+      [self executeProcessor:4560];
+      [self addTicksPerScanLine];
    }
 }
 
-- (void) AddTicksPerScanLine
+- (void) addTicksPerScanLine
 {
    switch (cpu->timerFrequency)
    {
@@ -381,7 +387,7 @@
    }
 }
 
-- (void) ExecuteProcessor:(int)maxTicks
+- (void) executeProcessor:(int)maxTicks
 {   
    do
    {
@@ -396,13 +402,13 @@
    cpu->ticks -= maxTicks;
 }
 
-- (void) RenderFrame
+- (void) renderFrame
 {
    [openGLView setPixels:pixels];
    [openGLView setNeedsDisplay:true];
 }
 
-- (void) InitFrame
+- (void) initFrame
 {
    [openGLView setPixels:pixels];
    [openGLView setNeedsDisplay:true];

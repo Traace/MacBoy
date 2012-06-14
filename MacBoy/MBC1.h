@@ -27,5 +27,7 @@
 
 //- (id) initWithData:(Byte *)fileData :(enum RomType)_romType :(int)romSize :(int)romBanks;
 - (id) initWithData:(NSData *)data :(enum RomType)_romType :(int)romSize :(int)romBanks;
+//- (void) loadRAM:(NSData *)ramData;
+//- (void) saveRAM:(NSString *)savePath;
 
 @end

@@ -54,31 +54,26 @@ const uint BLACK = 0xFF000000;
       if (vBlankInterruptEnabled && vBlankInterruptRequested)
       {
          vBlankInterruptRequested = false;
-//         interrupt(0x0040];
          [self Interrupt:0x0040];
       }
       else if (lcdcInterruptEnabled && lcdcInterruptRequested)
       {
          lcdcInterruptRequested = false;
-//         interrupt(0x0048];
          [self Interrupt:0x0048];
       }
       else if (timerOverflowInterruptEnabled && timerOverflowInterruptRequested)
       {
          timerOverflowInterruptRequested = false;
-//         interrupt(0x0050];
          [self Interrupt:0x0050];
       }
       else if (serialIOTransferCompleteInterruptEnabled && serialIOTransferCompleteInterruptRequested)
       {
          serialIOTransferCompleteInterruptRequested = false;
-//         interrupt(0x0058];
          [self Interrupt:0x0058];
       }
       else if (keyPressedInterruptEnabled && keyPressedInterruptRequested)
       {
          keyPressedInterruptRequested = false;
-//         interrupt(0x0060];
          [self Interrupt:0x0060];
       }
    }
