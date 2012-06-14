@@ -28,12 +28,13 @@
 		0DA22ED8158A9AAA00EAC859 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22ED7158A9AAA00EAC859 /* AppDelegate.mm */; };
 		0DA22EDB158A9ACE00EAC859 /* GameboyOpenGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22ED9158A9ACE00EAC859 /* GameboyOpenGLView.mm */; };
 		0DA22EDC158A9ACE00EAC859 /* WindowController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22EDA158A9ACE00EAC859 /* WindowController.mm */; };
-		0DA22EF2158A9F0600EAC859 /* 128.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA22EEC158A9F0600EAC859 /* 128.png */; };
-		0DA22EF3158A9F0600EAC859 /* 16.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA22EED158A9F0600EAC859 /* 16.png */; };
-		0DA22EF4158A9F0600EAC859 /* 256.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA22EEE158A9F0600EAC859 /* 256.png */; };
-		0DA22EF5158A9F0600EAC859 /* 32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA22EEF158A9F0600EAC859 /* 32.png */; };
-		0DA22EF6158A9F0600EAC859 /* 512.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA22EF0158A9F0600EAC859 /* 512.png */; };
-		0DA22EF7158A9F0600EAC859 /* Gameboy.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0DA22EF1158A9F0600EAC859 /* Gameboy.icns */; };
+		0DA22F00158A9FD200EAC859 /* 16.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA22EFA158A9FD200EAC859 /* 16.png */; };
+		0DA22F01158A9FD200EAC859 /* 32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA22EFB158A9FD200EAC859 /* 32.png */; };
+		0DA22F02158A9FD200EAC859 /* 128.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA22EFC158A9FD200EAC859 /* 128.png */; };
+		0DA22F03158A9FD200EAC859 /* 256.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA22EFD158A9FD200EAC859 /* 256.png */; };
+		0DA22F04158A9FD200EAC859 /* 512.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA22EFE158A9FD200EAC859 /* 512.png */; };
+		0DA22F07158AA00600EAC859 /* Gameboy.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0DA22F06158AA00500EAC859 /* Gameboy.icns */; };
+		0DA22F09158AA03E00EAC859 /* Gameboy.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0DA22F08158AA03E00EAC859 /* Gameboy.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,13 +83,14 @@
 		0DA22ED9158A9ACE00EAC859 /* GameboyOpenGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameboyOpenGLView.mm; sourceTree = "<group>"; };
 		0DA22EDA158A9ACE00EAC859 /* WindowController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WindowController.mm; sourceTree = "<group>"; };
 		0DA22EE6158A9C8F00EAC859 /* blargg_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = blargg_common.h; sourceTree = "<group>"; };
-		0DA22EEC158A9F0600EAC859 /* 128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 128.png; sourceTree = "<group>"; };
-		0DA22EED158A9F0600EAC859 /* 16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 16.png; sourceTree = "<group>"; };
-		0DA22EEE158A9F0600EAC859 /* 256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 256.png; sourceTree = "<group>"; };
-		0DA22EEF158A9F0600EAC859 /* 32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 32.png; sourceTree = "<group>"; };
-		0DA22EF0158A9F0600EAC859 /* 512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 512.png; sourceTree = "<group>"; };
-		0DA22EF1158A9F0600EAC859 /* Gameboy.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Gameboy.icns; sourceTree = "<group>"; };
 		0DA22EF8158A9F1700EAC859 /* CPUTables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPUTables.h; sourceTree = "<group>"; };
+		0DA22EFA158A9FD200EAC859 /* 16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 16.png; path = Icons/16.png; sourceTree = "<group>"; };
+		0DA22EFB158A9FD200EAC859 /* 32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 32.png; path = Icons/32.png; sourceTree = "<group>"; };
+		0DA22EFC158A9FD200EAC859 /* 128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 128.png; path = Icons/128.png; sourceTree = "<group>"; };
+		0DA22EFD158A9FD200EAC859 /* 256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 256.png; path = Icons/256.png; sourceTree = "<group>"; };
+		0DA22EFE158A9FD200EAC859 /* 512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 512.png; path = Icons/512.png; sourceTree = "<group>"; };
+		0DA22F06158AA00500EAC859 /* Gameboy.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Gameboy.icns; path = ../Gameboy.icns; sourceTree = "<group>"; };
+		0DA22F08158AA03E00EAC859 /* Gameboy.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Gameboy.icns; path = Icons/Gameboy.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,7 +176,8 @@
 		0DA22E57158A8E8E00EAC859 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				0DA22EEB158A9F0600EAC859 /* Icons */,
+				0DA22EF9158A9FC100EAC859 /* Icons */,
+				0DA22F06158AA00500EAC859 /* Gameboy.icns */,
 				0DA22E58158A8E8E00EAC859 /* MacBoy-Info.plist */,
 				0DA22E59158A8E8E00EAC859 /* InfoPlist.strings */,
 				0DA22E5C158A8E8E00EAC859 /* main.m */,
@@ -215,17 +218,17 @@
 			path = gb_apu;
 			sourceTree = "<group>";
 		};
-		0DA22EEB158A9F0600EAC859 /* Icons */ = {
+		0DA22EF9158A9FC100EAC859 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
-				0DA22EEC158A9F0600EAC859 /* 128.png */,
-				0DA22EED158A9F0600EAC859 /* 16.png */,
-				0DA22EEE158A9F0600EAC859 /* 256.png */,
-				0DA22EEF158A9F0600EAC859 /* 32.png */,
-				0DA22EF0158A9F0600EAC859 /* 512.png */,
-				0DA22EF1158A9F0600EAC859 /* Gameboy.icns */,
+				0DA22EFA158A9FD200EAC859 /* 16.png */,
+				0DA22EFB158A9FD200EAC859 /* 32.png */,
+				0DA22EFC158A9FD200EAC859 /* 128.png */,
+				0DA22EFD158A9FD200EAC859 /* 256.png */,
+				0DA22EFE158A9FD200EAC859 /* 512.png */,
+				0DA22F08158AA03E00EAC859 /* Gameboy.icns */,
 			);
-			path = Icons;
+			name = Icons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,12 +284,13 @@
 				0DA22E5B158A8E8E00EAC859 /* InfoPlist.strings in Resources */,
 				0DA22E61158A8E8E00EAC859 /* Credits.rtf in Resources */,
 				0DA22E67158A8E8E00EAC859 /* MainMenu.xib in Resources */,
-				0DA22EF2158A9F0600EAC859 /* 128.png in Resources */,
-				0DA22EF3158A9F0600EAC859 /* 16.png in Resources */,
-				0DA22EF4158A9F0600EAC859 /* 256.png in Resources */,
-				0DA22EF5158A9F0600EAC859 /* 32.png in Resources */,
-				0DA22EF6158A9F0600EAC859 /* 512.png in Resources */,
-				0DA22EF7158A9F0600EAC859 /* Gameboy.icns in Resources */,
+				0DA22F00158A9FD200EAC859 /* 16.png in Resources */,
+				0DA22F01158A9FD200EAC859 /* 32.png in Resources */,
+				0DA22F02158A9FD200EAC859 /* 128.png in Resources */,
+				0DA22F03158A9FD200EAC859 /* 256.png in Resources */,
+				0DA22F04158A9FD200EAC859 /* 512.png in Resources */,
+				0DA22F07158AA00600EAC859 /* Gameboy.icns in Resources */,
+				0DA22F09158AA03E00EAC859 /* Gameboy.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
