@@ -13,6 +13,13 @@
 		0DA22E61158A8E8E00EAC859 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 0DA22E5F158A8E8E00EAC859 /* Credits.rtf */; };
 		0DA22E64158A8E8E00EAC859 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22E63158A8E8E00EAC859 /* AppDelegate.m */; };
 		0DA22E67158A8E8E00EAC859 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DA22E65158A8E8E00EAC859 /* MainMenu.xib */; };
+		0DA22E7D158A8EC800EAC859 /* CPU.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22E6F158A8EC800EAC859 /* CPU.mm */; };
+		0DA22E7E158A8EC800EAC859 /* Game.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22E71158A8EC800EAC859 /* Game.mm */; };
+		0DA22E7F158A8EC800EAC859 /* MBC1.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22E73158A8EC800EAC859 /* MBC1.m */; };
+		0DA22E80158A8EC800EAC859 /* MBC2.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22E75158A8EC800EAC859 /* MBC2.m */; };
+		0DA22E81158A8EC800EAC859 /* ROM.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22E78158A8EC800EAC859 /* ROM.mm */; };
+		0DA22E82158A8EC800EAC859 /* ROMLoader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22E7A158A8EC800EAC859 /* ROMLoader.mm */; };
+		0DA22E83158A8EC800EAC859 /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22E7C158A8EC800EAC859 /* WindowController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,14 +28,30 @@
 		0DA22E53158A8E8E00EAC859 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		0DA22E54158A8E8E00EAC859 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		0DA22E55158A8E8E00EAC859 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		0DA22E58158A8E8E00EAC859 /* MacBoy-Info.plist */ = {isa = PBXFileReference; path = "MacBoy-Info.plist"; sourceTree = "<group>"; };
+		0DA22E58158A8E8E00EAC859 /* MacBoy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MacBoy-Info.plist"; sourceTree = "<group>"; };
 		0DA22E5A158A8E8E00EAC859 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0DA22E5C158A8E8E00EAC859 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		0DA22E5E158A8E8E00EAC859 /* MacBoy-Prefix.pch */ = {isa = PBXFileReference; path = "MacBoy-Prefix.pch"; sourceTree = "<group>"; };
+		0DA22E5E158A8E8E00EAC859 /* MacBoy-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MacBoy-Prefix.pch"; sourceTree = "<group>"; };
 		0DA22E60158A8E8E00EAC859 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		0DA22E62158A8E8E00EAC859 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		0DA22E62158A8E8E00EAC859 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0DA22E63158A8E8E00EAC859 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		0DA22E66158A8E8E00EAC859 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		0DA22E6D158A8EC800EAC859 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		0DA22E6E158A8EC800EAC859 /* CPU.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPU.h; sourceTree = "<group>"; };
+		0DA22E6F158A8EC800EAC859 /* CPU.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CPU.mm; sourceTree = "<group>"; };
+		0DA22E70158A8EC800EAC859 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		0DA22E71158A8EC800EAC859 /* Game.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Game.mm; sourceTree = "<group>"; };
+		0DA22E72158A8EC800EAC859 /* MBC1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBC1.h; sourceTree = "<group>"; };
+		0DA22E73158A8EC800EAC859 /* MBC1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBC1.m; sourceTree = "<group>"; };
+		0DA22E74158A8EC800EAC859 /* MBC2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBC2.h; sourceTree = "<group>"; };
+		0DA22E75158A8EC800EAC859 /* MBC2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBC2.m; sourceTree = "<group>"; };
+		0DA22E76158A8EC800EAC859 /* Protocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Protocols.h; sourceTree = "<group>"; };
+		0DA22E77158A8EC800EAC859 /* ROM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROM.h; sourceTree = "<group>"; };
+		0DA22E78158A8EC800EAC859 /* ROM.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ROM.mm; sourceTree = "<group>"; };
+		0DA22E79158A8EC800EAC859 /* ROMLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROMLoader.h; sourceTree = "<group>"; };
+		0DA22E7A158A8EC800EAC859 /* ROMLoader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ROMLoader.mm; sourceTree = "<group>"; };
+		0DA22E7B158A8EC800EAC859 /* WindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowController.h; sourceTree = "<group>"; };
+		0DA22E7C158A8EC800EAC859 /* WindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +107,22 @@
 			children = (
 				0DA22E62158A8E8E00EAC859 /* AppDelegate.h */,
 				0DA22E63158A8E8E00EAC859 /* AppDelegate.m */,
+				0DA22E6D158A8EC800EAC859 /* Constants.h */,
+				0DA22E6E158A8EC800EAC859 /* CPU.h */,
+				0DA22E6F158A8EC800EAC859 /* CPU.mm */,
+				0DA22E70158A8EC800EAC859 /* Game.h */,
+				0DA22E71158A8EC800EAC859 /* Game.mm */,
+				0DA22E72158A8EC800EAC859 /* MBC1.h */,
+				0DA22E73158A8EC800EAC859 /* MBC1.m */,
+				0DA22E74158A8EC800EAC859 /* MBC2.h */,
+				0DA22E75158A8EC800EAC859 /* MBC2.m */,
+				0DA22E76158A8EC800EAC859 /* Protocols.h */,
+				0DA22E77158A8EC800EAC859 /* ROM.h */,
+				0DA22E78158A8EC800EAC859 /* ROM.mm */,
+				0DA22E79158A8EC800EAC859 /* ROMLoader.h */,
+				0DA22E7A158A8EC800EAC859 /* ROMLoader.mm */,
+				0DA22E7B158A8EC800EAC859 /* WindowController.h */,
+				0DA22E7C158A8EC800EAC859 /* WindowController.m */,
 				0DA22E65158A8E8E00EAC859 /* MainMenu.xib */,
 				0DA22E57158A8E8E00EAC859 /* Supporting Files */,
 			);
@@ -167,6 +206,13 @@
 			files = (
 				0DA22E5D158A8E8E00EAC859 /* main.m in Sources */,
 				0DA22E64158A8E8E00EAC859 /* AppDelegate.m in Sources */,
+				0DA22E7D158A8EC800EAC859 /* CPU.mm in Sources */,
+				0DA22E7E158A8EC800EAC859 /* Game.mm in Sources */,
+				0DA22E7F158A8EC800EAC859 /* MBC1.m in Sources */,
+				0DA22E80158A8EC800EAC859 /* MBC2.m in Sources */,
+				0DA22E81158A8EC800EAC859 /* ROM.mm in Sources */,
+				0DA22E82158A8EC800EAC859 /* ROMLoader.mm in Sources */,
+				0DA22E83158A8EC800EAC859 /* WindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
