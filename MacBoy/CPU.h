@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Protocols.h"
 #import "Constants.h"
+#import "GBAPUEmulator.h"
 
 extern const uint WHITE;
 extern const uint LIGHT_GRAY;
@@ -17,6 +18,8 @@ extern const uint BLACK;
 
 @interface CPU : NSObject
 {
+   IBOutlet GBAPUEmulator * apu;
+   
 @public
    
    id<Cartridge> cartridge;

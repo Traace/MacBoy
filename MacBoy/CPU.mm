@@ -3020,6 +3020,49 @@ const uint BLACK = 0xFF000000;
             lcdcInterruptEnabled = (value & 0x02) == 0x02;
             vBlankInterruptEnabled = (value & 0x01) == 0x01;
             break;
+         
+         // Audio //
+            
+         case 0xFF10:
+         case 0xFF11:
+         case 0xFF12:
+         case 0xFF13:
+         case 0xFF14:
+//            NSLog(@"Sound - Channel 1");
+            [apu writeByte:value toAPUFromCPUAddress:address onCycle:0];
+            break;
+            
+         case 0xFF16:
+         case 0xFF17:
+         case 0xFF19:
+//            NSLog(@"Sound - Channel 2");
+            [apu writeByte:value toAPUFromCPUAddress:address onCycle:0];
+            break;
+            
+         case 0xFF1A:
+         case 0xFF1B:
+         case 0xFF1C:
+         case 0xFF1D:
+         case 0xFF1E:
+         //case FF30 - FF3F
+//            NSLog(@"Sound - Channel 3");
+            [apu writeByte:value toAPUFromCPUAddress:address onCycle:0];
+            break;
+            
+         case 0xFF20:
+         case 0xFF21:
+         case 0xFF22:
+         case 0xFF23:
+//            NSLog(@"Sound - Channel 4");
+            [apu writeByte:value toAPUFromCPUAddress:address onCycle:0];
+            break;
+            
+         case 0xFF24:
+         case 0xFF25:
+         case 0xFF26:
+//            NSLog(@"Sound - Control Registers");
+            [apu writeByte:value toAPUFromCPUAddress:address onCycle:0];
+            break;
       }
    }
 }

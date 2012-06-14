@@ -10,6 +10,7 @@
 #import "CPU.h"
 #import "Game.h"
 #import "GameboyOpenGLView.h"
+#import "GBAPUEmulator.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 {
@@ -47,6 +48,8 @@
    uint pixels[160 * 144];
    
    NSString * romFilePath;
+   
+   IBOutlet GBAPUEmulator * apu;
 }
 
 @property (assign) IBOutlet NSWindow *window;
