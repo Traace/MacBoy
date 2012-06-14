@@ -10,6 +10,7 @@
 #import "Protocols.h"
 #import "Constants.h"
 #import "GBAPUEmulator.h"
+#import "CPUTables.h"
 
 extern const uint WHITE;
 extern const uint LIGHT_GRAY;
@@ -25,9 +26,9 @@ extern const uint BLACK;
    id<Cartridge> cartridge;
    
    bool running;
-   
    bool halted;
    bool stopped;
+   
    bool interruptsEnabled;
    bool leftKeyPressed;
    bool rightKeyPressed;
@@ -38,17 +39,20 @@ extern const uint BLACK;
    bool startButtonPressed;
    bool selectButtonPressed;
    bool keyP14, keyP15;
+   
    bool keyPressedInterruptRequested;
    bool serialIOTransferCompleteInterruptRequested;
    bool timerOverflowInterruptRequested;
    bool lcdcInterruptRequested;
    bool vBlankInterruptRequested;
+   
    bool keyPressedInterruptEnabled;
    bool serialIOTransferCompleteInterruptEnabled;
    bool timerOverflowInterruptEnabled;
    bool lcdcInterruptEnabled;
    bool vBlankInterruptEnabled;
    bool lcdControlOperationEnabled;
+   
    bool windowTileMapDisplaySelect;
    bool windowDisplayed;
    bool backgroundAndWindowTileDataSelect;
@@ -56,6 +60,7 @@ extern const uint BLACK;
    bool largeSprites;
    bool spritesDisplayed;
    bool backgroundDisplayed;
+   
    int scrollX, scrollY;
    int windowX, windowY;
    int lyCompare, ly;
@@ -69,6 +74,7 @@ extern const uint BLACK;
    bool lcdcVBlankInterruptEnabled;
    bool lcdcHBlankInterruptEnabled;
    enum LcdcModeType lcdcMode;
+   
    bool timerRunning;
    int timerCounter;
    int timerModulo;
@@ -81,7 +87,10 @@ extern const uint BLACK;
    
    Byte oam[256];
    
+   uint cycle;
+   
 @private
+   
    int A, B, C, D, E, H, L, PC, SP;
    bool FZ, FC, FH, FN;
    bool stopCounting;
@@ -94,7 +103,6 @@ extern const uint BLACK;
    bool invalidateAllBackgroundTilesRequest;
    bool spriteTileInvalidated[256];
    bool invalidateAllSpriteTilesRequest;
-   
 }
 
 @property (retain, readwrite) id<Cartridge> cartridge;

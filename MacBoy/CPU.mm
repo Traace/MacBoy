@@ -40,6 +40,7 @@ const uint BLACK = 0xFF000000;
       objectPalette1[2] = DARK_GRAY;
       objectPalette1[3] = BLACK;
       
+      cycle = 0;
    }
    
    return self;
@@ -1617,10 +1618,11 @@ const uint BLACK = 0xFF000000;
          [self Restart:0x0038];
          break;
       default:
-//         throw new Exception(string.Format("Unknown instruction: {0:X} at PC={1:X}" :opCode :PC)];
-//         NSLog(@"Unknown Instruction");
          [NSException raise:@"CPU Error: Step" format:@"Unknown instruction: 0x%x at PC=0x%x", opCode, PC];
    }
+   
+   // Calculate Cycle
+   cycle += Cycles[opCode];
 }
 
 - (void) Load:(int &)a :(int)b
@@ -3029,14 +3031,14 @@ const uint BLACK = 0xFF000000;
          case 0xFF13:
          case 0xFF14:
 //            NSLog(@"Sound - Channel 1");
-            [apu writeByte:value toAPUFromCPUAddress:address onCycle:0];
+            [apu writeByte:value toAPUFromCPUAddress:address onCycle:cycle];
             break;
             
          case 0xFF16:
          case 0xFF17:
          case 0xFF19:
 //            NSLog(@"Sound - Channel 2");
-            [apu writeByte:value toAPUFromCPUAddress:address onCycle:0];
+            [apu writeByte:value toAPUFromCPUAddress:address onCycle:cycle];
             break;
             
          case 0xFF1A:
@@ -3046,7 +3048,7 @@ const uint BLACK = 0xFF000000;
          case 0xFF1E:
          //case FF30 - FF3F
 //            NSLog(@"Sound - Channel 3");
-            [apu writeByte:value toAPUFromCPUAddress:address onCycle:0];
+            [apu writeByte:value toAPUFromCPUAddress:address onCycle:cycle];
             break;
             
          case 0xFF20:
@@ -3054,14 +3056,14 @@ const uint BLACK = 0xFF000000;
          case 0xFF22:
          case 0xFF23:
 //            NSLog(@"Sound - Channel 4");
-            [apu writeByte:value toAPUFromCPUAddress:address onCycle:0];
+            [apu writeByte:value toAPUFromCPUAddress:address onCycle:cycle];
             break;
             
          case 0xFF24:
          case 0xFF25:
          case 0xFF26:
 //            NSLog(@"Sound - Control Registers");
-            [apu writeByte:value toAPUFromCPUAddress:address onCycle:0];
+            [apu writeByte:value toAPUFromCPUAddress:address onCycle:cycle];
             break;
       }
    }

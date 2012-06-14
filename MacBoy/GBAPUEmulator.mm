@@ -31,9 +31,9 @@ static void HandleOutputBuffer(void *aqData,
 		availableSamples = pAqData->blipBuffer->samples_avail();
 		if (availableSamples < pAqData->numPacketsToRead)
       {
-			NSLog(@"Insufficient audio samples for buffering. Inserting silence.");
-         NSLog(@"Available Samples: %u", availableSamples);
-         NSLog(@"NumPacketsToRead: %u", pAqData->numPacketsToRead);
+//			NSLog(@"Insufficient audio samples for buffering. Inserting silence.");
+//         NSLog(@"Available Samples: %u", availableSamples);
+//         NSLog(@"NumPacketsToRead: %u", pAqData->numPacketsToRead);
 
 			bytesRead = pAqData->bufferByteSize;
 			bzero(inBuffer->mAudioData, pAqData->bufferByteSize);

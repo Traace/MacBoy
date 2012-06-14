@@ -101,8 +101,6 @@
 		0DA22E41158A8E8D00EAC859 = {
 			isa = PBXGroup;
 			children = (
-				0DA22ED3158A9A6C00EAC859 /* AudioToolbox.framework */,
-				0DA22ED4158A9A6C00EAC859 /* CoreAudio.framework */,
 				0DA22E56158A8E8E00EAC859 /* MacBoy */,
 				0DA22E4F158A8E8E00EAC859 /* Frameworks */,
 				0DA22E4D158A8E8E00EAC859 /* Products */,
@@ -120,6 +118,8 @@
 		0DA22E4F158A8E8E00EAC859 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0DA22ED3158A9A6C00EAC859 /* AudioToolbox.framework */,
+				0DA22ED4158A9A6C00EAC859 /* CoreAudio.framework */,
 				0DA22E98158A941800EAC859 /* OpenGL.framework */,
 				0DA22E50158A8E8E00EAC859 /* Cocoa.framework */,
 				0DA22E52158A8E8E00EAC859 /* Other Frameworks */,
