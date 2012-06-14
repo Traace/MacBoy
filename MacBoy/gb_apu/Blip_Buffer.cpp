@@ -66,7 +66,7 @@ blargg_err_t Blip_Buffer::set_sample_rate( long new_rate, int msec )
 		offset_ = 0;
 		
 		int const count_clocks_extra = 2;
-		buffer_ = BLARGG_NEW buf_t_ [new_size + widest_impulse_ + count_clocks_extra];
+		buffer_ = new buf_t_ [new_size + widest_impulse_ + count_clocks_extra];
 		BLARGG_CHECK_ALLOC( buffer_ );
 	}
 	
