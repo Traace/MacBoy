@@ -1,6 +1,6 @@
 //
 //  Game.h
-//  MacBoy
+//  GameboyEmulator2
 //
 //  Created by Tom Schroeder on 3/20/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
@@ -41,7 +41,6 @@
 }
 
 - (id) initWithData:(NSData *)fileData;
-//- (id) initWithData:(Byte *)fileData :(uint)length;
 - (NSString *) description;
 
 @end

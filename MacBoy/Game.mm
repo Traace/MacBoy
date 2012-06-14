@@ -1,6 +1,6 @@
 //
 //  Game.m
-//  MacBoy
+//  GameboyEmulator2
 //
 //  Created by Tom Schroeder on 3/20/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
@@ -12,29 +12,23 @@
 
 - (NSString *) extractGameTitle:(Byte *)fileData
 {
-//   StringBuilder sb = new StringBuilder();
    NSMutableString * s = [NSMutableString string];
    for (int i = 0x0134; i <= 0x0142; i++)
    {
-      if (fileData[i] == 0x00) {
+      if (fileData[i] == 0x00)
+      {
          break;
       }
-//      sb.Append((char)fileData[i]);
       char ch[2] = { (char)fileData[i], 0 };
       [s appendString:[NSString stringWithUTF8String:ch]];
    }
-//   return sb.ToString();
    return s;
 }
 
 - (id) initWithData:(NSData *)data
-//- (id) initWithData:(Byte *)fileData :(uint)length
 {
    if (self = [super init])
    {
-//      Byte fileData[[data length]];
-//      [data getBytes:fileData];
-      
       uint length = [data length];
       Byte * fileData = (Byte *)malloc( length * sizeof(Byte) );
       [data getBytes:fileData];
@@ -143,28 +137,24 @@
       switch (romType)
       {
          case ROM_DEF:
-//            cartridge = new ROM(data);
-//            cartridge = [[ROM alloc] initWithData:fileData];
+            cartridge = [[ROM alloc] initWithData:data];
             break;
          case ROM_MBC1:
          case ROM_MBC1_RAM:
          case ROM_MBC1_RAM_BATT:
-//            cartridge = new MBC1(fileData, romType, romSize, romBanks);
-//            cartridge = [[MBC1 alloc] initWithData:data :romType :romSize :romBanks];
+            cartridge = [[MBC1 alloc] initWithData:data :romType :romSize :romBanks];
             break;
          case ROM_MBC2:
          case ROM_MBC2_BATTERY:
-//            cartridge = new MBC2(fileData, romType, romSize, romBanks);
             cartridge = [[MBC2 alloc] initWithData:fileData :romType :romSize :romBanks];
             break;
          default:
-//            throw new Exception(string.Format("Cannot emulate cartridge type {0}.", romType)); 
             [NSException raise:@"Game Init Error" format:@"Cannot emulate cartridge type: %d", romType];
       }
       
       free(fileData);
    }
-
+   
    return self;
 }
 

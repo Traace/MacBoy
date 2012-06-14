@@ -1,6 +1,6 @@
 //
 //  AppDelegate.h
-//  MacBoy
+//  GameboyEmulator2
 //
 //  Created by Tom Schroeder on 3/20/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
@@ -10,7 +10,7 @@
 #import "CPU.h"
 #import "Game.h"
 #import "ROMLoader.h"
-
+#import "GameboyOpenGLView.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 {
@@ -29,8 +29,6 @@
    //   private Rectangle rect;
    //   private double scanLineTicks;
    double scanLineTicks;
-   //   private uint[] pixels = new uint[160 * 144];
-   uint pixels[160 * 144];
    //   private Game game;
    Game * game;
    
@@ -40,6 +38,14 @@
    IBOutlet NSImageView * imageView;
    NSBitmapImageRep * bitmapImageRep;
    NSSize screenSize;
+   
+   IBOutlet GameboyOpenGLView * openGLView;
+   
+   //   @public
+   //   private uint[] pixels = new uint[160 * 144];
+   uint pixels[160 * 144];
+   
+   
 }
 
 @property (assign) IBOutlet NSWindow *window;

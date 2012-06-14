@@ -1,6 +1,6 @@
 //
 //  MBC2.h
-//  MacBoy
+//  GameboyEmulator2
 //
 //  Created by Tom Schroeder on 3/20/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
@@ -14,10 +14,12 @@
 {
    enum RomType romType;
    int selectedRomBank;// = 1;
-//   private byte[] ram = new byte[512];
+   //   private byte[] ram = new byte[512];
    Byte ram[512];
-//   private byte[,] rom;
+   //   private byte[,] rom;
    Byte ** rom;
+   
+   uint romBanks;
 }
 
 - (id) initWithData:(Byte *)fileData :(enum RomType)_romType :(int)romSize :(int)romBanks;

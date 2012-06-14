@@ -1,6 +1,6 @@
 //
 //  MBC2.m
-//  MacBoy
+//  GameboyEmulator2
 //
 //  Created by Tom Schroeder on 3/20/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
@@ -10,19 +10,21 @@
 
 @implementation MBC2
 
-- (id) initWithData:(Byte *)fileData :(enum RomType)_romType :(int)romSize :(int)romBanks
+- (id) initWithData:(Byte *)fileData :(enum RomType)_romType :(int)romSize :(int)_romBanks
 {
    if (self = [super init])
    {
       selectedRomBank = 1;
       
+      romBanks = _romBanks;
+      
       romType = _romType;
       int bankSize = romSize / romBanks;
       
-      rom = malloc( romBanks * sizeof(Byte) );
+      rom = (Byte **)malloc( romBanks * sizeof(Byte *) );
       for (int i = 0; i < romBanks; i++)
       {
-         rom[i] = malloc(bankSize * sizeof(Byte));
+         rom[i] = (Byte *)malloc(bankSize * sizeof(Byte));
       }
       
       for (int i = 0, k = 0; i < romBanks; i++)
@@ -34,6 +36,15 @@
       }
    }
    return self;
+}
+
+- (void) dealloc
+{
+   for (int i = 0; i < romBanks; i++)
+   {
+      free(rom[i]);
+   }
+   free(rom);
 }
 
 - (int) ReadByte:(int)address
@@ -50,7 +61,7 @@
    {
       return ram[address - 0xA000];
    }
-//   throw new Exception(string.Format("Invalid cartridge address: {0}", address));
+   //   throw new Exception(string.Format("Invalid cartridge address: {0}", address));
    [NSException raise:@"ReadByte Error" format:@"Invalid cartridge read: %x", address];
    return -1;
 }

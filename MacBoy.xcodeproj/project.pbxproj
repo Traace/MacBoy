@@ -17,9 +17,11 @@
 		0DA22E7E158A8EC800EAC859 /* Game.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22E71158A8EC800EAC859 /* Game.mm */; };
 		0DA22E7F158A8EC800EAC859 /* MBC1.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22E73158A8EC800EAC859 /* MBC1.m */; };
 		0DA22E80158A8EC800EAC859 /* MBC2.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22E75158A8EC800EAC859 /* MBC2.m */; };
-		0DA22E81158A8EC800EAC859 /* ROM.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22E78158A8EC800EAC859 /* ROM.mm */; };
+		0DA22E81158A8EC800EAC859 /* ROM.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22E78158A8EC800EAC859 /* ROM.m */; };
 		0DA22E82158A8EC800EAC859 /* ROMLoader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22E7A158A8EC800EAC859 /* ROMLoader.mm */; };
 		0DA22E83158A8EC800EAC859 /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22E7C158A8EC800EAC859 /* WindowController.m */; };
+		0DA22E97158A939300EAC859 /* GameboyOpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22E96158A939200EAC859 /* GameboyOpenGLView.m */; };
+		0DA22E99158A941800EAC859 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DA22E98158A941800EAC859 /* OpenGL.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,11 +49,14 @@
 		0DA22E75158A8EC800EAC859 /* MBC2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBC2.m; sourceTree = "<group>"; };
 		0DA22E76158A8EC800EAC859 /* Protocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Protocols.h; sourceTree = "<group>"; };
 		0DA22E77158A8EC800EAC859 /* ROM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROM.h; sourceTree = "<group>"; };
-		0DA22E78158A8EC800EAC859 /* ROM.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ROM.mm; sourceTree = "<group>"; };
+		0DA22E78158A8EC800EAC859 /* ROM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ROM.m; sourceTree = "<group>"; };
 		0DA22E79158A8EC800EAC859 /* ROMLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROMLoader.h; sourceTree = "<group>"; };
 		0DA22E7A158A8EC800EAC859 /* ROMLoader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ROMLoader.mm; sourceTree = "<group>"; };
 		0DA22E7B158A8EC800EAC859 /* WindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowController.h; sourceTree = "<group>"; };
 		0DA22E7C158A8EC800EAC859 /* WindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowController.m; sourceTree = "<group>"; };
+		0DA22E95158A939200EAC859 /* GameboyOpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameboyOpenGLView.h; sourceTree = "<group>"; };
+		0DA22E96158A939200EAC859 /* GameboyOpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameboyOpenGLView.m; sourceTree = "<group>"; };
+		0DA22E98158A941800EAC859 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DA22E99158A941800EAC859 /* OpenGL.framework in Frameworks */,
 				0DA22E51158A8E8E00EAC859 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,6 +92,7 @@
 		0DA22E4F158A8E8E00EAC859 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0DA22E98158A941800EAC859 /* OpenGL.framework */,
 				0DA22E50158A8E8E00EAC859 /* Cocoa.framework */,
 				0DA22E52158A8E8E00EAC859 /* Other Frameworks */,
 			);
@@ -118,11 +125,13 @@
 				0DA22E75158A8EC800EAC859 /* MBC2.m */,
 				0DA22E76158A8EC800EAC859 /* Protocols.h */,
 				0DA22E77158A8EC800EAC859 /* ROM.h */,
-				0DA22E78158A8EC800EAC859 /* ROM.mm */,
+				0DA22E78158A8EC800EAC859 /* ROM.m */,
 				0DA22E79158A8EC800EAC859 /* ROMLoader.h */,
 				0DA22E7A158A8EC800EAC859 /* ROMLoader.mm */,
 				0DA22E7B158A8EC800EAC859 /* WindowController.h */,
 				0DA22E7C158A8EC800EAC859 /* WindowController.m */,
+				0DA22E95158A939200EAC859 /* GameboyOpenGLView.h */,
+				0DA22E96158A939200EAC859 /* GameboyOpenGLView.m */,
 				0DA22E65158A8E8E00EAC859 /* MainMenu.xib */,
 				0DA22E57158A8E8E00EAC859 /* Supporting Files */,
 			);
@@ -210,9 +219,10 @@
 				0DA22E7E158A8EC800EAC859 /* Game.mm in Sources */,
 				0DA22E7F158A8EC800EAC859 /* MBC1.m in Sources */,
 				0DA22E80158A8EC800EAC859 /* MBC2.m in Sources */,
-				0DA22E81158A8EC800EAC859 /* ROM.mm in Sources */,
+				0DA22E81158A8EC800EAC859 /* ROM.m in Sources */,
 				0DA22E82158A8EC800EAC859 /* ROMLoader.mm in Sources */,
 				0DA22E83158A8EC800EAC859 /* WindowController.m in Sources */,
+				0DA22E97158A939300EAC859 /* GameboyOpenGLView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
