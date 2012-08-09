@@ -14,9 +14,9 @@ static void HandleOutputBuffer(void *aqData,
 {
 //   NSLog(@"%s", __FUNCTION__);
    
-	UInt32 bytesRead = 0;
-	UInt32 samplesRead;
-	UInt32 availableSamples;
+	NSUInteger bytesRead = 0;
+	NSUInteger samplesRead;
+	NSUInteger availableSamples;
    GBAPUState *pAqData = (GBAPUState *)aqData;
 	
 	if (!pAqData->isRunning)
@@ -45,7 +45,7 @@ static void HandleOutputBuffer(void *aqData,
 		}
 	}
    
-	inBuffer->mAudioDataByteSize = bytesRead;
+	inBuffer->mAudioDataByteSize = (UInt32)bytesRead;
 	AudioQueueEnqueueBuffer(pAqData->queue, inBuffer, 0, NULL);
 }
 
@@ -189,7 +189,7 @@ static void HandleOutputBuffer(void *aqData,
    uint availableSamples;
    float timingCorrection = 0.;
    
-	availableSamples = gbAPUState->blipBuffer->samples_avail();
+	availableSamples = (UInt32)gbAPUState->blipBuffer->samples_avail();
 	if (availableSamples < (gbAPUState->numPacketsToRead * 2))
    {
 		timingCorrection = -0.005;

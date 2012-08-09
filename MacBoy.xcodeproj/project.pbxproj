@@ -254,7 +254,7 @@
 		0DA22E43158A8E8D00EAC859 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0440;
 			};
 			buildConfigurationList = 0DA22E46158A8E8D00EAC859 /* Build configuration list for PBXProject "MacBoy" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -394,6 +394,7 @@
 		0DA22E6B158A8E8E00EAC859 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MacBoy/MacBoy-Prefix.pch";
 				INFOPLIST_FILE = "MacBoy/MacBoy-Info.plist";
@@ -405,6 +406,7 @@
 		0DA22E6C158A8E8E00EAC859 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MacBoy/MacBoy-Prefix.pch";
 				INFOPLIST_FILE = "MacBoy/MacBoy-Info.plist";

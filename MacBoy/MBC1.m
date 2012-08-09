@@ -15,7 +15,7 @@
 {
    if (self = [super init])
    {
-      uint length = [data length];
+      NSUInteger length = [data length];
       Byte * fileData = (Byte *)malloc( length * sizeof(Byte) );
       [data getBytes:fileData];
       
@@ -110,7 +110,7 @@
 - (void) loadRAM:(NSString *)ramPath
 {
    NSData * data = [NSData dataWithContentsOfFile:[ramPath stringByAppendingString:@".sav"]];
-   uint length = [data length];
+   NSUInteger length = [data length];
    if (length == 0)
       return;
    Byte * fileData = (Byte *)malloc( length * sizeof(Byte) );

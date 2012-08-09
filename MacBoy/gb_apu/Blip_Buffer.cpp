@@ -53,7 +53,7 @@ blargg_err_t Blip_Buffer::set_sample_rate( long new_rate, int msec )
 	{
 		size_t s = (new_rate * (msec + 1) + 999) / 1000;
 		if ( s < new_size )
-			new_size = s;
+			new_size = (uint32_t)s;
 		else
 			assert( false ); // requested buffer length exceeds limit
 	}
@@ -220,7 +220,7 @@ void Blip_Impulse_::volume_unit( double new_unit )
 	
 	volume_unit_ = new_unit;
 	
-	offset = 0x10001 * (unsigned long) floor( volume_unit_ * 0x10000 + 0.5 );
+	offset = (uint32_t)(0x10001 * (unsigned long) floor( volume_unit_ * 0x10000 + 0.5 ));
 	
 	if ( fine_bits )
 		fine_volume_unit();

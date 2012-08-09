@@ -29,7 +29,7 @@
 {
    if (self = [super init])
    {
-      uint length = [data length];
+      NSUInteger length = [data length];
       Byte * fileData = (Byte *)malloc( length * sizeof(Byte) );
       [data getBytes:fileData];
       

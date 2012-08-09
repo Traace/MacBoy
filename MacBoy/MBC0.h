@@ -12,7 +12,7 @@
 @interface MBC0 : NSObject <Cartridge>
 {
    Byte * fileData;
-   uint fileSize;
+   NSUInteger fileSize;
 }
 
 - (id) initWithData:(NSData *)data;
