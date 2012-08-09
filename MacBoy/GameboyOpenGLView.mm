@@ -32,6 +32,8 @@
    glLoadIdentity();
    gluOrtho2D(0., width, height, 0.);
    
+   glClear(GL_COLOR_BUFFER_BIT);
+
    // 8-bit per component values (32 bits per pixel) for rgba colors
    GLuint internalFormat = GL_RGBA8;
    GLuint format = GL_RGBA;
@@ -40,18 +42,20 @@
    // Pass pixels buffer to OpenGL
    glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, width, height, 0, format, type, pixels);
    
-   // by default, OpenGL uses mipmaps. We must disable that for this texture to be "complete"
+   // OpenGL uses mipmaps by default - Disable it.
    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
    
    // Draw a quad with the texture
    glEnable(GL_TEXTURE_2D);
+
    glBegin(GL_QUADS);
    glTexCoord2f(0, 0); glVertex2f(0, 0);
    glTexCoord2f(1, 0); glVertex2f(width, 0);
    glTexCoord2f(1, 1); glVertex2f(width,height);
    glTexCoord2f(0, 1); glVertex2f(0, height);
    glEnd();
+   
    glDisable(GL_TEXTURE_2D);
    
    glFlush();
