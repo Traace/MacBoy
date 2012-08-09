@@ -18,35 +18,17 @@
    [_window setAspectRatio:NSMakeSize(10, 9)];
    
    for (int i = 0; i < 160 * 144; i++)
-      pixels[i] = 0xFF000000;
+      pixels[i] = 0x00000000; // Black
    
    [self renderFrame];
    
    [NSThread detachNewThreadSelector:@selector(run) toTarget:self withObject:nil];
-//   [NSThread detachNewThreadSelector:@selector(runNew) toTarget:self withObject:nil];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)notification
 {
    [apu stopAPUPlayback];
 }
-
-#pragma mark -
-#pragma mark New Code
-
-- (void) runNew
-{
-   for (;;)
-   {
-      if (cpu && cpu->running)
-      {
-         [cpu Step];
-         printf("%u\n", cpu->cycle);
-      }
-   }
-}
-
-#pragma mark -
 
 static double timeCorrection = 0;
 
@@ -58,7 +40,6 @@ static double timeCorrection = 0;
       {
          [self updateModel];
          [self renderFrame];
-//         timeCorrection = [apu endFrameOnCycle:cpu->cycle];
          timeCorrection = [apu endFrameOnCycle:70000];
          [NSThread sleepForTimeInterval:0.016667 + timeCorrection];
          cpu->cycle = 0;
