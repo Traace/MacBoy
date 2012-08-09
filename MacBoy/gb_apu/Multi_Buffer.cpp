@@ -23,9 +23,9 @@ Multi_Buffer::Multi_Buffer( int spf ) : samples_per_frame_( spf )
 	channels_changed_count_ = 1;
 }
 
-blargg_err_t Multi_Buffer::set_channel_count( int )
+const char* Multi_Buffer::set_channel_count( int )
 {
-	return blargg_success;
+	return 0;
 }
 
 Mono_Buffer::Mono_Buffer() : Multi_Buffer( 1 )
@@ -36,10 +36,10 @@ Mono_Buffer::~Mono_Buffer()
 {
 }
 
-blargg_err_t Mono_Buffer::set_sample_rate( long rate, int msec )
+const char* Mono_Buffer::set_sample_rate( long rate, int msec )
 {
 //	BLARGG_RETURN_ERR( buf.set_sample_rate( rate, msec ) );
-   blargg_err_t error = buf.set_sample_rate( rate, msec );
+   const char* error = buf.set_sample_rate( rate, msec );
    if (error) return error;
 	return Multi_Buffer::set_sample_rate( buf.sample_rate(), buf.length() );
 }
@@ -82,12 +82,12 @@ Stereo_Buffer::~Stereo_Buffer()
 {
 }
 
-blargg_err_t Stereo_Buffer::set_sample_rate( long rate, int msec )
+const char* Stereo_Buffer::set_sample_rate( long rate, int msec )
 {
 	for ( int i = 0; i < buf_count; i++ )
    {
 //		BLARGG_RETURN_ERR( bufs[i].set_sample_rate( rate, msec ) );
-      blargg_err_t error = bufs[i].set_sample_rate( rate, msec );
+      const char* error = bufs[i].set_sample_rate( rate, msec );
       if (error) return error;
    }
 	return Multi_Buffer::set_sample_rate( bufs [0].sample_rate(), bufs [0].length() );
@@ -158,8 +158,6 @@ long Stereo_Buffer::read_samples( blip_sample_t* out, long count )
 	
 	return count * 2;
 }
-
-#include BLARGG_ENABLE_OPTIMIZER
 
 void Stereo_Buffer::mix_stereo( blip_sample_t* out, long count )
 {

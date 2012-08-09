@@ -97,7 +97,7 @@ static void HandleOutputBuffer(void *aqData,
 
       blipBuffer->clock_rate(4194304); // 4194304 for Gameboy
 
-      blargg_err_t error = blipBuffer->set_sample_rate(44100, 600); // 600ms to accomodate up to eight times four frames of audio
+      const char* error = blipBuffer->set_sample_rate(44100, 600); // 600ms to accomodate up to eight times four frames of audio
 		if (error) NSLog(@"Error allocating blipBuffer.");
 		
 		gbAPU->output(blipBuffer); // TODO: use Stereo_Buffer 

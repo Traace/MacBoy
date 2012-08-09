@@ -7,8 +7,6 @@
 #ifndef BLIP_BUFFER_H
 #define BLIP_BUFFER_H
 
-#include "blargg_common.h"
-
 #include <cassert>
 #include <stdint.h>
 
@@ -36,7 +34,7 @@ public:
 	// then clear buffer. If length is not specified, make as large as possible.
 	// If there is insufficient memory for the buffer, sets the buffer length
 	// to 0 and returns error string (or propagates exception if compiler supports it).
-	blargg_err_t set_sample_rate( long samples_per_sec, int msec_length = blip_default_length );
+	const char* set_sample_rate( long samples_per_sec, int msec_length = blip_default_length );
 	
 	// Length of buffer, in milliseconds
 	int length() const;

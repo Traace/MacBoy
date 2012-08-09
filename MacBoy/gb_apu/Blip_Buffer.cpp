@@ -6,6 +6,7 @@
 #include <string.h>
 #include <stddef.h>
 #include <math.h>
+#include <limits.h>
 
 #include <cassert>
 
@@ -19,8 +20,6 @@ FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for
 more details. You should have received a copy of the GNU Lesser General
 Public License along with this module; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA */
-
-#include BLARGG_SOURCE_BEGIN
 
 Blip_Buffer::Blip_Buffer()
 {
@@ -46,7 +45,7 @@ void Blip_Buffer::clear( bool entire_buffer )
 		memset( buffer_, sample_offset_ & 0xFF, (count + widest_impulse_) * sizeof (buf_t_) );
 }
 
-blargg_err_t Blip_Buffer::set_sample_rate( long new_rate, int msec )
+const char* Blip_Buffer::set_sample_rate( long new_rate, int msec )
 {
 	unsigned new_size = (ULONG_MAX >> BLIP_BUFFER_ACCURACY) + 1 - widest_impulse_ - 64;
 	if ( msec != blip_default_length )
@@ -67,7 +66,8 @@ blargg_err_t Blip_Buffer::set_sample_rate( long new_rate, int msec )
 		
 		int const count_clocks_extra = 2;
 		buffer_ = new buf_t_ [new_size + widest_impulse_ + count_clocks_extra];
-		BLARGG_CHECK_ALLOC( buffer_ );
+
+      do { if ( !(buffer_) ) return "Out of memory"; } while ( 0 );
 	}
 	
 	buffer_size_ = new_size;
@@ -83,7 +83,7 @@ blargg_err_t Blip_Buffer::set_sample_rate( long new_rate, int msec )
 	
 	clear();
 	
-	return blargg_success;
+	return 0;
 }
 
 blip_resampled_time_t Blip_Buffer::clock_rate_factor( long clock_rate ) const
@@ -358,8 +358,6 @@ void Blip_Buffer::remove_samples( long count )
 		memcpy(  buffer_, buffer_ + count, remain * sizeof (buf_t_) );
 	memset( buffer_ + remain, sample_offset_ & 0xFF, count * sizeof (buf_t_) );
 }
-
-#include BLARGG_ENABLE_OPTIMIZER
 
 long Blip_Buffer::read_samples( blip_sample_t* out, long max_samples, bool stereo )
 {

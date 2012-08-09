@@ -64,7 +64,6 @@
 		0DA22E98158A941800EAC859 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		0DA22EA3158A957700EAC859 /* MBC0.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBC0.h; sourceTree = "<group>"; };
 		0DA22EA4158A957700EAC859 /* MBC0.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBC0.m; sourceTree = "<group>"; };
-		0DA22EB9158A99F200EAC859 /* blargg_source.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = blargg_source.h; sourceTree = "<group>"; };
 		0DA22EBA158A99F200EAC859 /* Blip_Buffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Blip_Buffer.cpp; sourceTree = "<group>"; };
 		0DA22EBB158A99F200EAC859 /* Blip_Buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Blip_Buffer.h; sourceTree = "<group>"; };
 		0DA22EBC158A99F200EAC859 /* Blip_Synth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Blip_Synth.h; sourceTree = "<group>"; };
@@ -81,7 +80,6 @@
 		0DA22ED7158A9AAA00EAC859 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		0DA22ED9158A9ACE00EAC859 /* GameboyOpenGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameboyOpenGLView.mm; sourceTree = "<group>"; };
 		0DA22EDA158A9ACE00EAC859 /* WindowController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WindowController.mm; sourceTree = "<group>"; };
-		0DA22EE6158A9C8F00EAC859 /* blargg_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = blargg_common.h; sourceTree = "<group>"; };
 		0DA22EF8158A9F1700EAC859 /* CPUTables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPUTables.h; sourceTree = "<group>"; };
 		0DA22EFA158A9FD200EAC859 /* 16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 16.png; path = Icons/16.png; sourceTree = "<group>"; };
 		0DA22EFB158A9FD200EAC859 /* 32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 32.png; path = Icons/32.png; sourceTree = "<group>"; };
@@ -201,8 +199,6 @@
 		0DA22EB7158A99F200EAC859 /* gb_apu */ = {
 			isa = PBXGroup;
 			children = (
-				0DA22EE6158A9C8F00EAC859 /* blargg_common.h */,
-				0DA22EB9158A99F200EAC859 /* blargg_source.h */,
 				0DA22EBA158A99F200EAC859 /* Blip_Buffer.cpp */,
 				0DA22EBB158A99F200EAC859 /* Blip_Buffer.h */,
 				0DA22EBC158A99F200EAC859 /* Blip_Synth.h */,
