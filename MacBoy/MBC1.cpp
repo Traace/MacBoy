@@ -34,9 +34,9 @@ MBC1::~MBC1()
 {
    for (int i = 0; i < romBanks; i++)
    {
-      delete rom[i];
+      delete [] rom[i];
    }
-   delete rom;
+   delete [] rom;
 }
 
 
