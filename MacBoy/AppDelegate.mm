@@ -378,7 +378,7 @@ static double timeCorrection = 0;
    
    [cpu setCartridge:game->cartridge];
    
-   cpu.cartridge->loadRAM([romPath UTF8String]);
+   cpu.cartridge->loadRAM([[romPath stringByAppendingString:@".sav"] UTF8String]);
    
    [cpu PowerUp];
    apu->beginApuPlayback();

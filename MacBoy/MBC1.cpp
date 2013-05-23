@@ -93,34 +93,50 @@ void MBC1::writeByte(int address, int value)
    }
 }
 
+#include <fstream>
+#include <string>
+#include <stdio.h>
+
 void MBC1::loadRAM(const char *ramPath)
 {
-//   NSData * data = [NSData dataWithContentsOfFile:[ramPath stringByAppendingString:@".sav"]];
-//   NSUInteger length = [data length];
-//   if (length == 0)
-//      return;
-//   Byte * fileData = (Byte *)malloc( length * sizeof(Byte) );
-//   [data getBytes:fileData];
-//   
-//   memcpy(ram[0], fileData, 8 * 1024 * sizeof(Byte));
-//   memcpy(ram[1], fileData + (8 * 1024 * sizeof(Byte)), 8 * 1024 * sizeof(Byte));
-//   memcpy(ram[2], fileData + (2 * 8 * 1024 * sizeof(Byte)), 8 * 1024 * sizeof(Byte));
-//   memcpy(ram[3], fileData + (3 * 8 * 1024 * sizeof(Byte)), 8 * 1024 * sizeof(Byte));
-//   
-//   free(fileData);
+   std::ifstream file(ramPath, std::ios::binary);
+   if (file.is_open())
+   {
+      file.seekg(0, file.end);
+      std::streamoff length = file.tellg();
+      file.seekg(file.beg);
+      
+      byte *data = new byte[length];
+      file.read((char*)data, length);
+      
+      // Copy file into GB RAM
+      memcpy(ram[0], data, 8 * 1024 * sizeof(byte));
+      memcpy(ram[1], data + (8 * 1024 * sizeof(byte)), 8 * 1024 * sizeof(byte));
+      memcpy(ram[2], data + (2 * 8 * 1024 * sizeof(byte)), 8 * 1024 * sizeof(byte));
+      memcpy(ram[3], data + (3 * 8 * 1024 * sizeof(byte)), 8 * 1024 * sizeof(byte));
+      
+      file.close();
+      delete [] data;
+   }
+   
 }
 
 void MBC1::saveRAM(const char *savePath)
 {
-//   NSData * bank0 = [NSData dataWithBytes:ram[0] length:(8 * 1024)];
-//   NSData * bank1 = [NSData dataWithBytes:ram[1] length:(8 * 1024)];
-//   NSData * bank2 = [NSData dataWithBytes:ram[2] length:(8 * 1024)];
-//   NSData * bank3 = [NSData dataWithBytes:ram[3] length:(8 * 1024)];
-//   
-//   NSMutableData * saveData = [NSMutableData dataWithData:bank0];
-//   [saveData appendData:bank1];
-//   [saveData appendData:bank2];
-//   [saveData appendData:bank3];
-//   
-//   [saveData writeToFile:savePath atomically:true];
+   long length = 4 * (8 * 1024);
+   byte *data = new byte[length];
+   
+   memcpy(data, ram[0], 8 * 1024 * sizeof(byte));
+   memcpy(data + (8 * 1024 * sizeof(byte)), ram[1], 8 * 1024 * sizeof(byte));
+   memcpy(data + (2 * 8 * 1024 * sizeof(byte)), ram[2], 8 * 1024 * sizeof(byte));
+   memcpy(data + (3 * 8 * 1024 * sizeof(byte)), ram[3], 8 * 1024 * sizeof(byte));
+   
+   std::ofstream file(savePath, std::ios::binary);
+   if (file.is_open())
+   {
+      file.write((const char *)data, length);
+      file.close();
+   }
+   
+   delete [] data;
 }
