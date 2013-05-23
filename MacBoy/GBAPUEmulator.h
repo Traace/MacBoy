@@ -1,5 +1,5 @@
 //
-//  GBAPUEmulator.h
+//  GbApuEmulator.h
 //  GBAudio
 //
 //  Created by Tom Schroeder on 4/8/12.
@@ -22,7 +22,7 @@ struct GBAPUState
    UInt32                        bufferByteSize;
    UInt32                        numPacketsToRead;
 	SInt64                        packetsToPlay;
-   BOOL                          isRunning;
+   bool                          isRunning;
 	Blip_Buffer*                  blipBuffer;
 };
 
@@ -33,7 +33,7 @@ enum ShapeType
    kOblateSpheroid
 };
 
-class GBAPUEmulator
+class GbApuEmulator
 {
    Gb_Apu *gbAPU;
 	Blip_Buffer *blipBuffer;
@@ -48,8 +48,8 @@ class GBAPUEmulator
    blip_time_t clock();
    
 public:
-   GBAPUEmulator();
-   ~GBAPUEmulator();
+   GbApuEmulator();
+   ~GbApuEmulator();
    
    void beginApuPlayback();
    void stopApuPlayback();

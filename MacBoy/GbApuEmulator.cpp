@@ -1,27 +1,26 @@
 //
-//  GBAPUEmulator.m
+//  GbApuEmulator.m
 //  GBAudio
 //
 //  Created by Tom Schroeder on 4/8/12.
 //  Copyright (c) 2012. All rights reserved.
 //
 
-#import "GBAPUEmulator.h"
+#import "GbApuEmulator.h"
 
 static void HandleOutputBuffer(void *aqData, AudioQueueRef inAQ, AudioQueueBufferRef inBuffer)
 {
-//   NSLog(@"%s", __FUNCTION__);
+//   printf(__FUNCTION__);
    
-	NSUInteger bytesRead = 0;
-	NSUInteger samplesRead;
-	NSUInteger availableSamples;
+	long samplesRead, availableSamples, bytesRead = 0;
+   
    GBAPUState *pAqData = (GBAPUState *)aqData;
 	
 	if (!pAqData->isRunning)
    {	
 		bytesRead = pAqData->bufferByteSize;
 		bzero(inBuffer->mAudioData,pAqData->bufferByteSize);
-//		NSLog(@"APU is not running. Filling buffer with zeros.");	
+//		printf("APU is not running. Filling buffer with zeros.");	
 	}
 	else
    {
@@ -29,9 +28,9 @@ static void HandleOutputBuffer(void *aqData, AudioQueueRef inAQ, AudioQueueBuffe
 		availableSamples = pAqData->blipBuffer->samples_avail();
 		if (availableSamples < pAqData->numPacketsToRead)
       {
-//         NSLog(@"Insufficient audio samples for buffering. Inserting silence.");
-//         NSLog(@"Available Samples: %ld", availableSamples);
-//         NSLog(@"NumPacketsToRead: %u", pAqData->numPacketsToRead);
+//         printf("Insufficient audio samples for buffering. Inserting silence.");
+//         printf("Available Samples: %ld", availableSamples);
+//         printf("NumPacketsToRead: %u", pAqData->numPacketsToRead);
 
 			bytesRead = pAqData->bufferByteSize;
 			bzero(inBuffer->mAudioData, pAqData->bufferByteSize);
@@ -47,7 +46,7 @@ static void HandleOutputBuffer(void *aqData, AudioQueueRef inAQ, AudioQueueBuffe
 	AudioQueueEnqueueBuffer(pAqData->queue, inBuffer, 0, NULL);
 }
 
-GBAPUEmulator::GBAPUEmulator()
+GbApuEmulator::GbApuEmulator()
 {
    time = 0;
    
@@ -57,7 +56,7 @@ GBAPUEmulator::GBAPUEmulator()
    blipBuffer->clock_rate(4194304); // 4194304 for Gameboy
    
    const char* error = blipBuffer->set_sample_rate(44100, 600); // 600ms to accomodate up to eight times four frames of audio
-   if (error) NSLog(@"Error allocating blipBuffer.");
+   if (error) printf("Error allocating blipBuffer.");
    
    gbAPU->output(blipBuffer); // TODO: use Stereo_Buffer
    
@@ -66,7 +65,7 @@ GBAPUEmulator::GBAPUEmulator()
    gbAPUState->dataFormat.mFormatID = kAudioFormatLinearPCM;
    
    // Sort out endianness
-   if (NSHostByteOrder() == NS_BigEndian)
+   if (OSHostByteOrder() == OSBigEndian)
       gbAPUState->dataFormat.mFormatFlags = kLinearPCMFormatFlagIsBigEndian | kLinearPCMFormatFlagIsSignedInteger | kLinearPCMFormatFlagIsPacked;
    else
       gbAPUState->dataFormat.mFormatFlags = kLinearPCMFormatFlagIsSignedInteger | kLinearPCMFormatFlagIsPacked;
@@ -83,14 +82,14 @@ GBAPUEmulator::GBAPUEmulator()
    initializeAudioPlaybackQueue();
 }
 
-GBAPUEmulator::~GBAPUEmulator()
+GbApuEmulator::~GbApuEmulator()
 {
    AudioQueueDispose(gbAPUState->queue, true);
    
    // TODO: Free APU Resources
 }
 
-void GBAPUEmulator::initializeAudioPlaybackQueue()
+void GbApuEmulator::initializeAudioPlaybackQueue()
 {
 	Float32 gain = 1.0;
 	
@@ -103,7 +102,7 @@ void GBAPUEmulator::initializeAudioPlaybackQueue()
                                    0,
                                    &(gbAPUState->queue));
 	
-	if (error) NSLog(@"AudioQueueNewOutput: %d", error);
+	if (error) printf("AudioQueueNewOutput: %d", error);
 	
 	// Set buffer size
    gbAPUState->numPacketsToRead = 735 * 4; // 44.1kHz at 60 fps = 735 (times 4 to reduce overhead)
@@ -114,13 +113,13 @@ void GBAPUEmulator::initializeAudioPlaybackQueue()
    {
 		AudioQueueAllocateBuffer(gbAPUState->queue, gbAPUState->bufferByteSize, &(gbAPUState->buffers[i]));
 		
-		if (error) NSLog(@"AudioQueueAllocateBuffer: %d", error);
+		if (error) printf("AudioQueueAllocateBuffer: %d", error);
 	}
 	
 	AudioQueueSetParameter(gbAPUState->queue, kAudioQueueParam_Volume, gain);
 }
 
-void GBAPUEmulator::beginApuPlayback()
+void GbApuEmulator::beginApuPlayback()
 {
 	// Reset the APU and Buffer
    //	gbAPU->reset(false,0);
@@ -139,7 +138,7 @@ void GBAPUEmulator::beginApuPlayback()
 	AudioQueueStart(gbAPUState->queue, NULL);
 }
 
-void GBAPUEmulator::stopApuPlayback()
+void GbApuEmulator::stopApuPlayback()
 {
 	gbAPUState->isRunning = false;
 	AudioQueueStop(gbAPUState->queue, true);
@@ -147,24 +146,24 @@ void GBAPUEmulator::stopApuPlayback()
 
 // faked CPU timing
 //blip_time_t clock() { return time += 4; }
-blip_time_t GBAPUEmulator::clock()
+blip_time_t GbApuEmulator::clock()
 {
    return time += 4;
 }
 
 // Write to register (0x4000-0x4017, except 0x4014 and 0x4016)
-void GBAPUEmulator::writeByte(uint8_t byte, uint16_t address, uint_fast32_t cycle)
+void GbApuEmulator::writeByte(uint8_t byte, uint16_t address, uint_fast32_t cycle)
 {
-   //   NSLog(@"%s : cycle = %u", __FUNCTION__, cycle);
+   //   printf("%s : cycle = %u", __FUNCTION__, cycle);
 
    //	gbAPU->write_register(cycle, address, byte);
    gbAPU->write_register(clock(), address, byte);
 }
 
 // End a 1/60 sound frame
-double GBAPUEmulator::endFrame(uint_fast32_t cycle)
+double GbApuEmulator::endFrame(uint_fast32_t cycle)
 {
-//   NSLog(@"%s : cycle = %u", __FUNCTION__, cycle);
+//   printf("%s : cycle = %u", __FUNCTION__, cycle);
 	
 	gbAPU->end_frame(cycle);
 	blipBuffer->end_frame(cycle);
@@ -184,7 +183,7 @@ double GBAPUEmulator::endFrame(uint_fast32_t cycle)
 		// Try to catch run-away buffer overflow
 		if (availableSamples > (gbAPUState->numPacketsToRead * 6))
       {
-			NSLog(@"Reducing samples in audio buffer to prevent overflow.");
+			printf("Reducing samples in audio buffer to prevent overflow.");
 			blipBuffer->remove_samples(gbAPUState->numPacketsToRead);
 		}
 	}

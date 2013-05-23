@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Protocols.h"
 #import "Constants.h"
-#import "GBAPUEmulator.h"
+#import "GbApuEmulator.h"
 #import "CPUTables.h"
 
 extern const uint WHITE;
@@ -19,7 +19,7 @@ extern const uint BLACK;
 
 @interface CPU : NSObject
 {
-//   IBOutlet GBAPUEmulator * apu;
+//   IBOutlet GbApuEmulator * apu;
    
 @public
    
@@ -106,7 +106,7 @@ extern const uint BLACK;
 }
 
 @property (retain, readwrite) id<Cartridge> cartridge;
-@property GBAPUEmulator * apu;
+@property GbApuEmulator * apu;
 
 - (void) Step;
 - (int) ReadByte:(int)address;

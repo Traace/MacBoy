@@ -22,7 +22,7 @@
 		0DA22ECA158A99F200EAC859 /* Gb_Apu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22EC1158A99F200EAC859 /* Gb_Apu.cpp */; };
 		0DA22ECB158A99F200EAC859 /* Gb_Oscs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22EC3158A99F200EAC859 /* Gb_Oscs.cpp */; };
 		0DA22ECC158A99F200EAC859 /* Multi_Buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22EC5158A99F200EAC859 /* Multi_Buffer.cpp */; };
-		0DA22ECD158A99F200EAC859 /* GBAPUEmulator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22EC8158A99F200EAC859 /* GBAPUEmulator.mm */; };
+		0DA22ECD158A99F200EAC859 /* GbApuEmulator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22EC8158A99F200EAC859 /* GbApuEmulator.cpp */; };
 		0DA22ED5158A9A6C00EAC859 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DA22ED3158A9A6C00EAC859 /* AudioToolbox.framework */; };
 		0DA22ED6158A9A6C00EAC859 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DA22ED4158A9A6C00EAC859 /* CoreAudio.framework */; };
 		0DA22ED8158A9AAA00EAC859 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22ED7158A9AAA00EAC859 /* AppDelegate.mm */; };
@@ -73,8 +73,8 @@
 		0DA22EC4158A99F200EAC859 /* Gb_Oscs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gb_Oscs.h; sourceTree = "<group>"; };
 		0DA22EC5158A99F200EAC859 /* Multi_Buffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Multi_Buffer.cpp; sourceTree = "<group>"; };
 		0DA22EC6158A99F200EAC859 /* Multi_Buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Multi_Buffer.h; sourceTree = "<group>"; };
-		0DA22EC7158A99F200EAC859 /* GBAPUEmulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBAPUEmulator.h; sourceTree = "<group>"; };
-		0DA22EC8158A99F200EAC859 /* GBAPUEmulator.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GBAPUEmulator.mm; sourceTree = "<group>"; };
+		0DA22EC7158A99F200EAC859 /* GbApuEmulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GbApuEmulator.h; sourceTree = "<group>"; };
+		0DA22EC8158A99F200EAC859 /* GbApuEmulator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GbApuEmulator.cpp; sourceTree = "<group>"; };
 		0DA22ED3158A9A6C00EAC859 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		0DA22ED4158A9A6C00EAC859 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		0DA22ED7158A9AAA00EAC859 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
@@ -161,8 +161,8 @@
 				0DA22EDA158A9ACE00EAC859 /* WindowController.mm */,
 				0DA22E95158A939200EAC859 /* GameboyOpenGLView.h */,
 				0DA22ED9158A9ACE00EAC859 /* GameboyOpenGLView.mm */,
-				0DA22EC7158A99F200EAC859 /* GBAPUEmulator.h */,
-				0DA22EC8158A99F200EAC859 /* GBAPUEmulator.mm */,
+				0DA22EC7158A99F200EAC859 /* GbApuEmulator.h */,
+				0DA22EC8158A99F200EAC859 /* GbApuEmulator.cpp */,
 				0DA22E65158A8E8E00EAC859 /* MainMenu.xib */,
 				0DA22E57158A8E8E00EAC859 /* Supporting Files */,
 			);
@@ -303,7 +303,7 @@
 				0DA22ECA158A99F200EAC859 /* Gb_Apu.cpp in Sources */,
 				0DA22ECB158A99F200EAC859 /* Gb_Oscs.cpp in Sources */,
 				0DA22ECC158A99F200EAC859 /* Multi_Buffer.cpp in Sources */,
-				0DA22ECD158A99F200EAC859 /* GBAPUEmulator.mm in Sources */,
+				0DA22ECD158A99F200EAC859 /* GbApuEmulator.cpp in Sources */,
 				0DA22ED8158A9AAA00EAC859 /* AppDelegate.mm in Sources */,
 				0DA22EDB158A9ACE00EAC859 /* GameboyOpenGLView.mm in Sources */,
 				0DA22EDC158A9ACE00EAC859 /* WindowController.mm in Sources */,

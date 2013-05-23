@@ -14,7 +14,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
-   apu = new GBAPUEmulator;
+   apu = new GbApuEmulator;
    cpu.apu = apu;
    
    // Size window in ratio with GB screen size
