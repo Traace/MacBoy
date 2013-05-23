@@ -19,7 +19,7 @@ extern const uint BLACK;
 
 @interface CPU : NSObject
 {
-   IBOutlet GBAPUEmulator * apu;
+//   IBOutlet GBAPUEmulator * apu;
    
 @public
    
@@ -106,6 +106,7 @@ extern const uint BLACK;
 }
 
 @property (retain, readwrite) id<Cartridge> cartridge;
+@property GBAPUEmulator * apu;
 
 - (void) Step;
 - (int) ReadByte:(int)address;

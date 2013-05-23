@@ -25,21 +25,21 @@
 //   public Stopwatch stopwatch = new Stopwatch();
 //   public long nextFrameStart;
 //   private X80 x80;
-   IBOutlet CPU * cpu;
+   IBOutlet CPU *cpu;
 //   private Rectangle rect;
 //   private double scanLineTicks;
    double scanLineTicks;
 //   private Game game;
-   Game * game;
+   Game *game;
    
-   NSData * romData;
+   NSData *romData;
 //   ROMLoader * romLoader;
    
-   IBOutlet NSImageView * imageView;
-   NSBitmapImageRep * bitmapImageRep;
+   IBOutlet NSImageView *imageView;
+   NSBitmapImageRep *bitmapImageRep;
    NSSize screenSize;
    
-   IBOutlet GameboyOpenGLView * openGLView;
+   IBOutlet GameboyOpenGLView *openGLView;
 
 //   GameboyOpenGLView * openGLView;
    
@@ -49,7 +49,9 @@
    
    NSString * romFilePath;
    
-   IBOutlet GBAPUEmulator * apu;
+   GBAPUEmulator *apu;
+   
+//   IBOutlet GBAPUEmulator *apu;
 }
 
 @property (assign) IBOutlet NSWindow *window;

@@ -9,7 +9,9 @@
 #ifndef MacBoy_CPUTables_h
 #define MacBoy_CPUTables_h
 
-static const Byte Cycles[256] =
+using byte = unsigned char;
+
+static const byte Cycles[256] =
 {
    4,10, 7, 6, 4, 4, 7, 4, 4,11, 7, 6, 4, 4, 7, 4,
    8,10, 7, 6, 4, 4, 7, 4,12,11, 7, 6, 4, 4, 7, 4,
@@ -29,7 +31,7 @@ static const Byte Cycles[256] =
    5,10,10, 4,10,11, 7,11, 5, 6,10, 4,10, 0, 7,11 
 };
 
-static const Byte CyclesCB[256] =
+static const byte CyclesCB[256] =
 {
    8, 8, 8, 8, 8, 8,15, 8, 8, 8, 8, 8, 8, 8,15, 8,
    8, 8, 8, 8, 8, 8,15, 8, 8, 8, 8, 8, 8, 8,15, 8,

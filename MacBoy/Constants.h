@@ -31,10 +31,10 @@ enum LcdcModeType
 
 enum TimerFrequencyType
 {
-   hz4096 = 0,
+   hz4096   = 0,
    hz262144 = 1, 
-   hz65536 = 2,
-   hz16384 = 3
+   hz65536  = 2,
+   hz16384  = 3
 };
 
 enum RomType 

@@ -14,6 +14,9 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
+   apu = new GBAPUEmulator;
+   cpu.apu = apu;
+   
    // Size window in ratio with GB screen size
    [_window setAspectRatio:NSMakeSize(10, 9)];
    
@@ -27,7 +30,8 @@
 
 - (void)applicationWillTerminate:(NSNotification *)notification
 {
-   [apu stopAPUPlayback];
+//   [apu stopAPUPlayback];
+   apu->stopApuPlayback();
 }
 
 static double timeCorrection = 0;
@@ -40,7 +44,8 @@ static double timeCorrection = 0;
       {
          [self updateModel];
          [self renderFrame];
-         timeCorrection = [apu endFrameOnCycle:70000];
+//         timeCorrection = [apu endFrameOnCycle:70000];
+         timeCorrection = apu->endFrame(70000);
          [NSThread sleepForTimeInterval:0.016667 + timeCorrection];
          cpu->cycle = 0;
       }
@@ -380,7 +385,8 @@ static double timeCorrection = 0;
    [cpu.cartridge loadRAM:romPath];
    
    [cpu PowerUp];
-   [apu beginAPUPlayback];
+//   [apu beginAPUPlayback];
+   apu->beginApuPlayback();
 }
 
 #pragma mark -
