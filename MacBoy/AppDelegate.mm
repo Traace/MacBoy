@@ -30,7 +30,6 @@
 
 - (void)applicationWillTerminate:(NSNotification *)notification
 {
-//   [apu stopAPUPlayback];
    apu->stopApuPlayback();
 }
 
@@ -44,7 +43,6 @@ static double timeCorrection = 0;
       {
          [self updateModel];
          [self renderFrame];
-//         timeCorrection = [apu endFrameOnCycle:70000];
          timeCorrection = apu->endFrame(70000);
          [NSThread sleepForTimeInterval:0.016667 + timeCorrection];
          cpu->cycle = 0;
@@ -364,7 +362,6 @@ static double timeCorrection = 0;
 
 - (IBAction)saveFile:(id)sender
 {
-//   [cpu.cartridge saveRAM:[romFilePath stringByAppendingString:@".sav"]];
    cpu.cartridge->saveRAM([[romFilePath stringByAppendingString:@".sav"] UTF8String]);
 }
 
@@ -374,8 +371,7 @@ static double timeCorrection = 0;
    
    NSFileHandle * file = [NSFileHandle fileHandleForReadingAtPath: romPath];
    
-   if (file == nil)
-      NSLog(@"ERROR: Failed to open file");
+   if (file == nil) printf("ERROR: Failed to open file\n");
    
    romData = [file readDataToEndOfFile];
    
@@ -383,11 +379,9 @@ static double timeCorrection = 0;
    
    [cpu setCartridge:game->cartridge];
    
-//   [cpu.cartridge loadRAM:romPath];
    cpu.cartridge->loadRAM([romPath UTF8String]);
    
    [cpu PowerUp];
-//   [apu beginAPUPlayback];
    apu->beginApuPlayback();
 }
 

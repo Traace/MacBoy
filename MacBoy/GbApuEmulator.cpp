@@ -10,7 +10,7 @@
 
 static void HandleOutputBuffer(void *aqData, AudioQueueRef inAQ, AudioQueueBufferRef inBuffer)
 {
-//   printf(__FUNCTION__);
+//   printf("%s\n", __FUNCTION__);
    
 	long samplesRead, availableSamples, bytesRead = 0;
    
@@ -20,7 +20,7 @@ static void HandleOutputBuffer(void *aqData, AudioQueueRef inAQ, AudioQueueBuffe
    {	
 		bytesRead = pAqData->bufferByteSize;
 		bzero(inBuffer->mAudioData,pAqData->bufferByteSize);
-//		printf("APU is not running. Filling buffer with zeros.");	
+//		printf("APU is not running. Filling buffer with zeros.\n");	
 	}
 	else
    {
@@ -28,9 +28,9 @@ static void HandleOutputBuffer(void *aqData, AudioQueueRef inAQ, AudioQueueBuffe
 		availableSamples = pAqData->blipBuffer->samples_avail();
 		if (availableSamples < pAqData->numPacketsToRead)
       {
-//         printf("Insufficient audio samples for buffering. Inserting silence.");
-//         printf("Available Samples: %ld", availableSamples);
-//         printf("NumPacketsToRead: %u", pAqData->numPacketsToRead);
+//         printf("Insufficient audio samples for buffering. Inserting silence.\n");
+//         printf("Available Samples: %ld\n", availableSamples);
+//         printf("NumPacketsToRead: %u\n", pAqData->numPacketsToRead);
 
 			bytesRead = pAqData->bufferByteSize;
 			bzero(inBuffer->mAudioData, pAqData->bufferByteSize);
@@ -56,7 +56,7 @@ GbApuEmulator::GbApuEmulator()
    blipBuffer->clock_rate(4194304); // 4194304 for Gameboy
    
    const char* error = blipBuffer->set_sample_rate(44100, 600); // 600ms to accomodate up to eight times four frames of audio
-   if (error) printf("Error allocating blipBuffer.");
+   if (error) printf("Error allocating blipBuffer.\n");
    
    gbAPU->output(blipBuffer); // TODO: use Stereo_Buffer
    
@@ -102,7 +102,7 @@ void GbApuEmulator::initializeAudioPlaybackQueue()
                                    0,
                                    &(gbAPUState->queue));
 	
-	if (error) printf("AudioQueueNewOutput: %d", error);
+	if (error) printf("AudioQueueNewOutput: %d\n", error);
 	
 	// Set buffer size
    gbAPUState->numPacketsToRead = 735 * 4; // 44.1kHz at 60 fps = 735 (times 4 to reduce overhead)
@@ -113,7 +113,7 @@ void GbApuEmulator::initializeAudioPlaybackQueue()
    {
 		AudioQueueAllocateBuffer(gbAPUState->queue, gbAPUState->bufferByteSize, &(gbAPUState->buffers[i]));
 		
-		if (error) printf("AudioQueueAllocateBuffer: %d", error);
+		if (error) printf("AudioQueueAllocateBuffer: %d\n", error);
 	}
 	
 	AudioQueueSetParameter(gbAPUState->queue, kAudioQueueParam_Volume, gain);
@@ -154,7 +154,7 @@ blip_time_t GbApuEmulator::clock()
 // Write to register (0x4000-0x4017, except 0x4014 and 0x4016)
 void GbApuEmulator::writeByte(uint8_t byte, uint16_t address, uint_fast32_t cycle)
 {
-   //   printf("%s : cycle = %u", __FUNCTION__, cycle);
+   //   printf("%s : cycle = %u\n", __FUNCTION__, cycle);
 
    //	gbAPU->write_register(cycle, address, byte);
    gbAPU->write_register(clock(), address, byte);
@@ -163,7 +163,7 @@ void GbApuEmulator::writeByte(uint8_t byte, uint16_t address, uint_fast32_t cycl
 // End a 1/60 sound frame
 double GbApuEmulator::endFrame(uint_fast32_t cycle)
 {
-//   printf("%s : cycle = %u", __FUNCTION__, cycle);
+//   printf("%s : cycle = %u\n", __FUNCTION__, cycle);
 	
 	gbAPU->end_frame(cycle);
 	blipBuffer->end_frame(cycle);
@@ -183,7 +183,7 @@ double GbApuEmulator::endFrame(uint_fast32_t cycle)
 		// Try to catch run-away buffer overflow
 		if (availableSamples > (gbAPUState->numPacketsToRead * 6))
       {
-			printf("Reducing samples in audio buffer to prevent overflow.");
+			printf("Reducing samples in audio buffer to prevent overflow.\n");
 			blipBuffer->remove_samples(gbAPUState->numPacketsToRead);
 		}
 	}
