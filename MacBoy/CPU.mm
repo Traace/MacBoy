@@ -2858,7 +2858,8 @@ const uint BLACK = 0xFF000000;
    }
    else if (address <= 0x7FFF || (address >= 0xA000 && address <= 0xBFFF))
    {
-      [cartridge WriteByte:address :value];
+//      [cartridge WriteByte:address :value];
+      cartridge->writeByte(address, value);
    }
    else if (address >= 0xE000 && address <= 0xFDFF)
    {
@@ -3078,7 +3079,8 @@ const uint BLACK = 0xFF000000;
 {
    if (address <= 0x7FFF || (address >= 0xA000 && address <= 0xBFFF))
    {
-      return [cartridge ReadByte:address];
+//      return [cartridge ReadByte:address];
+      return cartridge->readByte(address);
    }
    else if (address >= 0x8000 && address <= 0x9FFF)
    {

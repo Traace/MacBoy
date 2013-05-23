@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Protocols.h"
+//#import "Protocols.h"
+#import "Cartridge.h"
 #import "Constants.h"
 #import "GbApuEmulator.h"
 #import "CPUTables.h"
@@ -23,7 +24,7 @@ extern const uint BLACK;
    
 @public
    
-   id<Cartridge> cartridge;
+//   id<Cartridge> cartridge;
    
    bool running;
    bool halted;
@@ -105,7 +106,8 @@ extern const uint BLACK;
    bool invalidateAllSpriteTilesRequest;
 }
 
-@property (retain, readwrite) id<Cartridge> cartridge;
+//@property (retain, readwrite) id<Cartridge> cartridge;
+@property Cartridge *cartridge;
 @property GbApuEmulator * apu;
 
 - (void) Step;

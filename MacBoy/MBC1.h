@@ -6,28 +6,30 @@
 //  Copyright (c) 2012. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "Protocols.h"
+#import "Cartridge.h"
 #import "Constants.h"
 
-@interface MBC1 : NSObject <Cartridge>
+using byte = unsigned char;
+
+class MBC1 : public Cartridge
 {
    enum RomType romType;
    bool ramBankingMode;
-   int selectedRomBank;// = 1;
+   int selectedRomBank = 1;
    int selectedRamBank;
-//   byte[,] ram = new byte[4, 8 * 1024];
-//   byte[,] rom;
-   Byte ram[4][8 * 1024];
-   Byte ** rom; // [romBanks][bankSize]
    
-   uint romBanks;
+   byte ram[4][8 * 1024];
+   byte **rom;
    
-}
-
-//- (id) initWithData:(Byte *)fileData :(enum RomType)_romType :(int)romSize :(int)romBanks;
-- (id) initWithData:(NSData *)data :(enum RomType)_romType :(int)romSize :(int)romBanks;
-//- (void) loadRAM:(NSData *)ramData;
-//- (void) saveRAM:(NSString *)savePath;
-
-@end
+   unsigned int romBanks;
+   
+public:
+   MBC1(byte *data, long length, enum RomType type, int size, int banks);
+   ~MBC1();
+   
+   // Cartridge
+   int  readByte(int address);
+   void writeByte(int address, int value);
+   void loadRAM(const char *ramPath);
+   void saveRAM(const char *savePath);
+};

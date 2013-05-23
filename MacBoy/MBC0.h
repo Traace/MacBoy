@@ -6,15 +6,27 @@
 //  Copyright (c) 2012. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "Protocols.h"
+//#import <Foundation/Foundation.h>
+////#import "Protocols.h"
+//
+//@interface MBC0 : NSObject// <Cartridge>
+//{
+//   Byte * fileData;
+//   NSUInteger fileSize;
+//}
+//
+//- (id) initWithData:(NSData *)data;
+//
+//@end
 
-@interface MBC0 : NSObject <Cartridge>
+#import "Cartridge.h"
+
+using byte = unsigned char;
+
+class MBC0 : public Cartridge
 {
-   Byte * fileData;
-   NSUInteger fileSize;
-}
-
-- (id) initWithData:(NSData *)data;
-
-@end
+   
+public:
+   MBC0();
+   ~MBC0();
+};

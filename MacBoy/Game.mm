@@ -137,16 +137,18 @@
       switch (romType)
       {
          case ROM_MBC0:
-            cartridge = [[MBC0 alloc] initWithData:data];
+//            cartridge = [[MBC0 alloc] initWithData:data];
             break;
          case ROM_MBC1:
          case ROM_MBC1_RAM:
          case ROM_MBC1_RAM_BATT:
-            cartridge = [[MBC1 alloc] initWithData:data :romType :romSize :romBanks];
+//            cartridge = [[MBC1 alloc] initWithData:data :romType :romSize :romBanks];
+            cartridge = new MBC1((byte *)[data bytes], data.length, romType, romSize, romBanks);
             break;
          case ROM_MBC2:
          case ROM_MBC2_BATTERY:
-            cartridge = [[MBC2 alloc] initWithData:fileData :romType :romSize :romBanks];
+//            cartridge = [[MBC2 alloc] initWithData:fileData :romType :romSize :romBanks];
+//            cartridge = new MBC2(fileData, romType, romSize, romBanks);
             break;
          default:
             [NSException raise:@"Game Init Error" format:@"Cannot emulate cartridge type: 0x%x", romType];

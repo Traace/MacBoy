@@ -364,7 +364,8 @@ static double timeCorrection = 0;
 
 - (IBAction)saveFile:(id)sender
 {
-   [cpu.cartridge saveRAM:[romFilePath stringByAppendingString:@".sav"]];
+//   [cpu.cartridge saveRAM:[romFilePath stringByAppendingString:@".sav"]];
+   cpu.cartridge->saveRAM([[romFilePath stringByAppendingString:@".sav"] UTF8String]);
 }
 
 - (void)loadFile:(NSString *)romPath
@@ -382,7 +383,8 @@ static double timeCorrection = 0;
    
    [cpu setCartridge:game->cartridge];
    
-   [cpu.cartridge loadRAM:romPath];
+//   [cpu.cartridge loadRAM:romPath];
+   cpu.cartridge->loadRAM([romPath UTF8String]);
    
    [cpu PowerUp];
 //   [apu beginAPUPlayback];

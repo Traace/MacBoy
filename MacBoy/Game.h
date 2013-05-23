@@ -6,9 +6,9 @@
 //  Copyright (c) 2012. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "Protocols.h"
 #import "Constants.h"
+
+#import "Cartridge.h"
 #import "MBC0.h"
 #import "MBC1.h"
 #import "MBC2.h"
@@ -37,7 +37,7 @@
    bool noTimerOverflowInterruptHandler;
    bool noSerialTransferCompletionInterruptHandler;
    bool noHighToLowOfP10ToP13InterruptHandler;
-   id<Cartridge> cartridge;
+   Cartridge *cartridge;
 }
 
 - (id) initWithData:(NSData *)fileData;

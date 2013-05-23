@@ -6,22 +6,26 @@
 //  Copyright (c) 2012. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "Protocols.h"
+#import "Cartridge.h"
 #import "Constants.h"
 
-@interface MBC2 : NSObject <Cartridge>
+using byte = unsigned char;
+
+class MBC2 : public Cartridge
 {
    enum RomType romType;
-   int selectedRomBank;// = 1;
-//   private byte[] ram = new byte[512];
-   Byte ram[512];
-//   private byte[,] rom;
-   Byte ** rom;
+   int selectedRomBank;
+
+   byte ram[512];
+   byte **rom;
    
-   uint romBanks;
-}
-
-- (id) initWithData:(Byte *)fileData :(enum RomType)_romType :(int)romSize :(int)romBanks;
-
-@end
+   unsigned int romBanks;
+   
+public:
+   MBC2(byte *fileData, enum RomType type, int size, int banks);
+   ~MBC2();
+   
+   // Cartridge
+   int  readByte(int address);
+   void writeByte(int address, int value);
+};

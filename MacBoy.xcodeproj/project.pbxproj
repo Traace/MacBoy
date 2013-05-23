@@ -14,10 +14,10 @@
 		0DA22E67158A8E8E00EAC859 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DA22E65158A8E8E00EAC859 /* MainMenu.xib */; };
 		0DA22E7D158A8EC800EAC859 /* CPU.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22E6F158A8EC800EAC859 /* CPU.mm */; };
 		0DA22E7E158A8EC800EAC859 /* Game.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22E71158A8EC800EAC859 /* Game.mm */; };
-		0DA22E7F158A8EC800EAC859 /* MBC1.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22E73158A8EC800EAC859 /* MBC1.m */; };
-		0DA22E80158A8EC800EAC859 /* MBC2.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22E75158A8EC800EAC859 /* MBC2.m */; };
+		0DA22E7F158A8EC800EAC859 /* MBC1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22E73158A8EC800EAC859 /* MBC1.cpp */; };
+		0DA22E80158A8EC800EAC859 /* MBC2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22E75158A8EC800EAC859 /* MBC2.cpp */; };
 		0DA22E99158A941800EAC859 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DA22E98158A941800EAC859 /* OpenGL.framework */; };
-		0DA22EA5158A957700EAC859 /* MBC0.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22EA4158A957700EAC859 /* MBC0.m */; };
+		0DA22EA5158A957700EAC859 /* MBC0.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22EA4158A957700EAC859 /* MBC0.cpp */; };
 		0DA22EC9158A99F200EAC859 /* Blip_Buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22EBA158A99F200EAC859 /* Blip_Buffer.cpp */; };
 		0DA22ECA158A99F200EAC859 /* Gb_Apu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22EC1158A99F200EAC859 /* Gb_Apu.cpp */; };
 		0DA22ECB158A99F200EAC859 /* Gb_Oscs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22EC3158A99F200EAC859 /* Gb_Oscs.cpp */; };
@@ -37,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D37F492174DC7BD00C43EFB /* Cartridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cartridge.h; sourceTree = "<group>"; };
 		0DA22E4C158A8E8E00EAC859 /* MacBoy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacBoy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DA22E50158A8E8E00EAC859 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		0DA22E53158A8E8E00EAC859 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -55,15 +56,14 @@
 		0DA22E70158A8EC800EAC859 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		0DA22E71158A8EC800EAC859 /* Game.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Game.mm; sourceTree = "<group>"; };
 		0DA22E72158A8EC800EAC859 /* MBC1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBC1.h; sourceTree = "<group>"; };
-		0DA22E73158A8EC800EAC859 /* MBC1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBC1.m; sourceTree = "<group>"; };
+		0DA22E73158A8EC800EAC859 /* MBC1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MBC1.cpp; sourceTree = "<group>"; };
 		0DA22E74158A8EC800EAC859 /* MBC2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBC2.h; sourceTree = "<group>"; };
-		0DA22E75158A8EC800EAC859 /* MBC2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBC2.m; sourceTree = "<group>"; };
-		0DA22E76158A8EC800EAC859 /* Protocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Protocols.h; sourceTree = "<group>"; };
+		0DA22E75158A8EC800EAC859 /* MBC2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MBC2.cpp; sourceTree = "<group>"; };
 		0DA22E7B158A8EC800EAC859 /* WindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowController.h; sourceTree = "<group>"; };
 		0DA22E95158A939200EAC859 /* GameboyOpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameboyOpenGLView.h; sourceTree = "<group>"; };
 		0DA22E98158A941800EAC859 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		0DA22EA3158A957700EAC859 /* MBC0.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBC0.h; sourceTree = "<group>"; };
-		0DA22EA4158A957700EAC859 /* MBC0.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBC0.m; sourceTree = "<group>"; };
+		0DA22EA4158A957700EAC859 /* MBC0.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MBC0.cpp; sourceTree = "<group>"; };
 		0DA22EBA158A99F200EAC859 /* Blip_Buffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Blip_Buffer.cpp; sourceTree = "<group>"; };
 		0DA22EBB158A99F200EAC859 /* Blip_Buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Blip_Buffer.h; sourceTree = "<group>"; };
 		0DA22EBC158A99F200EAC859 /* Blip_Synth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Blip_Synth.h; sourceTree = "<group>"; };
@@ -156,7 +156,6 @@
 				0DA22EF8158A9F1700EAC859 /* CPUTables.h */,
 				0DA22E70158A8EC800EAC859 /* Game.h */,
 				0DA22E71158A8EC800EAC859 /* Game.mm */,
-				0DA22E76158A8EC800EAC859 /* Protocols.h */,
 				0DA22E7B158A8EC800EAC859 /* WindowController.h */,
 				0DA22EDA158A9ACE00EAC859 /* WindowController.mm */,
 				0DA22E95158A939200EAC859 /* GameboyOpenGLView.h */,
@@ -186,12 +185,13 @@
 		0DA22EA6158A958900EAC859 /* MBC */ = {
 			isa = PBXGroup;
 			children = (
+				0D37F492174DC7BD00C43EFB /* Cartridge.h */,
 				0DA22EA3158A957700EAC859 /* MBC0.h */,
-				0DA22EA4158A957700EAC859 /* MBC0.m */,
+				0DA22EA4158A957700EAC859 /* MBC0.cpp */,
 				0DA22E72158A8EC800EAC859 /* MBC1.h */,
-				0DA22E73158A8EC800EAC859 /* MBC1.m */,
+				0DA22E73158A8EC800EAC859 /* MBC1.cpp */,
 				0DA22E74158A8EC800EAC859 /* MBC2.h */,
-				0DA22E75158A8EC800EAC859 /* MBC2.m */,
+				0DA22E75158A8EC800EAC859 /* MBC2.cpp */,
 			);
 			name = MBC;
 			sourceTree = "<group>";
@@ -296,9 +296,9 @@
 				0DA22E5D158A8E8E00EAC859 /* main.m in Sources */,
 				0DA22E7D158A8EC800EAC859 /* CPU.mm in Sources */,
 				0DA22E7E158A8EC800EAC859 /* Game.mm in Sources */,
-				0DA22E7F158A8EC800EAC859 /* MBC1.m in Sources */,
-				0DA22E80158A8EC800EAC859 /* MBC2.m in Sources */,
-				0DA22EA5158A957700EAC859 /* MBC0.m in Sources */,
+				0DA22E7F158A8EC800EAC859 /* MBC1.cpp in Sources */,
+				0DA22E80158A8EC800EAC859 /* MBC2.cpp in Sources */,
+				0DA22EA5158A957700EAC859 /* MBC0.cpp in Sources */,
 				0DA22EC9158A99F200EAC859 /* Blip_Buffer.cpp in Sources */,
 				0DA22ECA158A99F200EAC859 /* Gb_Apu.cpp in Sources */,
 				0DA22ECB158A99F200EAC859 /* Gb_Oscs.cpp in Sources */,
