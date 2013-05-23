@@ -35,7 +35,7 @@
 
 static double timeCorrection = 0;
 
-- (void) run
+- (void)run
 {
    for (;;)
    {   
@@ -50,9 +50,9 @@ static double timeCorrection = 0;
    }
 }
 
-- (void) updateModel
+- (void)updateModel
 {
-//   printf("updateModel");
+//   printf("updateModel\n");
    for (int y = 0, pixelIndex = 0; y < 144; y++)
    {
       cpu->ly = y;
@@ -280,7 +280,7 @@ static double timeCorrection = 0;
    }
 }
 
-- (void) addTicksPerScanLine
+- (void)addTicksPerScanLine
 {
    switch (cpu->timerFrequency)
    {
@@ -316,7 +316,7 @@ static double timeCorrection = 0;
    }
 }
 
-- (void) executeProcessor:(int)maxTicks
+- (void)executeProcessor:(int)maxTicks
 {   
    do
    {
@@ -331,7 +331,7 @@ static double timeCorrection = 0;
    cpu->ticks -= maxTicks;
 }
 
-- (void) renderFrame
+- (void)renderFrame
 {
    [openGLView setPixels:pixels];
    [openGLView setNeedsDisplay:true];
@@ -342,14 +342,13 @@ static double timeCorrection = 0;
 
 - (IBAction)openFile:(id)sender
 {
-   NSOpenPanel * openPanel = [NSOpenPanel openPanel];
+   NSOpenPanel *openPanel = [NSOpenPanel openPanel];
    if ([openPanel runModal] == NSOKButton)
    {
-      NSArray * urls = [openPanel URLs];
-      NSURL * romFile = [urls objectAtIndex:0];
+      NSArray *urls = [openPanel URLs];
+      NSURL *romFile = [urls objectAtIndex:0];
       
-      NSString * romPath = [[[romFile filePathURL] absoluteString] 
-                            stringByReplacingOccurrencesOfString:@"file://localhost" withString:@""];
+      NSString *romPath = [[[romFile filePathURL] absoluteString] stringByReplacingOccurrencesOfString:@"file://localhost" withString:@""];
       
       // Replace escape characters from URL
       romPath = [romPath stringByReplacingOccurrencesOfString:@"%20" withString:@" "];

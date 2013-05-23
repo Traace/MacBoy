@@ -19,8 +19,6 @@
    
    NSData *romData;
    
-   IBOutlet NSImageView *imageView;
-   NSBitmapImageRep *bitmapImageRep;
    NSSize screenSize;
    
    IBOutlet GameboyOpenGLView *openGLView;
