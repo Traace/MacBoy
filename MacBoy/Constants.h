@@ -9,17 +9,7 @@
 #ifndef MacBoy_Constants_h
 #define MacBoy_Constants_h
 
-enum Keys
-{
-   KeyA = 0,
-   KeyB = 1,
-   Start = 2,
-   Select = 3,
-   ArrowUp = 4,
-   ArrowDown = 5,
-   ArrowLeft = 6,
-   ArrowRight = 7
-};
+
 
 enum LcdcModeType
 {

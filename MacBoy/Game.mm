@@ -10,7 +10,7 @@
 
 @implementation Game
 
-- (NSString *) extractGameTitle:(Byte *)fileData
+- (NSString *)extractGameTitle:(Byte *)fileData
 {
    NSMutableString * s = [NSMutableString string];
    for (int i = 0x0134; i <= 0x0142; i++)
@@ -25,7 +25,7 @@
    return s;
 }
 
-- (id) initWithData:(NSData *)data
+- (id)initWithData:(NSData *)data
 {
    if (self = [super init])
    {
@@ -138,17 +138,18 @@
       {
          case ROM_MBC0:
 //            cartridge = [[MBC0 alloc] initWithData:data];
+            [NSException raise:@"" format:@"Not yet implemented!"];
             break;
          case ROM_MBC1:
          case ROM_MBC1_RAM:
          case ROM_MBC1_RAM_BATT:
-//            cartridge = [[MBC1 alloc] initWithData:data :romType :romSize :romBanks];
             cartridge = new MBC1((byte *)[data bytes], data.length, romType, romSize, romBanks);
             break;
          case ROM_MBC2:
          case ROM_MBC2_BATTERY:
 //            cartridge = [[MBC2 alloc] initWithData:fileData :romType :romSize :romBanks];
 //            cartridge = new MBC2(fileData, romType, romSize, romBanks);
+            [NSException raise:@"" format:@"Not yet implemented!"];
             break;
          default:
             [NSException raise:@"Game Init Error" format:@"Cannot emulate cartridge type: 0x%x", romType];
@@ -161,7 +162,7 @@
 }
 
 
-- (NSString *) description
+- (NSString *)description
 {
    return @"Game Description";
    //   return "title = " + title + "\n"

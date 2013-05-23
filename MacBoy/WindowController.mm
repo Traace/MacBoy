@@ -8,10 +8,6 @@
 
 #import "WindowController.h"
 
-//@interface WindowController ()
-//
-//@end
-
 @implementation WindowController
 
 - (id)initWithWindow:(NSWindow *)window
@@ -34,8 +30,6 @@
 
 - (void) keyDown:(NSEvent *)theEvent
 {
-//   [cpu KeyChanged:Start :true];
-//   [cpu KeyChanged:KeyA :true];
    if (cpu != nil)
    {
       switch( [theEvent keyCode] )

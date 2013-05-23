@@ -6,7 +6,6 @@
 //  Copyright (c) 2012. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
 #import "CPU.h"
 #import "Constants.h"
 

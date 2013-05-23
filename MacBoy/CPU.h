@@ -6,25 +6,27 @@
 //  Copyright (c) 2012. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-//#import "Protocols.h"
 #import "Cartridge.h"
 #import "Constants.h"
 #import "GbApuEmulator.h"
 #import "CPUTables.h"
 
-extern const uint WHITE;
-extern const uint LIGHT_GRAY;
-extern const uint DARK_GRAY;
-extern const uint BLACK;
+enum Keys
+{
+   KeyA = 0,
+   KeyB = 1,
+   Start = 2,
+   Select = 3,
+   ArrowUp = 4,
+   ArrowDown = 5,
+   ArrowLeft = 6,
+   ArrowRight = 7
+};
 
 @interface CPU : NSObject
 {
-//   IBOutlet GbApuEmulator * apu;
    
 @public
-   
-//   id<Cartridge> cartridge;
    
    bool running;
    bool halted;
