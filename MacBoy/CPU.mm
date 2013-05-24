@@ -8,10 +8,10 @@
 
 #import "CPU.h"
 
-const uint WHITE = 0xFFFFFFFF;
-const uint LIGHT_GRAY = 0xFFAAAAAA;
-const uint DARK_GRAY = 0xFF555555;
-const uint BLACK = 0xFF000000;
+static const uint WHITE = 0xFFFFFFFF;
+static const uint LIGHT_GRAY = 0xFFAAAAAA;
+static const uint DARK_GRAY = 0xFF555555;
+static const uint BLACK = 0xFF000000;
 
 @implementation CPU
 
