@@ -10,11 +10,6 @@
 
 Game::Game(byte *data, long length)
 {
-//   NSUInteger length = [data length];
-//   Byte * fileData = (Byte *)malloc( length * sizeof(Byte) );
-//   [data getBytes:fileData];
-   
-//   title = (char*)extractGameTitle(data);
    gameBoyColorGame = data[0x0143] == 0x80;
    licenseCode = (((int)data[0x0144]) << 4) | data[0x0145];
    gameBoy = data[0x0146] == 0x00;
@@ -149,9 +144,8 @@ void Game::extractGameTitle(byte *data)
    for (int i = 0x0134; i <= 0x0142; i++)
    {
       title[i - 0x0134] = data[i];
+      
       if (data[i] == 0x00) break;
-//      char ch[2] = { (char)fileData[i], 0 };
-//      [s appendString:[NSString stringWithUTF8String:ch]];
    }
 }
 

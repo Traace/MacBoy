@@ -40,42 +40,8 @@ class Game
    void extractGameTitle(byte *data);
    
 public:
-   Cartridge *cartridge;
+   Cartridge *cartridge; // TODO: should this be public?
    
    Game(byte *data, long length);
    ~Game();
 };
-
-/*
-@interface Game : NSObject
-{
-@public
-   NSString * title;
-   bool gameBoyColorGame;
-   int licenseCode;
-   bool gameBoy;
-   enum RomType romType;
-   int romSize;
-   int romBanks;
-   int ramSize;
-   int ramBanks;
-   bool japanese;
-   int oldLicenseCode;
-   int maskRomVersion;
-   int checksum;
-   int actualChecksum;
-   int headerChecksum;
-   int actualHeaderChecksum;
-   bool noVerticalBlankInterruptHandler;
-   bool noLCDCStatusInterruptHandler;
-   bool noTimerOverflowInterruptHandler;
-   bool noSerialTransferCompletionInterruptHandler;
-   bool noHighToLowOfP10ToP13InterruptHandler;
-   Cartridge *cartridge;
-}
-
-- (id) initWithData:(NSData *)fileData;
-- (NSString *) description;
-
-@end
-*/
