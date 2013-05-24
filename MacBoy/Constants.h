@@ -9,8 +9,6 @@
 #ifndef MacBoy_Constants_h
 #define MacBoy_Constants_h
 
-
-
 enum LcdcModeType
 {
    HBlank = 0,
@@ -56,6 +54,5 @@ enum RomType
    HudsonHuC3 = 0xFE,
    HudsonHuC1 = 0xFF
 };
-
 
 #endif

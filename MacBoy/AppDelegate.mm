@@ -374,8 +374,10 @@ static double timeCorrection = 0;
    
    romData = [file readDataToEndOfFile];
    
-   game = [[Game alloc] initWithData:romData];
+//   game = [[Game alloc] initWithData:romData];
+   game = new Game((byte*)romData.bytes, romData.length);
    
+//   [cpu setCartridge:game->cartridge];
    [cpu setCartridge:game->cartridge];
    
    cpu.cartridge->loadRAM([[romPath stringByAppendingString:@".sav"] UTF8String]);

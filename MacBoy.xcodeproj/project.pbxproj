@@ -13,7 +13,7 @@
 		0DA22E61158A8E8E00EAC859 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 0DA22E5F158A8E8E00EAC859 /* Credits.rtf */; };
 		0DA22E67158A8E8E00EAC859 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DA22E65158A8E8E00EAC859 /* MainMenu.xib */; };
 		0DA22E7D158A8EC800EAC859 /* CPU.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22E6F158A8EC800EAC859 /* CPU.mm */; };
-		0DA22E7E158A8EC800EAC859 /* Game.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22E71158A8EC800EAC859 /* Game.mm */; };
+		0DA22E7E158A8EC800EAC859 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22E71158A8EC800EAC859 /* Game.cpp */; };
 		0DA22E7F158A8EC800EAC859 /* MBC1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22E73158A8EC800EAC859 /* MBC1.cpp */; };
 		0DA22E80158A8EC800EAC859 /* MBC2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DA22E75158A8EC800EAC859 /* MBC2.cpp */; };
 		0DA22E99158A941800EAC859 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DA22E98158A941800EAC859 /* OpenGL.framework */; };
@@ -54,7 +54,7 @@
 		0DA22E6E158A8EC800EAC859 /* CPU.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPU.h; sourceTree = "<group>"; };
 		0DA22E6F158A8EC800EAC859 /* CPU.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CPU.mm; sourceTree = "<group>"; };
 		0DA22E70158A8EC800EAC859 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
-		0DA22E71158A8EC800EAC859 /* Game.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Game.mm; sourceTree = "<group>"; };
+		0DA22E71158A8EC800EAC859 /* Game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
 		0DA22E72158A8EC800EAC859 /* MBC1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBC1.h; sourceTree = "<group>"; };
 		0DA22E73158A8EC800EAC859 /* MBC1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MBC1.cpp; sourceTree = "<group>"; };
 		0DA22E74158A8EC800EAC859 /* MBC2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBC2.h; sourceTree = "<group>"; };
@@ -155,7 +155,7 @@
 				0DA22E6F158A8EC800EAC859 /* CPU.mm */,
 				0DA22EF8158A9F1700EAC859 /* CPUTables.h */,
 				0DA22E70158A8EC800EAC859 /* Game.h */,
-				0DA22E71158A8EC800EAC859 /* Game.mm */,
+				0DA22E71158A8EC800EAC859 /* Game.cpp */,
 				0DA22E7B158A8EC800EAC859 /* WindowController.h */,
 				0DA22EDA158A9ACE00EAC859 /* WindowController.mm */,
 				0DA22E95158A939200EAC859 /* GameboyOpenGLView.h */,
@@ -295,7 +295,7 @@
 			files = (
 				0DA22E5D158A8E8E00EAC859 /* main.m in Sources */,
 				0DA22E7D158A8EC800EAC859 /* CPU.mm in Sources */,
-				0DA22E7E158A8EC800EAC859 /* Game.mm in Sources */,
+				0DA22E7E158A8EC800EAC859 /* Game.cpp in Sources */,
 				0DA22E7F158A8EC800EAC859 /* MBC1.cpp in Sources */,
 				0DA22E80158A8EC800EAC859 /* MBC2.cpp in Sources */,
 				0DA22EA5158A957700EAC859 /* MBC0.cpp in Sources */,
