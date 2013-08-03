@@ -19,7 +19,7 @@ static void HandleOutputBuffer(void *aqData, AudioQueueRef inAQ, AudioQueueBuffe
 	if (!pAqData->isRunning)
    {	
 		bytesRead = pAqData->bufferByteSize;
-		bzero(inBuffer->mAudioData,pAqData->bufferByteSize);
+		bzero(inBuffer->mAudioData, pAqData->bufferByteSize);
 //		printf("APU is not running. Filling buffer with zeros.\n");	
 	}
 	else
@@ -37,7 +37,7 @@ static void HandleOutputBuffer(void *aqData, AudioQueueRef inAQ, AudioQueueBuffe
 		}
 		else
       {
-			samplesRead = pAqData->blipBuffer->read_samples((blip_sample_t*)inBuffer->mAudioData,pAqData->numPacketsToRead);
+			samplesRead = pAqData->blipBuffer->read_samples((blip_sample_t*)inBuffer->mAudioData, pAqData->numPacketsToRead);
 			bytesRead = samplesRead * 2; // As each sample is 16-bits
 		}
 	}
@@ -145,7 +145,6 @@ void GbApuEmulator::stopApuPlayback()
 }
 
 // faked CPU timing
-//blip_time_t clock() { return time += 4; }
 blip_time_t GbApuEmulator::clock()
 {
    return time += 4;

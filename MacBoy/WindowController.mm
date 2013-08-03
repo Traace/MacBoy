@@ -12,27 +12,27 @@
 
 - (id)initWithWindow:(NSWindow *)window
 {
-    self = [super initWithWindow:window];
-    if (self)
-    {
-        // Initialization code here.
-    }
-    
-    return self;
+   if (self = [super initWithWindow:window])
+   {
+      // Initialization code here.
+   }
+
+   return self;
 }
 
 - (void)windowDidLoad
 {
-    [super windowDidLoad];
+   [super windowDidLoad];
     
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+   // Implement this method to handle any initialization after your window
+   // controller's window has been loaded from its nib file.
 }
 
-- (void) keyDown:(NSEvent *)theEvent
+- (void)keyDown:(NSEvent *)event
 {
    if (cpu != nil)
    {
-      switch( [theEvent keyCode] )
+      switch ([event keyCode])
       {
          case 2: // d
          {
@@ -82,11 +82,11 @@
    }
 }
 
-- (void) keyUp:(NSEvent *)theEvent
+- (void)keyUp:(NSEvent *)event
 {
    if (cpu != nil)
    {
-      switch( [theEvent keyCode] )
+      switch ([event keyCode])
       {
          case 2: // d
          {

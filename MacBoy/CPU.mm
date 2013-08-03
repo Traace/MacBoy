@@ -2724,7 +2724,7 @@ static const uint BLACK = 0xFF000000;
 - (void) Increment:(int &)rh :(int &)rl
 {
    if (rl == 255)
-{
+   {
       rh = 0xFF & (rh + 1);
       rl = 0;
    }
@@ -2858,7 +2858,6 @@ static const uint BLACK = 0xFF000000;
    }
    else if (address <= 0x7FFF || (address >= 0xA000 && address <= 0xBFFF))
    {
-//      [cartridge WriteByte:address :value];
       cartridge->writeByte(address, value);
    }
    else if (address >= 0xE000 && address <= 0xFDFF)
@@ -2943,8 +2942,7 @@ static const uint BLACK = 0xFF000000;
             }
             break;
          case 0xFF47: // Background palette
-//            Console.WriteLine("[0xFF47] = {0:X}" :value];
-//                NSLog(@"[0xFF47] = %x", value);
+//            NSLog(@"[0xFF47] = %x", value);
             for(int i = 0; i < 4; i++)
             {
                switch(value & 0x03)

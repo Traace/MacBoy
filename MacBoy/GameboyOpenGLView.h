@@ -14,6 +14,6 @@
    uint pixels[160 * 144];
 }
 
-- (void) setPixels:(uint *)_pixels;
+- (void)setPixels:(uint *)pix;
 
 @end

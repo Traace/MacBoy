@@ -270,8 +270,7 @@ static double timeCorrection = 0;
    for (int y = 144; y <= 153; y++)
    {
       cpu->ly = y;
-      if (cpu->lcdcInterruptEnabled && cpu->lcdcLycLyCoincidenceInterruptEnabled
-          && cpu->lyCompare == y)
+      if (cpu->lcdcInterruptEnabled && cpu->lcdcLycLyCoincidenceInterruptEnabled && cpu->lyCompare == y)
       {
          cpu->lcdcInterruptRequested = true;
       }

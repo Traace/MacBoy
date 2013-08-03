@@ -11,7 +11,7 @@
 
 @interface WindowController : NSWindowController
 {
-   IBOutlet CPU * cpu;
+   IBOutlet CPU *cpu;
 }
 
 @end

@@ -25,7 +25,7 @@
 
    uint pixels[160 * 144];
    
-   NSString * romFilePath;
+   NSString *romFilePath;
    
    GbApuEmulator *apu;
 }

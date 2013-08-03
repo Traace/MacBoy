@@ -108,9 +108,8 @@ enum Keys
    bool invalidateAllSpriteTilesRequest;
 }
 
-//@property (retain, readwrite) id<Cartridge> cartridge;
 @property Cartridge *cartridge;
-@property GbApuEmulator * apu;
+@property GbApuEmulator *apu;
 
 - (void) Step;
 - (int) ReadByte:(int)address;

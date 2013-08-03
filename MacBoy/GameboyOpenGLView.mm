@@ -12,7 +12,7 @@
 
 - (id)initWithFrame:(NSRect)frame
 {
-    return [super initWithFrame:frame];
+   return [super initWithFrame:frame];
 }
 
 - (void) prepareOpenGL
@@ -61,9 +61,9 @@
    glFlush();
 }
 
-- (void) setPixels:(uint *)_pixels
+- (void)setPixels:(uint *)pix
 {
-   memcpy(pixels, _pixels, sizeof(pixels));
+   memcpy(pixels, pix, sizeof(pixels));
 }
 
 @end
