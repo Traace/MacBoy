@@ -87,6 +87,7 @@
 		0DA22EFD158A9FD200EAC859 /* 256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 256.png; path = Icons/256.png; sourceTree = "<group>"; };
 		0DA22EFE158A9FD200EAC859 /* 512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 512.png; path = Icons/512.png; sourceTree = "<group>"; };
 		0DA22F06158AA00500EAC859 /* Gameboy.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Gameboy.icns; path = ../Gameboy.icns; sourceTree = "<group>"; };
+		433189451A443B9100170911 /* MacBoy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MacBoy.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +147,7 @@
 		0DA22E56158A8E8E00EAC859 /* MacBoy */ = {
 			isa = PBXGroup;
 			children = (
+				433189451A443B9100170911 /* MacBoy.entitlements */,
 				0DA22EA6158A958900EAC859 /* MBC */,
 				0DA22EB7158A99F200EAC859 /* gb_apu */,
 				0DA22E62158A8E8E00EAC859 /* AppDelegate.h */,
@@ -251,6 +253,15 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0460;
+				TargetAttributes = {
+					0DA22E4B158A8E8E00EAC859 = {
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
+				};
 			};
 			buildConfigurationList = 0DA22E46158A8E8D00EAC859 /* Build configuration list for PBXProject "MacBoy" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -398,6 +409,8 @@
 		0DA22E6B158A8E8E00EAC859 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = MacBoy/MacBoy.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MacBoy/MacBoy-Prefix.pch";
@@ -410,6 +423,8 @@
 		0DA22E6C158A8E8E00EAC859 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = MacBoy/MacBoy.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MacBoy/MacBoy-Prefix.pch";

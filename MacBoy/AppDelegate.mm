@@ -367,7 +367,7 @@ static double timeCorrection = 0;
 {
    romFilePath = [NSString stringWithString:romPath];
    
-   NSFileHandle * file = [NSFileHandle fileHandleForReadingAtPath: romPath];
+    NSFileHandle *file = [NSFileHandle fileHandleForReadingFromURL:[NSURL URLWithString:romPath] error:nil];
    
    if (file == nil) printf("ERROR: Failed to open file\n");
    

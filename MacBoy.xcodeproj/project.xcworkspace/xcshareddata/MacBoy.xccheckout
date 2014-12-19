@@ -2,35 +2,37 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>48ED3603-7D74-4F9C-9918-C46565975327</string>
 	<key>IDESourceControlProjectName</key>
 	<string>MacBoy</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>94759695-E3C1-443F-8D9A-F6EEEC107674</key>
-		<string>https://github.com/jtomschroeder/MacBoy.git</string>
+		<key>AB51D035FBF4E2249C4BD9D0148C2EAD62A602F0</key>
+		<string>https://github.com/pbarilla/MacBoy.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>MacBoy.xcodeproj/project.xcworkspace</string>
+	<string>MacBoy.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>94759695-E3C1-443F-8D9A-F6EEEC107674</key>
+		<key>AB51D035FBF4E2249C4BD9D0148C2EAD62A602F0</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/jtomschroeder/MacBoy.git</string>
+	<string>https://github.com/pbarilla/MacBoy.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>94759695-E3C1-443F-8D9A-F6EEEC107674</string>
+	<string>AB51D035FBF4E2249C4BD9D0148C2EAD62A602F0</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>94759695-E3C1-443F-8D9A-F6EEEC107674</string>
+			<string>AB51D035FBF4E2249C4BD9D0148C2EAD62A602F0</string>
 			<key>IDESourceControlWCCName</key>
 			<string>MacBoy</string>
 		</dict>
